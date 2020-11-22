@@ -18,10 +18,11 @@ public class Customer {
     private String name;
     private String lastName;
     private String address;
+    private String city;
     private int telephoneNumber;
     private ArrayList<Order> commande;
     
-    public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd)
+    public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,String ville)
    {
         this.customerId=id;
         this.name=prenom;
@@ -29,6 +30,7 @@ public class Customer {
         this.address=living;
         this.telephoneNumber=num;
         this.commande=cmd;
+        this.city=ville;
     }
 
 }
