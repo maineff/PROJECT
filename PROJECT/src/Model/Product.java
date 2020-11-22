@@ -9,6 +9,22 @@ package Model;
  *
  * @author alkassoumhaoua
  */
+
 public class Product {
     
+    private int productId;
+    private String name;
+    private double price;
+    private int quantity;
+    
+    public Product(int id,String nom,int prix,int qty)
+    {
+        this.productId=id;
+        this.name=nom;
+        this.price=prix;
+        this.quantity=qty;
+    }
+
+
+
 }
