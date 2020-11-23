@@ -28,7 +28,7 @@ import javax.swing.*;
 public class EmployeeDBQuery {
       
    // Database URL Constant
-  // public final String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
+   //public final String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
    public final String DB_URL ="jdbc:mysql://localhost:3306/projet";
    static Connection conn;
    static Statement st;
@@ -67,16 +67,14 @@ public class EmployeeDBQuery {
    {
         JLabel msg = new JLabel();
         panel= new JPanel();
-       try {
+       try
+       {
            
            
         while(rst.next())
         {
-               
-         noms.add( rst.getString("name"));
-        //
-
-        System.out.print(rst.getInt("employeeId")+"\t");
+           noms.add( rst.getString("name"));
+           System.out.print(rst.getInt("employeeId")+"\t");
        }
         msg.setText(noms.toString());
         /*System.out.print(rst.getString("name")+"\t");
