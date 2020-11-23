@@ -5,6 +5,8 @@
  */
 package Model;
 
+//import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +22,7 @@ public class Order {
     private int quantity;
     private double discount;
     private double totalPrice;
-    private String orderDate;		
+    //private  Timestamp orderDate;		
    
     public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix,String date)
     {
@@ -30,7 +32,7 @@ public class Order {
         this.quantity=qty;
         this.discount=reduc;
         this.totalPrice=prix;
-        this.orderDate=date;
+       // this.orderDate=date;
     }
 
 
