@@ -28,7 +28,7 @@ import javax.swing.*;
 public class EmployeeDBQuery {
       
    // Database URL Constant
-   public final String DB_URL ="jdbc:mysql://localhost:8889/projet";
+   public final String DB_URL ="jdbc:mysql://localhost:3306/projet";
    static Connection conn;
    static Statement st;
    static ResultSet rst;
@@ -43,7 +43,7 @@ public class EmployeeDBQuery {
       {
          // Create a Statement object for the query.
         String user="root";
-        String password="root"; 
+        String password=""; 
         conn=DriverManager.getConnection(DB_URL, user, password);
         st = conn.createStatement();
         String sqlStatement = "SELECT * FROM employee";
