@@ -99,6 +99,10 @@ public class EmployeeDBQuery {
               
                 System.out.println(noms);   
    }
+   public ArrayList getNom()
+   {
+       return noms;
+   }
 
    
   
