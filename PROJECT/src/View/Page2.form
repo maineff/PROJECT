@@ -28,10 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -57,13 +54,6 @@
                               <Component id="product2Label" min="-2" max="-2" attributes="0"/>
                               <Component id="product1Label" min="-2" max="-2" attributes="0"/>
                               <Component id="product3Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product4Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product5Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product6Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product7Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product8Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product9Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="product10Label" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -82,21 +72,7 @@
                   <Component id="product2Label" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="product3Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product4Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product5Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product6Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product7Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product8Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product9Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="product10Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="278" max="32767" attributes="0"/>
+                  <EmptySpace pref="99" max="32767" attributes="0"/>
                   <Component id="go_menuButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -133,41 +109,6 @@
         <Component class="javax.swing.JLabel" name="product3Label">
           <Properties>
             <Property name="text" type="java.lang.String" value="product3"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product4Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product5Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product5"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product6Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product6"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product7Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product7"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product8Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product8"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product9Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product9"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="product10Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="product9"/>
           </Properties>
         </Component>
       </SubComponents>
