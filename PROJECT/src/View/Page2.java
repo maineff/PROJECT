@@ -31,22 +31,29 @@ public class Page2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        welcome_customerLabel = new javax.swing.JLabel();
+        go_menuButton = new javax.swing.JButton();
+        product1Label = new javax.swing.JLabel();
+        product2Label = new javax.swing.JLabel();
+        product3Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 51, 255));
+        welcome_customerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        welcome_customerLabel.setText("WELCOME CUSTOMER");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("WELCOME CUSTOMER");
-
-        jButton1.setText("Go menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        go_menuButton.setText("Go menu");
+        go_menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                go_menuButtonActionPerformed(evt);
             }
         });
+
+        product1Label.setText("product1");
+
+        product2Label.setText("product2");
+
+        product3Label.setText("product3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,21 +62,33 @@ public class Page2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel1))
+                        .addGap(83, 83, 83)
+                        .addComponent(welcome_customerLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton1)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(go_menuButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(product2Label)
+                            .addComponent(product1Label)
+                            .addComponent(product3Label))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(27, 27, 27))
+                .addContainerGap()
+                .addComponent(welcome_customerLabel)
+                .addGap(42, 42, 42)
+                .addComponent(product1Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product2Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product3Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addComponent(go_menuButton)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,10 +105,10 @@ public class Page2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void go_menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_menuButtonActionPerformed
         dispose();
       new Page1().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_go_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,8 +146,11 @@ public class Page2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton go_menuButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel product1Label;
+    private javax.swing.JLabel product2Label;
+    private javax.swing.JLabel product3Label;
+    private javax.swing.JLabel welcome_customerLabel;
     // End of variables declaration//GEN-END:variables
 }

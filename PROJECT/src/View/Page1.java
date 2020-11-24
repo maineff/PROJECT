@@ -23,9 +23,9 @@ public class Page1 extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         int i=0;
-        jLabel4.setText((String) employeedb.getNom().get(i));
+        selleur1Label.setText((String) employeedb.getNom().get(i));
         int j=1;
-        jLabel5.setText((String) employeedb.getNom().get(j)); 
+        selleur2Label.setText((String) employeedb.getNom().get(j)); 
     }
 
     /**
@@ -39,34 +39,41 @@ public class Page1 extends javax.swing.JFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        you_areLabel = new javax.swing.JLabel();
+        customerButton = new javax.swing.JButton();
+        sellerButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        welcome_customerLabel = new javax.swing.JLabel();
+        backButton2 = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        log_inLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        idTextfield = new javax.swing.JTextField();
+        passwordLabel = new javax.swing.JLabel();
+        passwordTextfield = new javax.swing.JTextField();
+        okButton = new javax.swing.JButton();
+        sign_inButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        welcome_selleurLabel = new javax.swing.JLabel();
+        backButton3 = new javax.swing.JButton();
+        selleur1Label = new javax.swing.JLabel();
+        selleur2Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("You are :");
+        you_areLabel.setText("You are :");
 
-        jButton1.setText("Customer");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        customerButton.setText("Customer");
+        customerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                customerButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Seller");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sellerButton.setText("Seller");
+        sellerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sellerButtonActionPerformed(evt);
             }
         });
 
@@ -78,41 +85,65 @@ public class Page1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addComponent(jLabel1))
+                        .addComponent(you_areLabel))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jButton1)
+                        .addComponent(customerButton)
                         .addGap(64, 64, 64)
-                        .addComponent(jButton2)))
+                        .addComponent(sellerButton)))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jLabel1)
+                .addComponent(you_areLabel)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(customerButton)
+                    .addComponent(sellerButton))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Welcome customer");
+        welcome_customerLabel.setText("Welcome customer");
 
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        backButton2.setText("Back");
+        backButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                backButton2ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Next");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
+
+        log_inLabel.setText("Log in");
+
+        idLabel.setText("Id");
+
+        idTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idTextfieldActionPerformed(evt);
+            }
+        });
+
+        passwordLabel.setText("password");
+
+        passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextfieldActionPerformed(evt);
+            }
+        });
+
+        okButton.setText("ok");
+
+        sign_inButton.setText("You don't have an account? Sign in here");
+        sign_inButton.setBorder(null);
+        sign_inButton.setBorderPainted(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -121,40 +152,71 @@ public class Page1 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel2)
-                        .addGap(0, 127, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5)))
+                        .addComponent(backButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                        .addComponent(nextButton))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(welcome_customerLabel))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(passwordLabel)
+                                    .addComponent(idLabel))
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                        .addComponent(idTextfield))
+                                    .addComponent(okButton)
+                                    .addComponent(log_inLabel, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(sign_inButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
+                .addComponent(welcome_customerLabel)
+                .addGap(34, 34, 34)
+                .addComponent(log_inLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
+                    .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idLabel))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordLabel))
+                .addGap(18, 18, 18)
+                .addComponent(okButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(sign_inButton)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton2)
+                    .addComponent(nextButton))
                 .addContainerGap())
         );
 
-        jLabel3.setText("Welcome selleur");
+        welcome_selleurLabel.setText("Welcome selleur");
 
-        jButton4.setText("Back");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        backButton3.setText("Back");
+        backButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                backButton3ActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("jLabel4");
+        selleur1Label.setText("jLabel4");
 
-        jLabel5.setText("jLabel5");
+        selleur2Label.setText("jLabel5");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,28 +226,28 @@ public class Page1 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(142, 142, 142)
-                        .addComponent(jLabel3))
+                        .addComponent(welcome_selleurLabel))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jButton4))
+                        .addComponent(backButton3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))))
+                            .addComponent(selleur2Label)
+                            .addComponent(selleur1Label))))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel3)
+                .addComponent(welcome_selleurLabel)
                 .addGap(47, 47, 47)
-                .addComponent(jLabel4)
+                .addComponent(selleur1Label)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(selleur2Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(backButton3)
                 .addContainerGap())
         );
 
@@ -225,36 +287,44 @@ public class Page1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
         jPanel1.setVisible(false);
         jPanel2.setVisible(true);
         jPanel3.setVisible(false);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_customerButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void backButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton2ActionPerformed
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_backButton2ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sellerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellerButtonActionPerformed
          jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         jPanel3.setVisible(true);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sellerButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void backButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton3ActionPerformed
          jPanel1.setVisible(true);
          jPanel2.setVisible(false);
          jPanel3.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_backButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
       dispose();
       new Page2().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void idTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idTextfieldActionPerformed
+
+    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextfieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,19 +362,26 @@ public class Page1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton backButton2;
+    private javax.swing.JButton backButton3;
+    private javax.swing.JButton customerButton;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTextfield;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel log_inLabel;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton okButton;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JTextField passwordTextfield;
+    private javax.swing.JButton sellerButton;
+    private javax.swing.JLabel selleur1Label;
+    private javax.swing.JLabel selleur2Label;
+    private javax.swing.JButton sign_inButton;
+    private javax.swing.JLabel welcome_customerLabel;
+    private javax.swing.JLabel welcome_selleurLabel;
+    private javax.swing.JLabel you_areLabel;
     // End of variables declaration//GEN-END:variables
 }
