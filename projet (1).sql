@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 23 nov. 2020 à 18:47
+-- Généré le : mar. 24 nov. 2020 à 09:04
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -93,7 +93,23 @@ CREATE TABLE IF NOT EXISTS `product` (
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`productId`, `name`, `price`, `quantity`) VALUES
+(1, 'Joystick Switch', 4.95, 100),
+(2, 'USB controller Game pad', 5.5, 100),
+(3, 'Bottle o’ Bubbles', 0.99, 100),
+(4, 'Ninento Wii System', 399.99, 100),
+(5, 'Small X-box', 65, 100),
+(6, 'Mario Wii', 55.99, 100),
+(7, 'E-pen', 4.5, 100),
+(8, 'Rubrik Cube', 5, 100),
+(9, 'Java is amazing! Button', 1.5, 100),
+(10, 'Java Java Java! Sticker', 0.99, 100);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
