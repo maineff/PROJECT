@@ -24,8 +24,8 @@ public class Page1 extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         int i=0;
         selleur1Label.setText((String) employeedb.getNom().get(i));
-        int j=1;
-        selleur2Label.setText((String) employeedb.getNom().get(j)); 
+        i ++;
+        selleur2Label.setText((String) employeedb.getNom().get(i)); 
     }
 
     /**

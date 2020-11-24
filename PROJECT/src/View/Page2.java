@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.ProductDBQuery;
 import javax.swing.JFrame;
 
 /**
@@ -13,12 +14,18 @@ import javax.swing.JFrame;
  */
 public class Page2 extends javax.swing.JFrame {
 
+    ProductDBQuery productdb=new ProductDBQuery();
     
     public Page2() {
         
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
+        int i=0;
+        product1Label.setText((String)productdb.getProductName().get(i));
+        i++;
+        product2Label.setText((String)productdb.getProductName().get(i));
+        i++;
+        product3Label.setText((String)productdb.getProductName().get(i));
     }
 
     /**

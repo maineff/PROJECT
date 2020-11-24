@@ -107,6 +107,7 @@ public class EmployeeDBQuery {
     public static void main(String[] args) 
     {
         new EmployeeDBQuery();
+        new ProductDBQuery();
       
     }
 }
