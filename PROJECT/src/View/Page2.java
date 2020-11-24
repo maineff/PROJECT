@@ -6,7 +6,9 @@
 package View;
 
 import Controller.ProductDBQuery;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,12 +22,29 @@ public class Page2 extends javax.swing.JFrame {
         
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        int i=0;
-        product1Label.setText((String)productdb.getProductName().get(i));
-        i++;
-        product2Label.setText((String)productdb.getProductName().get(i));
-        i++;
-        product3Label.setText((String)productdb.getProductName().get(i));
+//        int i=0;
+//        product1Label.setText((String)productdb.getProductName().get(i));
+//        i++;
+//        product2Label.setText((String)productdb.getProductName().get(i));
+//        i++;
+//        product3Label.setText((String)productdb.getProductName().get(i));
+        ArrayList<JLabel> productButton=new ArrayList<>();
+        productButton.add(product1Label);
+        productButton.add(product2Label);
+        productButton.add(product3Label);
+        productButton.add(product4Label);
+        productButton.add(product5Label);
+        productButton.add(product6Label);
+        productButton.add(product7Label);
+        productButton.add(product8Label);
+        productButton.add(product9Label);
+        productButton.add(product10Label);
+
+        for(int i=0; i<productButton.size(); i++)
+           {
+               productButton.get(i).setText((String)productdb.getProductName().get(i));
+           }
+       
     }
 
     /**
@@ -43,6 +62,13 @@ public class Page2 extends javax.swing.JFrame {
         product1Label = new javax.swing.JLabel();
         product2Label = new javax.swing.JLabel();
         product3Label = new javax.swing.JLabel();
+        product4Label = new javax.swing.JLabel();
+        product5Label = new javax.swing.JLabel();
+        product6Label = new javax.swing.JLabel();
+        product7Label = new javax.swing.JLabel();
+        product8Label = new javax.swing.JLabel();
+        product9Label = new javax.swing.JLabel();
+        product10Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +88,20 @@ public class Page2 extends javax.swing.JFrame {
 
         product3Label.setText("product3");
 
+        product4Label.setText("product4");
+
+        product5Label.setText("product5");
+
+        product6Label.setText("product6");
+
+        product7Label.setText("product7");
+
+        product8Label.setText("product8");
+
+        product9Label.setText("product9");
+
+        product10Label.setText("product9");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,7 +119,14 @@ public class Page2 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(product2Label)
                             .addComponent(product1Label)
-                            .addComponent(product3Label))))
+                            .addComponent(product3Label)
+                            .addComponent(product4Label)
+                            .addComponent(product5Label)
+                            .addComponent(product6Label)
+                            .addComponent(product7Label)
+                            .addComponent(product8Label)
+                            .addComponent(product9Label)
+                            .addComponent(product10Label))))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,7 +140,21 @@ public class Page2 extends javax.swing.JFrame {
                 .addComponent(product2Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(product3Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product4Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product5Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product6Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product7Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product8Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product9Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(product10Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
                 .addComponent(go_menuButton)
                 .addContainerGap())
         );
@@ -106,7 +167,9 @@ public class Page2 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,9 +218,16 @@ public class Page2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton go_menuButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel product10Label;
     private javax.swing.JLabel product1Label;
     private javax.swing.JLabel product2Label;
     private javax.swing.JLabel product3Label;
+    private javax.swing.JLabel product4Label;
+    private javax.swing.JLabel product5Label;
+    private javax.swing.JLabel product6Label;
+    private javax.swing.JLabel product7Label;
+    private javax.swing.JLabel product8Label;
+    private javax.swing.JLabel product9Label;
     private javax.swing.JLabel welcome_customerLabel;
     // End of variables declaration//GEN-END:variables
 }
