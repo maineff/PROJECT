@@ -6,7 +6,6 @@
 package Controller;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,7 +24,7 @@ public class ProductDBQuery {
    static ResultSet rst;
    ArrayList<String>productName = new  ArrayList<>();
    ArrayList<Double>productPrice = new  ArrayList<>();
-    ArrayList<Integer>productQuantity= new  ArrayList<>();
+   ArrayList<Integer>productQuantity= new  ArrayList<>();
 
     public ProductDBQuery() {
         

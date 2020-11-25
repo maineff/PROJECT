@@ -5,10 +5,23 @@
  */
 package Controller;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /**
  *
  * @author alkassoumhaoua
  */
 public class CustomerDBQuery {
+    
+   static Connection conn;
+   static Statement st;
+   static ResultSet rst;
+
+    public CustomerDBQuery() {
+    }
+   
+   
     
 }
