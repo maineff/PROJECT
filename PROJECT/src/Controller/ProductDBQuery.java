@@ -24,6 +24,8 @@ public class ProductDBQuery {
    static Statement st;
    static ResultSet rst;
    ArrayList<String>productName = new  ArrayList<>();
+   ArrayList<String>productPrice = new  ArrayList<>();
+    ArrayList<String>productQuantity= new  ArrayList<>();
 
     public ProductDBQuery() {
         
@@ -53,6 +55,8 @@ public class ProductDBQuery {
         while(rst.next())
         {
            productName.add( rst.getString("name"));
+           productPrice.add(rst.getString("price"));
+           productQuantity.add(rst.getString("quantity"));
            
        }
          
@@ -60,13 +64,25 @@ public class ProductDBQuery {
            Logger.getLogger(EmployeeDBQuery.class.getName()).log(Level.SEVERE, null, ex);
        }
               
-                System.out.println(productName);   
+                System.out.println(productName); 
+                System.out.println(productPrice);
+                System.out.println(productQuantity);
    }
-       public ArrayList getProductName()
+    
+    public ArrayList getProductName()
    {
        return productName;
    }
+       
+    public ArrayList getProductPrice()
+    {
+        return productPrice;
+    }
 
+    public ArrayList getProductQuantity()
+    {
+        return productQuantity;
+    }
 
     
 }
