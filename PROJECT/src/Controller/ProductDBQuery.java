@@ -24,8 +24,8 @@ public class ProductDBQuery {
    static Statement st;
    static ResultSet rst;
    ArrayList<String>productName = new  ArrayList<>();
-   ArrayList<String>productPrice = new  ArrayList<>();
-    ArrayList<String>productQuantity= new  ArrayList<>();
+   ArrayList<Double>productPrice = new  ArrayList<>();
+    ArrayList<Integer>productQuantity= new  ArrayList<>();
 
     public ProductDBQuery() {
         
@@ -55,8 +55,8 @@ public class ProductDBQuery {
         while(rst.next())
         {
            productName.add( rst.getString("name"));
-           productPrice.add(rst.getString("price"));
-           productQuantity.add(rst.getString("quantity"));
+           productPrice.add(Double.parseDouble(rst.getString("price")));
+           productQuantity.add(Integer.parseInt(rst.getString("quantity")));
            
        }
          
