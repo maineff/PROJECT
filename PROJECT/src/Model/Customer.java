@@ -70,21 +70,21 @@ public class Customer {
 
    
     //---------------------------------------------------setteurs-------------------------------------------------
-   public void setEmployeeId(int customerId)
+   public void setCustomerId(int customerId)
    {
        this.customerId=customerId;
    }
-   public void setEmployeeName(String name)
+   public void setCustomerName(String name)
    {
        this.name=name;
    }
    
-   public void setEmployeeLastname(String lastName)
+   public void setCustomerLastname(String lastName)
    {
        this.lastName=lastName;
    }
    
-   public void setEmployeeAddress(String address)
+   public void setCustomerAddress(String address)
    {
        this.address=address;
    }
