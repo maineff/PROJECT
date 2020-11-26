@@ -5,19 +5,15 @@
  */
 package Controller;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
 /**
  *
- * @author alkassoumhaoua
+ * @author maine
  */
-public class OrderDBQuery {
-     
-   static Connection conn;
-   static Statement st;
-   static ResultSet rst;
-   
+public interface DBQuery {
+    
+    public void add();
+//    public void supp();
+//    public void update();
+//    
     
 }

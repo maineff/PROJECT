@@ -306,7 +306,7 @@ public class Page1 extends javax.swing.JFrame {
     }//GEN-LAST:event_backButton2ActionPerformed
 
     private void sellerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellerButtonActionPerformed
-         jPanel1.setVisible(false);
+        jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         jPanel3.setVisible(true);
         

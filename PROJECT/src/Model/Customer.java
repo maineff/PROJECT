@@ -19,18 +19,86 @@ public class Customer {
     private String lastName;
     private String address;
     private String city;
-    private int telephoneNumber;
-    private ArrayList<Order> commande;
+    private ArrayList<Order> commande;//jai pas fait de getteur et setteur
+    private String username;
+    private String password;
     
-    public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,String ville)
+    public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
+            String ville,String username,String password)
    {
         this.customerId=id;
         this.name=prenom;
         this.lastName=nom;
         this.address=living;
-        this.telephoneNumber=num;
         this.commande=cmd;
         this.city=ville;
+        this.username=username;
+        this.password=password;
     }
+    
+      //---------------------------------------------------getteurs-------------------------------------------------
+   public int getCustomerId()
+   {
+       return customerId;
+   }
+   
+   public String getCustomerName()
+   {
+       return name;
+   }
+   
+   public String getCustomerLastname()
+   {
+       return lastName;
+   }
+   
+   public String getCustomerAddress()
+   {
+       return address;
+   }
+   
+   public String getCustomerUsername()
+   {
+       return username;
+   }
+   
+   public String getCustomerPassword()
+   {
+       return password;
+   }
+   
+
+   
+    //---------------------------------------------------setteurs-------------------------------------------------
+   public void setEmployeeId(int customerId)
+   {
+       this.customerId=customerId;
+   }
+   public void setEmployeeName(String name)
+   {
+       this.name=name;
+   }
+   
+   public void setEmployeeLastname(String lastName)
+   {
+       this.lastName=lastName;
+   }
+   
+   public void setEmployeeAddress(String address)
+   {
+       this.address=address;
+   }
+   
+   public void setCustomerUsername(String username)
+   {
+       this.username=username;
+   }
+   
+   public void setCustomerPassword(String password)
+   {
+       this.password=password;
+   }
+   
+
 
 }
