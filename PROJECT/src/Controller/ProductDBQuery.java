@@ -26,12 +26,10 @@ public class ProductDBQuery {
    ArrayList<Double>productPrice = new  ArrayList<>();
    ArrayList<Integer>productQuantity= new  ArrayList<>();
 
-    public ProductDBQuery() {
-        
-        try
+    public ProductDBQuery() 
+    {
+      try
       {
-         // Create a Statement object for the query.
-       
         conn=Dbutils.getDbConnection();
         st = conn.createStatement();
         String sqlStatement = "SELECT * FROM product";
@@ -40,12 +38,12 @@ public class ProductDBQuery {
        }
       catch (SQLException ex)
       {
-         ex.printStackTrace();
+          ex.printStackTrace();
       }
     }
     
     public  void recup()
-   {
+    {
        try
        {
                     
@@ -54,22 +52,25 @@ public class ProductDBQuery {
            productName.add( rst.getString("name"));
            productPrice.add(Double.parseDouble(rst.getString("price")));
            productQuantity.add(Integer.parseInt(rst.getString("quantity")));
-           
-       }
+        }
          
-       } catch (SQLException ex) {
-           Logger.getLogger(EmployeeDBQuery.class.getName()).log(Level.SEVERE, null, ex);
+       } 
+       catch (SQLException ex)
+       {
+           System.out.println("pb recup product"+ex.getMessage());
        }
               
-                System.out.println(productName); 
-                System.out.println(productPrice);
-                System.out.println(productQuantity);
+        System.out.println(productName); 
+        System.out.println(productPrice);
+        System.out.println(productQuantity);
    }
     
+    /*-----------------------Getter-----------------------*/
+    
     public ArrayList getProductName()
-   {
-       return productName;
-   }
+    {
+        return productName;
+    }
        
     public ArrayList getProductPrice()
     {

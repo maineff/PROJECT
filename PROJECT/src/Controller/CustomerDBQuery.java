@@ -30,8 +30,9 @@ public class CustomerDBQuery {
    ArrayList<String>customerUsername = new  ArrayList<String>(); 
    ArrayList<String>customerPassword = new  ArrayList<String>();
 
-    public CustomerDBQuery() {
-         try
+    public CustomerDBQuery() 
+    {
+      try
       {
         conn=Dbutils.getDbConnection();
         st = conn.createStatement();
@@ -49,7 +50,6 @@ public class CustomerDBQuery {
     
    public  void recup()
    {
-
        try
        {
            while(rst.next())
@@ -62,12 +62,15 @@ public class CustomerDBQuery {
                 customerCity.add(rst.getString("city"));
             }
 
-       }catch (SQLException ex) {
-           Logger.getLogger(EmployeeDBQuery.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       catch (SQLException ex) 
+       {
+            System.out.println("pb recup client"+ex.getMessage());
        }
          
    }
    
+   /*-----------------------Getter-----------------------*/
    
    public ArrayList getCustomerName()
    {

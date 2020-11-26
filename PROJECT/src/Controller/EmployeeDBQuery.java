@@ -35,7 +35,6 @@ public class EmployeeDBQuery {
 
     public EmployeeDBQuery()
    {
-      
       try
       {
         conn=Dbutils.getDbConnection();
@@ -60,18 +59,21 @@ public class EmployeeDBQuery {
            while(rst.next())
             {
                 employeeName.add( rst.getString("name"));
-                employeeLastname.add( rst.getString("lastname"));
+                employeeLastname.add(rst.getString("lastname"));
                 employeeAddress.add(rst.getString("address"));
                 employeeUsername.add(rst.getString("username"));
                 employeePassword.add(rst.getString("password"));
             }
 
-       }catch (SQLException ex) {
-           Logger.getLogger(EmployeeDBQuery.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       catch (SQLException ex) 
+       {
+           System.out.println("pb recup employee"+ex.getMessage());
        }
 
    }
    
+   /*-----------------------Getter-----------------------*/
    
    public ArrayList getEmployeeName()
    {

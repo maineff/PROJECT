@@ -32,5 +32,31 @@ public class Customer {
         this.commande=cmd;
         this.city=ville;
     }
-
+    
+    /*-----------------------Setter-----------------------*/
+    
+    public void setName(String nom)
+    {
+        name=nom;
+    }
+    
+    public void setLastName(String nomf)
+    {
+        lastName=nomf;
+    }
+    
+    public void setAddress(String adresse)
+    {
+        address=adresse;
+    }
+    
+    public void setCity(String ville)
+    {
+        city=ville;
+    }
+    
+    public void setlastName(String nomf)
+    {
+        name=nomf;
+    }
 }

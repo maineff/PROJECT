@@ -10,14 +10,15 @@ package Model;
  * @author alkassoumhaoua
  */
 
-public class Employee {
+public class Employee 
+{
     
     private int employeeId;
     private String name;
     private String lastName;
     private String address;
     private int telephoneNumber;
-  
+    private String password;
     
    public Employee(int id,String prenom,String nom,String living,int num)
    {
@@ -28,6 +29,22 @@ public class Employee {
         this.telephoneNumber=num;
         
     }
-
-
+   
+   /*-----------------------Setter-----------------------*/
+    
+    public void setName(String nom)
+    {
+        name=nom;
+    }
+    
+    public void setLastName(String nomf)
+    {
+        lastName=nomf;
+    }
+    
+    public void setAddress(String adresse)
+    {
+        address=adresse;
+    }
+    
 }
