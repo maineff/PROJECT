@@ -5,9 +5,6 @@
  */
 package Model;
 
-import Controller.EmployeeDBQuery;
-import java.util.ArrayList;
-
 /**
  *
  * @author alkassoumhaoua
@@ -22,14 +19,6 @@ public class Employee
     private String address;
     private String username;
     private String password;
-    
-    public Employee()
-    {
-        this.employeeId=0;
-        
-        this.name="";
-    }
-            
     
    public Employee(int id,String prenom,String nom,String living, String username,String password )
    {
@@ -106,17 +95,5 @@ public class Employee
        return password;
    }
    
-   
-    public static void main(String[] args) 
-    {
-         ArrayList<String>nom = new  ArrayList<String>(); 
-        EmployeeDBQuery dao = new EmployeeDBQuery();
-        Employee nv= new Employee();
-        nom=dao.getEmployeeName();
-        //nv.setEmployeeName(nom.get(1));
-        System.out.println(nv.name);
-      
-    }
-
    
 }
