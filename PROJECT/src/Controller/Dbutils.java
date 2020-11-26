@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import static Controller.ProductDBQuery.conn;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,8 +22,9 @@ public class Dbutils {
      public static Connection getDbConnection()throws SQLException
     {
        String user="root";
-        //String password="root"; 
-        String password=""; 
+       //String password="root"; 
+       String password=""; 
+
         return DriverManager.getConnection(DB_URL, user, password);
     }
 }
