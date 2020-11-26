@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -24,7 +23,8 @@ public class ProductDBQuery {
    static ResultSet rst;
    ArrayList<String>productName = new  ArrayList<>();
    ArrayList<Double>productPrice = new  ArrayList<>();
-   ArrayList<Integer>productQuantity= new  ArrayList<>();
+   ArrayList<Integer>productStock= new  ArrayList<>();
+   ArrayList<Integer>productId= new  ArrayList<>();
 
     public ProductDBQuery() 
     {
@@ -49,9 +49,10 @@ public class ProductDBQuery {
                     
         while(rst.next())
         {
+           productId.add(rst.getInt("productId"));
            productName.add( rst.getString("name"));
            productPrice.add(Double.parseDouble(rst.getString("price")));
-           productQuantity.add(Integer.parseInt(rst.getString("quantity")));
+           productStock.add(Integer.parseInt(rst.getString("stock")));
         }
          
        } 
@@ -59,13 +60,18 @@ public class ProductDBQuery {
        {
            System.out.println("pb recup product"+ex.getMessage());
        }
-              
+        
+        System.out.println(productId);
         System.out.println(productName); 
         System.out.println(productPrice);
-        System.out.println(productQuantity);
+        System.out.println(productStock);
    }
     
     /*-----------------------Getter-----------------------*/
+     public ArrayList getProductId()
+    {
+        return productId;
+    }
     
     public ArrayList getProductName()
     {
@@ -77,9 +83,9 @@ public class ProductDBQuery {
         return productPrice;
     }
 
-    public ArrayList getProductQuantity()
+    public ArrayList getProductStock()
     {
-        return productQuantity;
+        return productStock;
     }
 
     

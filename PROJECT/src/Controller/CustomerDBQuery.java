@@ -22,12 +22,15 @@ public class CustomerDBQuery {
    static Connection conn;
    static Statement st;
    static ResultSet rst;
-   ArrayList<String>customerName = new  ArrayList<String>();
-   ArrayList<String>customerLastname = new  ArrayList<String>();
-   ArrayList<String>customerAddress = new  ArrayList<String>(); 
-   ArrayList<String>customerCity = new  ArrayList<String>(); 
-   ArrayList<String>customerUsername = new  ArrayList<String>(); 
-   ArrayList<String>customerPassword = new  ArrayList<String>();
+   
+   //arraylist pour contenir les informations de la base de données
+   ArrayList<Integer> customerId= new  ArrayList<>();
+   ArrayList<String> customerName = new  ArrayList<String>();
+   ArrayList<String> customerLastname = new  ArrayList<String>();
+   ArrayList<String> customerAddress = new  ArrayList<String>(); 
+   ArrayList<String> customerCity = new  ArrayList<String>(); 
+   ArrayList<String> customerUsername = new  ArrayList<String>(); 
+   ArrayList<String> customerPassword = new  ArrayList<String>();
 
     public CustomerDBQuery() 
     {
@@ -53,6 +56,7 @@ public class CustomerDBQuery {
        {
            while(rst.next())
             {
+                customerId.add( rst.getInt("customerId"));
                 customerName.add( rst.getString("name"));
                 customerLastname.add( rst.getString("lastname"));
                 customerAddress.add(rst.getString("address"));
@@ -70,6 +74,11 @@ public class CustomerDBQuery {
    }
    
    /*-----------------------Getter-----------------------*/
+   
+   public ArrayList getCustomerId()
+   {
+       return customerId;
+   }
    
    public ArrayList getCustomerName()
    {
@@ -100,8 +109,6 @@ public class CustomerDBQuery {
    {
        return customerCity;
    }
-   
-   
    
     
 }

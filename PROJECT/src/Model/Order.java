@@ -7,7 +7,9 @@ package Model;
 
 //import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -22,9 +24,9 @@ public class Order {
     private int quantity;
     private double discount;
     private double totalPrice;
-    //private  Timestamp orderDate;		
+    private String orderDate;		
    
-    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix,String date)
+    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
     {
         this.orderId=id;
         this.client=person;
@@ -32,7 +34,7 @@ public class Order {
         this.quantity=qty;
         this.discount=reduc;
         this.totalPrice=prix;
-       // this.orderDate=date;
+        this.orderDate=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
     }
 
 
