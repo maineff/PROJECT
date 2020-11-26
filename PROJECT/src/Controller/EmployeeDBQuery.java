@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 /**
        Constructor
    */
-public class EmployeeDBQuery {
+public class EmployeeDBQuery implements DBQuery{
       
   
    static Connection conn;
@@ -71,6 +71,20 @@ public class EmployeeDBQuery {
            System.out.println("pb recup employee"+ex.getMessage());
        }
 
+   }
+   public void add()
+   {
+//       try{
+//            String query="INSERT INTO employee VALUES("+employeeId+",'"+name+"','"+lastname+"','"+address+"',"+telephoneNumber+")";
+//            con=connecterDB();
+//            st=con.createStatement();
+//            st.executeUpdate(query);
+//            System.out.println("produit ajoute");
+//            
+//        }catch(Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
    }
    
    /*-----------------------Getter-----------------------*/
