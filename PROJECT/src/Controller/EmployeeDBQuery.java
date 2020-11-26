@@ -27,6 +27,8 @@ public class EmployeeDBQuery implements DBQuery{
    static Connection conn;
    static Statement st;
    static ResultSet rst;
+   
+   ArrayList<Integer>employeeId= new  ArrayList<Integer>();;
    ArrayList<String>employeeName = new  ArrayList<String>();
    ArrayList<String>employeeLastname = new  ArrayList<String>();
    ArrayList<String>employeeAddress = new  ArrayList<String>(); 
@@ -58,11 +60,12 @@ public class EmployeeDBQuery implements DBQuery{
        {
            while(rst.next())
             {
+                employeeId.add( rst.getInt("employeeId"));
                 employeeName.add( rst.getString("name"));
                 employeeLastname.add(rst.getString("lastname"));
                 employeeAddress.add(rst.getString("address"));
-                employeeUsername.add(rst.getString("username"));
-                employeePassword.add(rst.getString("password"));
+                //employeeUsername.add(rst.getString("username"));
+                //employeePassword.add(rst.getString("password"));
             }
 
        }
@@ -89,6 +92,11 @@ public class EmployeeDBQuery implements DBQuery{
    
    /*-----------------------Getter-----------------------*/
    
+    public ArrayList getEmployeeId()
+    {
+        return employeeId;
+    }
+
    public ArrayList getEmployeeName()
    {
        return employeeName;
