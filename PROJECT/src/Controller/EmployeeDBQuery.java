@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -27,6 +26,7 @@ public class EmployeeDBQuery implements DBQuery{
    static Connection conn;
    static Statement st;
    static ResultSet rst;
+   ArrayList<Integer>employeeId= new  ArrayList<Integer>();;
    ArrayList<String>employeeName = new  ArrayList<String>();
    ArrayList<String>employeeLastname = new  ArrayList<String>();
    ArrayList<String>employeeAddress = new  ArrayList<String>(); 
@@ -58,6 +58,7 @@ public class EmployeeDBQuery implements DBQuery{
        {
            while(rst.next())
             {
+                employeeId.add( rst.getInt("employeeId"));
                 employeeName.add( rst.getString("name"));
                 employeeLastname.add(rst.getString("lastname"));
                 employeeAddress.add(rst.getString("address"));
@@ -88,6 +89,10 @@ public class EmployeeDBQuery implements DBQuery{
    }
    
    /*-----------------------Getter-----------------------*/
+    public ArrayList getEmployeeId()
+   {
+       return employeeId;
+   }
    
    public ArrayList getEmployeeName()
    {
