@@ -73,17 +73,17 @@ public class EmployeeDBQuery implements DBQuery{
    }
    public void add()
    {
-       try{
-            String query="INSERT INTO employee VALUES("+employeeId+",'"+name+"','"+lastname+"','"+address+"',"+telephoneNumber+")";
-            con=connecterDB();
-            st=con.createStatement();
-            st.executeUpdate(query);
-            System.out.println("produit ajoute");
-            
-        }catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
+//       try{
+//            String query="INSERT INTO employee VALUES("+employeeId+",'"+name+"','"+lastname+"','"+address+"',"+telephoneNumber+")";
+//            con=connecterDB();
+//            st=con.createStatement();
+//            st.executeUpdate(query);
+//            System.out.println("produit ajoute");
+//            
+//        }catch(Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
    }
    
    
