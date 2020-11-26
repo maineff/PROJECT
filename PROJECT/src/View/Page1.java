@@ -6,6 +6,8 @@
 package View;
 
 import Controller.EmployeeDBQuery;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -21,11 +23,14 @@ public class Page1 extends javax.swing.JFrame {
     
     public Page1() {
         initComponents();
+//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+//        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+//        setSize(400, 400);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         int i=0;
         selleur1Label.setText((String) employeedb.getEmployeeName().get(i));
         i ++;
-        selleur2Label.setText((String) employeedb.getEmployeeName().get(i)); 
+        selleur2Label.setText((String) employeedb.getEmployeeName().get(i));
     }
 
     /**
@@ -102,7 +107,7 @@ public class Page1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerButton)
                     .addComponent(sellerButton))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         welcome_customerLabel.setText("Welcome customer");
