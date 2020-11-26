@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 24 nov. 2020 à 09:04
+-- Généré le : jeu. 26 nov. 2020 à 08:16
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `lastName` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `telephoneNumber` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   PRIMARY KEY (`customerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -50,7 +51,8 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `name` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `telephoneNumber` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   PRIMARY KEY (`employeeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -58,12 +60,12 @@ CREATE TABLE IF NOT EXISTS `employee` (
 -- Déchargement des données de la table `employee`
 --
 
-INSERT INTO `employee` (`employeeId`, `name`, `lastname`, `address`, `telephoneNumber`) VALUES
-(1, 'haoua', 'alkassoum', '3 rue albert', 101010101),
-(2, 'mai-linh', 'neff', '43 rue gambetta', 20202020),
-(3, 'guillaume', 'sanson', '5 rue larue', 30303030),
-(4, 'laurie', 'fourier', '5 rue laferme', 40404040),
-(5, 'laure', 'manaudou', '1 rue piscine', 50505050);
+INSERT INTO `employee` (`employeeId`, `name`, `lastname`, `address`, `username`, `password`) VALUES
+(1, 'haoua', 'alkassoum', '3 rue albert', 'haouaa', 'haoua'),
+(2, 'mai-linh', 'neff', '43 rue gambetta', 'mailinhn', 'mailinh'),
+(3, 'guillaume', 'sanson', '5 rue larue', 'guillaumes', 'guillaume'),
+(4, 'laurie', 'fourier', '5 rue laferme', 'laurief', 'laurie'),
+(5, 'laure', 'manaudou', '1 rue piscine', 'laurem', 'laure');
 
 -- --------------------------------------------------------
 
