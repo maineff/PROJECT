@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 25 nov. 2020 à 08:58
+-- Généré le : jeu. 26 nov. 2020 à 08:16
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`employeeId`, `name`, `lastname`, `address`, `username`, `password`) VALUES
-(1, 'haoua', 'alkassoum', '3 rue albert', '0', ''),
-(2, 'mai-linh', 'neff', '43 rue gambetta', '0', ''),
-(3, 'guillaume', 'sanson', '5 rue larue', '0', ''),
-(4, 'laurie', 'fourier', '5 rue laferme', '0', ''),
-(5, 'laure', 'manaudou', '1 rue piscine', '0', '');
+(1, 'haoua', 'alkassoum', '3 rue albert', 'haouaa', 'haoua'),
+(2, 'mai-linh', 'neff', '43 rue gambetta', 'mailinhn', 'mailinh'),
+(3, 'guillaume', 'sanson', '5 rue larue', 'guillaumes', 'guillaume'),
+(4, 'laurie', 'fourier', '5 rue laferme', 'laurief', 'laurie'),
+(5, 'laure', 'manaudou', '1 rue piscine', 'laurem', 'laure');
 
 -- --------------------------------------------------------
 
