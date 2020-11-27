@@ -450,9 +450,7 @@ public class Page1 extends javax.swing.JFrame {
 
     private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
        
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
-        jPanel3.setVisible(false);
+        setVisible(false);
         new Subscribe().setVisible(true); 
      
         
