@@ -23,7 +23,7 @@ public class CustomerDBQuery {
    static ResultSet rst;
    
    
-   /*-----------------------GetALLcustloyee-----------------------*/
+   /*-----------------------GetALLcustomer-----------------------*/
     
     public ArrayList<Customer> getCustomers() 
     {
