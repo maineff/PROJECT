@@ -444,7 +444,7 @@ public class Page1 extends javax.swing.JFrame {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         
         setVisible(false);
-        new Page2().setVisible(true);
+        new CustomerPage().setVisible(true);
         
     }//GEN-LAST:event_okButtonActionPerformed
 
