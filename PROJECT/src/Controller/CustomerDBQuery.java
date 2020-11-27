@@ -105,7 +105,4 @@ public class CustomerDBQuery {
             System.out.println("pb update customer"+e.getMessage());
         }
     } 
-    
-   
-    
 }

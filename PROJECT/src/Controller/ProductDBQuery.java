@@ -38,7 +38,7 @@ public class ProductDBQuery {
                 prod.setProductName(rst.getString("name"));
                 prod.setProductPrice(rst.getDouble("price"));
                 prod.setProductStock(rst.getInt("stock"));
-               products.add(prod);
+                products.add(prod);
             }
 
         }
@@ -95,7 +95,4 @@ public class ProductDBQuery {
             System.out.println("pb update product"+e.getMessage());
         }
     } 
-    
-    
-    
 }
