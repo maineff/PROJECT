@@ -12,20 +12,20 @@ import javax.swing.JFrame;
  *
  * @author maine
  */
-public class Page2 extends javax.swing.JFrame {
+public class CustomerPage extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
     
-    public Page2() {
+    public CustomerPage() {
         
         initComponents();
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
-        int i=0;
-        product1Label.setText((String)productdb.getProductName().get(i));
-        i++;
-        product2Label.setText((String)productdb.getProductName().get(i));
-        i++;
-        product3Label.setText((String)productdb.getProductName().get(i));
+//        int i=0;
+//        product1Label.setText((String)productdb.getProductName().get(i));
+//        i++;
+//        product2Label.setText((String)productdb.getProductName().get(i));
+//        i++;
+//        product3Label.setText((String)productdb.getProductName().get(i));
     }
 
     /**
@@ -45,6 +45,9 @@ public class Page2 extends javax.swing.JFrame {
         product3Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         welcome_customerLabel.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         welcome_customerLabel.setText("WELCOME CUSTOMER");
@@ -69,9 +72,6 @@ public class Page2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(welcome_customerLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(go_menuButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -79,21 +79,24 @@ public class Page2 extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(product2Label)
                             .addComponent(product1Label)
-                            .addComponent(product3Label))))
-                .addContainerGap(102, Short.MAX_VALUE))
+                            .addComponent(product3Label)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(welcome_customerLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(40, 40, 40)
                 .addComponent(welcome_customerLabel)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addComponent(product1Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(product2Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(product3Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(go_menuButton)
                 .addContainerGap())
         );
@@ -102,18 +105,18 @@ public class Page2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void go_menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_go_menuButtonActionPerformed
-        dispose();
+       dispose();
       new Page1().setVisible(true);
     }//GEN-LAST:event_go_menuButtonActionPerformed
 
@@ -134,20 +137,21 @@ public class Page2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Page2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Page2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Page2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Page2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Page2().setVisible(true);
+                new CustomerPage().setVisible(true);
             }
         });
     }

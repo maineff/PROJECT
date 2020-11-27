@@ -42,8 +42,7 @@ public class EmployeeDBQuery
                 emp.setEmployeeUsername(rst.getString("username"));
                 emp.setEmployeePassword(rst.getString("password"));
                 employees.add(emp);
-            }
-
+           }
         }
         catch (SQLException ex) 
         {

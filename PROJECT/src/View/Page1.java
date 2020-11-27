@@ -7,6 +7,7 @@ package View;
 
 import Controller.EmployeeDBQuery;
 import java.awt.Dimension;
+import java.awt.PopupMenu;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
@@ -20,6 +21,7 @@ public class Page1 extends javax.swing.JFrame {
      * Creates new form Page1
      */
     EmployeeDBQuery employeedb=new EmployeeDBQuery();
+    
     
     public Page1() {
         initComponents();
@@ -73,10 +75,13 @@ public class Page1 extends javax.swing.JFrame {
         idTextfield1 = new javax.swing.JTextField();
         passwordLabel1 = new javax.swing.JLabel();
         passwordTextfield1 = new javax.swing.JTextField();
-        sign_inButton1 = new javax.swing.JButton();
+        subscribeButton = new javax.swing.JButton();
         okButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 1000));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         you_areLabel.setText("You are :");
 
@@ -98,42 +103,52 @@ public class Page1 extends javax.swing.JFrame {
         welcomeLabel.setText("WECOME TO OUR STORE");
 
         skipButton.setText("SKIP");
+        skipButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(welcomeLabel)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(61, 61, 61)
-                            .addComponent(customerButton)
-                            .addGap(64, 64, 64)
-                            .addComponent(sellerButton))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(161, 161, 161)
-                            .addComponent(you_areLabel))))
-                .addContainerGap(103, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(skipButton))
+                .addGap(0, 272, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(customerButton)
+                        .addGap(189, 189, 189)
+                        .addComponent(sellerButton)
+                        .addGap(367, 367, 367))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(429, 429, 429)
+                        .addComponent(you_areLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(343, 343, 343)
+                        .addComponent(welcomeLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(skipButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(244, 244, 244)
                 .addComponent(welcomeLabel)
-                .addGap(38, 38, 38)
+                .addGap(108, 108, 108)
                 .addComponent(you_areLabel)
-                .addGap(46, 46, 46)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerButton)
-                    .addComponent(sellerButton))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(sellerButton)
+                    .addComponent(customerButton))
+                .addContainerGap(461, Short.MAX_VALUE))
         );
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        jPanel2.setRequestFocusEnabled(false);
 
         welcome_customerLabel.setText("Welcome customer");
 
@@ -179,64 +194,76 @@ public class Page1 extends javax.swing.JFrame {
         });
 
         skipButton1.setText("SKIP");
+        skipButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(menuButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(skipButton1))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(329, 329, 329))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(welcome_customerLabel))
+                        .addContainerGap()
+                        .addComponent(menuButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(438, 438, 438)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordLabel)
-                            .addComponent(idLabel))
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(idTextfield))
                             .addComponent(okButton)
-                            .addComponent(log_inLabel, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(log_inLabel)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(410, 410, 410)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idLabel)
+                            .addComponent(welcome_customerLabel)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(skipButton1))
+                        .addComponent(passwordLabel)
+                        .addGap(119, 119, 119)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(343, 343, 343)
+                .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 393, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(welcome_customerLabel))
-                    .addComponent(skipButton1))
-                .addGap(34, 34, 34)
+                .addComponent(skipButton1)
+                .addGap(225, 225, 225)
+                .addComponent(welcome_customerLabel)
+                .addGap(40, 40, 40)
                 .addComponent(log_inLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(idLabel))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordLabel)
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordLabel))
+                .addGap(66, 66, 66)
                 .addComponent(okButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(subscribeButon)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addComponent(menuButton)
                 .addContainerGap())
         );
+
+        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         welcome_selleurLabel.setText("Welcome selleur");
 
@@ -248,6 +275,11 @@ public class Page1 extends javax.swing.JFrame {
         });
 
         skipButton2.setText("SKIP");
+        skipButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton2ActionPerformed(evt);
+            }
+        });
 
         idLabel1.setText("Id");
 
@@ -265,11 +297,21 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        sign_inButton1.setText("You don't have an account? Sign in");
-        sign_inButton1.setBorder(null);
-        sign_inButton1.setBorderPainted(false);
+        subscribeButton.setText("You don't have an account? Sign in");
+        subscribeButton.setBorder(null);
+        subscribeButton.setBorderPainted(false);
+        subscribeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subscribeButtonActionPerformed(evt);
+            }
+        });
 
         okButton1.setText("ok");
+        okButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -279,49 +321,49 @@ public class Page1 extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(skipButton2))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(sign_inButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(okButton1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(menu1Button)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addComponent(menu1Button))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(442, 442, 442)
+                        .addComponent(okButton1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(307, 307, 307)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordLabel1)
-                            .addComponent(idLabel1))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                            .addComponent(welcome_selleurLabel)
-                            .addComponent(passwordTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))))
-                .addGap(96, 96, 96))
+                            .addComponent(idLabel1)
+                            .addComponent(passwordLabel1))
+                        .addGap(96, 96, 96)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(passwordTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(idTextfield1)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(411, 411, 411)
+                        .addComponent(welcome_selleurLabel)))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(skipButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(254, 254, 254)
                 .addComponent(welcome_selleurLabel)
-                .addGap(44, 44, 44)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idLabel1)
                     .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel1)
-                    .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordLabel1))
+                .addGap(54, 54, 54)
+                .addComponent(subscribeButton)
+                .addGap(68, 68, 68)
                 .addComponent(okButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(sign_inButton1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
                 .addComponent(menu1Button)
                 .addContainerGap())
         );
@@ -405,20 +447,41 @@ public class Page1 extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTextfield1ActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
-        jPanel3.setVisible(false);
-        new Page2().setVisible(true);
+        
+        setVisible(false); 
+        new CustomerPage().setVisible(true);
+        
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
-       
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
-        jPanel3.setVisible(false);
-        new Subscibe().setVisible(true);    
+  
+        setVisible(false);
+        new Subscribe().setVisible(true); 
+     
+        
         
     }//GEN-LAST:event_subscribeButonActionPerformed
+
+    private void skipButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton1ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButton1ActionPerformed
+
+    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButtonActionPerformed
+
+    private void skipButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton2ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButton2ActionPerformed
+
+    private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
+        
+    }//GEN-LAST:event_okButton1ActionPerformed
+
+    private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
+        setVisible(false);
+        new Subscribe().setVisible(true); 
+    }//GEN-LAST:event_subscribeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,11 +538,11 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JTextField passwordTextfield;
     private javax.swing.JTextField passwordTextfield1;
     private javax.swing.JButton sellerButton;
-    private javax.swing.JButton sign_inButton1;
     private javax.swing.JButton skipButton;
     private javax.swing.JButton skipButton1;
     private javax.swing.JButton skipButton2;
     private javax.swing.JButton subscribeButon;
+    private javax.swing.JButton subscribeButton;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JLabel welcome_customerLabel;
     private javax.swing.JLabel welcome_selleurLabel;
