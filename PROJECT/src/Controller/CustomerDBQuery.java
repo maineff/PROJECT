@@ -23,33 +23,6 @@ public class CustomerDBQuery {
    static ResultSet rst;
    
    
-    
-   public  void recup()
-   {
-       try
-       {
-           while(rst.next())
-            {
-                customerId.add( rst.getInt("customerId"));
-                customerName.add( rst.getString("name"));
-                customerLastname.add( rst.getString("lastname"));
-                customerAddress.add(rst.getString("address"));
-                customerUsername.add(rst.getString("username"));
-                customerPassword.add(rst.getString("password"));
-                customerCity.add(rst.getString("city"));
-            }
-
-       }
-       catch (SQLException ex) 
-       {
-            System.out.println("pb recup client"+ex.getMessage());
-       }
-         
-   }
-   
-    static ResultSet rst;
-  
-   
    /*-----------------------GetALLcustloyee-----------------------*/
     
     public ArrayList<Customer> getCustomers() 
