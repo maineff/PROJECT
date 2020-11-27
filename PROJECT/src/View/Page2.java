@@ -19,7 +19,7 @@ public class Page2 extends javax.swing.JFrame {
     public Page2() {
         
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         int i=0;
         product1Label.setText((String)productdb.getProductName().get(i));
         i++;
