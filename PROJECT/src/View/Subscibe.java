@@ -67,6 +67,11 @@ public class Subscibe extends javax.swing.JFrame {
         passwordLabel1.setText(" confirme your password");
 
         skipButton.setText("SKIP");
+        skipButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButtonActionPerformed(evt);
+            }
+        });
 
         menuButton.setText("Menu");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +210,10 @@ public class Subscibe extends javax.swing.JFrame {
     private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextfieldActionPerformed
+
+    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
+      System.exit(0);
+    }//GEN-LAST:event_skipButtonActionPerformed
 
     /**
      * @param args the command line arguments

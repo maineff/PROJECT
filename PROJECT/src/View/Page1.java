@@ -98,6 +98,11 @@ public class Page1 extends javax.swing.JFrame {
         welcomeLabel.setText("WECOME TO OUR STORE");
 
         skipButton.setText("SKIP");
+        skipButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,6 +184,11 @@ public class Page1 extends javax.swing.JFrame {
         });
 
         skipButton1.setText("SKIP");
+        skipButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -248,6 +258,11 @@ public class Page1 extends javax.swing.JFrame {
         });
 
         skipButton2.setText("SKIP");
+        skipButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton2ActionPerformed(evt);
+            }
+        });
 
         idLabel1.setText("Id");
 
@@ -419,6 +434,18 @@ public class Page1 extends javax.swing.JFrame {
         new Subscibe().setVisible(true);    
         
     }//GEN-LAST:event_subscribeButonActionPerformed
+
+    private void skipButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton1ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButton1ActionPerformed
+
+    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButtonActionPerformed
+
+    private void skipButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton2ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_skipButton2ActionPerformed
 
     /**
      * @param args the command line arguments
