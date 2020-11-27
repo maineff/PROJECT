@@ -64,8 +64,8 @@ public class EmployeeDBQuery implements DBQuery{
                 employeeName.add( rst.getString("name"));
                 employeeLastname.add(rst.getString("lastname"));
                 employeeAddress.add(rst.getString("address"));
-                //employeeUsername.add(rst.getString("username"));
-                //employeePassword.add(rst.getString("password"));
+                employeeUsername.add(rst.getString("username"));
+                employeePassword.add(rst.getString("password"));
             }
 
        }

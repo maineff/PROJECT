@@ -22,7 +22,7 @@ public class Employee
     private String address;
     private String username;
     private String password;
-    
+ 
     //cstct par defaut
      public Employee()
     {
@@ -105,18 +105,27 @@ public class Employee
        return password;
    }
     
+  
+       
+       
+       
+   
+   
+   
+   
    //mettre le nom de la base de donnée dans une variable puis l'affficher
    public static void main(String[] args) 
    {
-        EmployeeDBQuery dao = new EmployeeDBQuery();
-        Employee nv= new Employee();
-        
-        ArrayList<String>nom = new  ArrayList<String>(); 
-        nom=dao.getEmployeeName();
-        for(int i=0;i<1;i++)
-        nv.setEmployeeName(nom.get(i));
-        
-        System.out.println(nv.name);
+      
+//        EmployeeDBQuery dao = new EmployeeDBQuery();
+//        Employee nv= new Employee();
+//        
+//        ArrayList<String>nom = new  ArrayList<String>(); 
+//        nom=dao.getEmployeeName();
+//        for(int i=0;i<1;i++)
+//        nv.setEmployeeName(nom.get(i));
+//        
+//        System.out.println(nv.name);
       
     }
    
