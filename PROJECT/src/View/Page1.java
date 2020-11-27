@@ -75,7 +75,7 @@ public class Page1 extends javax.swing.JFrame {
         idTextfield1 = new javax.swing.JTextField();
         passwordLabel1 = new javax.swing.JLabel();
         passwordTextfield1 = new javax.swing.JTextField();
-        sign_inButton1 = new javax.swing.JButton();
+        subscribeButton = new javax.swing.JButton();
         okButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -297,9 +297,14 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        sign_inButton1.setText("You don't have an account? Sign in");
-        sign_inButton1.setBorder(null);
-        sign_inButton1.setBorderPainted(false);
+        subscribeButton.setText("You don't have an account? Sign in");
+        subscribeButton.setBorder(null);
+        subscribeButton.setBorderPainted(false);
+        subscribeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subscribeButtonActionPerformed(evt);
+            }
+        });
 
         okButton1.setText("ok");
         okButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +339,7 @@ public class Page1 extends javax.swing.JFrame {
                             .addComponent(idTextfield1)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(345, 345, 345)
-                        .addComponent(sign_inButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(411, 411, 411)
                         .addComponent(welcome_selleurLabel)))
@@ -355,7 +360,7 @@ public class Page1 extends javax.swing.JFrame {
                     .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordLabel1))
                 .addGap(54, 54, 54)
-                .addComponent(sign_inButton1)
+                .addComponent(subscribeButton)
                 .addGap(68, 68, 68)
                 .addComponent(okButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
@@ -443,13 +448,13 @@ public class Page1 extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         
-        setVisible(false);
+        setVisible(false); 
         new CustomerPage().setVisible(true);
         
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
-       
+  
         setVisible(false);
         new Subscribe().setVisible(true); 
      
@@ -472,6 +477,11 @@ public class Page1 extends javax.swing.JFrame {
     private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
         
     }//GEN-LAST:event_okButton1ActionPerformed
+
+    private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
+        setVisible(false);
+        new Subscribe().setVisible(true); 
+    }//GEN-LAST:event_subscribeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,11 +538,11 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JTextField passwordTextfield;
     private javax.swing.JTextField passwordTextfield1;
     private javax.swing.JButton sellerButton;
-    private javax.swing.JButton sign_inButton1;
     private javax.swing.JButton skipButton;
     private javax.swing.JButton skipButton1;
     private javax.swing.JButton skipButton2;
     private javax.swing.JButton subscribeButon;
+    private javax.swing.JButton subscribeButton;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JLabel welcome_customerLabel;
     private javax.swing.JLabel welcome_selleurLabel;
