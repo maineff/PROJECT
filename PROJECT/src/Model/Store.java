@@ -5,10 +5,17 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author alkassoumhaoua
  */
-public class Store {
+public class Store 
+{
+    private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+    private  ArrayList<Employee>employee = new  ArrayList<Employee>(); 
+    private  ArrayList<Customer>customer= new  ArrayList<Customer>(); 
+        
     
 }

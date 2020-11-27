@@ -107,10 +107,11 @@ public class Employee
     
    //mettre le nom de la base de donnée dans une variable puis l'affficher
    public static void main(String[] args) 
-    {
-        ArrayList<String>nom = new  ArrayList<String>(); 
+   {
         EmployeeDBQuery dao = new EmployeeDBQuery();
         Employee nv= new Employee();
+        
+        ArrayList<String>nom = new  ArrayList<String>(); 
         nom=dao.getEmployeeName();
         for(int i=0;i<1;i++)
         nv.setEmployeeName(nom.get(i));
