@@ -23,6 +23,10 @@ public class Customer {
     private String username;
     private String password;
     
+      public Customer()
+      {
+          
+      }
     public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
             String ville,String username,String password)
    {
@@ -45,6 +49,11 @@ public class Customer {
    public String getCustomerName()
    {
        return name;
+   }
+   
+    public String getCustomerCity()
+   {
+       return city;
    }
    
    public String getCustomerLastname()
@@ -89,6 +98,12 @@ public class Customer {
    {
        this.address=address;
    }
+   
+   public void setCustomerCity(String ville)
+   {
+       this.city=ville;
+   }
+   
    
    public void setCustomerUsername(String username)
    {

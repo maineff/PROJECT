@@ -6,7 +6,6 @@
 package Controller;
 
 import Model.Employee;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,24 +18,16 @@ import java.util.ArrayList;
 /**
        Constructor
    */
-public class EmployeeDBQuery implements DBQuery{
-      
+public class EmployeeDBQuery
+{
    static ResultSet rst;
   
-   
-   
-   public EmployeeDBQuery()
-   {
-      
-    
-   }
-
+   /*-----------------------GetALLemployee-----------------------*/
     public ArrayList<Employee> getEmployees() 
     {
         ArrayList<Employee>employees= new  ArrayList<Employee>();
         String sqlStatement = "SELECT * FROM employee";
        
-      
         try
         {
            rst = Dbutils.executeQuery(sqlStatement);
@@ -61,34 +52,53 @@ public class EmployeeDBQuery implements DBQuery{
       
         return employees;
 
-   }
-   public void add()
-   {
-//       try{
-//            String query="INSERT INTO employee VALUES("+employeeId+",'"+name+"','"+lastname+"','"+address+"',"+telephoneNumber+")";
-//            con=connecterDB();
-//            st=con.createStatement();
-//            st.executeUpdate(query);
-//            System.out.println("produit ajoute");
-//            
-//        }catch(Exception e)
-//        {
-//            System.out.println(e.getMessage());
-//        }
-   }
-   
-   /*-----------------------Getter-----------------------*/
+    }
    
     
-
-
-   
-  
-    public static void main(String[] args) 
+    public void addEmployee(Employee emp)
     {
-        new EmployeeDBQuery();
-        new ProductDBQuery();
-        new CustomerDBQuery();
-      
+        try
+        {
+             String query="INSERT INTO employee VALUES("+emp.getEmployeeId()+",'"+emp.getEmployeeName()+
+                     "','"+emp.getEmployeeLastname()+"','"+emp.getEmployeeAddress()
+                     +"',"+emp.getEmployeeUsername()+"',"+emp.getEmployeePassword()+")";
+             rst = Dbutils.executeQuery(query);
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb ajout employee"+e.getMessage());
+        }
     }
+    
+    public void deleteEmployee(Employee emp)
+    {
+        try
+        {
+             String query="DELETE  FROM employee WHERE employeeId="+emp.getEmployeeId();
+             rst = Dbutils.executeQuery(query);
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb suppression employee"+e.getMessage());
+        }
+    }
+   
+    public void updateEmployee(Employee emp)
+    {
+        try
+        {
+           String query="UPDATE employee SET name='"+emp.getEmployeeName()
+                    +"', lastname='"+emp.getEmployeeLastname()
+                    +"', address='"+emp.getEmployeeAddress()
+                    +"', username="+emp.getEmployeeUsername()
+                    +"', password="+emp.getEmployeePassword()
+                    +" WHERE employeeId = "+emp.getEmployeeId();
+           
+             rst = Dbutils.executeQuery(query);
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb update employee"+e.getMessage());
+        }
+    } 
 }
