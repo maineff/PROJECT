@@ -8,7 +8,9 @@ package Controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -16,15 +18,27 @@ import java.sql.SQLException;
  */
 public class Dbutils {
      
-    //public final static String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
-    public final static String DB_URL ="jdbc:mysql://localhost:3306/projet"; 
+    public final static String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
+    //public final static String DB_URL ="jdbc:mysql://localhost:3306/projet"; 
     
      public static Connection getDbConnection()throws SQLException
     {
        String user="root";
-       //String password="root"; 
-       String password=""; 
-
-        return DriverManager.getConnection(DB_URL, user, password);
+       String password="root"; 
+       //String password=""; 
+       return DriverManager.getConnection(DB_URL, user, password);
     }
+     
+    public static Statement createStatement() throws SQLException
+    {
+        Connection conn= Dbutils.getDbConnection();
+        return conn.createStatement();
+
+    }
+    
+    public static ResultSet executeQuery(String rq) throws SQLException
+    {
+       return createStatement().executeQuery(rq);
+    }
+
 }

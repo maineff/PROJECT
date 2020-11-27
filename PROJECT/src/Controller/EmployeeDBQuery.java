@@ -5,13 +5,11 @@
  */
 package Controller;
 
+import Model.Employee;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,56 +21,45 @@ import java.util.logging.Logger;
    */
 public class EmployeeDBQuery implements DBQuery{
       
-  
-   static Connection conn;
-   static Statement st;
    static ResultSet rst;
+  
    
-   ArrayList<Integer>employeeId= new  ArrayList<Integer>();;
-   ArrayList<String>employeeName = new  ArrayList<String>();
-   ArrayList<String>employeeLastname = new  ArrayList<String>();
-   ArrayList<String>employeeAddress = new  ArrayList<String>(); 
-   ArrayList<String>employeeUsername = new  ArrayList<String>(); 
-   ArrayList<String>employeePassword = new  ArrayList<String>(); 
-
-    public EmployeeDBQuery()
+   
+   public EmployeeDBQuery()
    {
-      try
-      {
-        conn=Dbutils.getDbConnection();
-        st = conn.createStatement();
-        String sqlStatement = "SELECT * FROM employee";
-        rst = st.executeQuery(sqlStatement);
-        recup();
-       }
-      catch (SQLException ex)
-      {
-         ex.printStackTrace();
-      }
+      
     
    }
 
-
-   public  void recup()
-   {
-
-       try
-       {
+    public ArrayList<Employee> getEmployees() 
+    {
+        ArrayList<Employee>employees= new  ArrayList<Employee>();
+        String sqlStatement = "SELECT * FROM employee";
+       
+      
+        try
+        {
+           rst = Dbutils.executeQuery(sqlStatement);
+           Employee emp ;
            while(rst.next())
-            {
-                employeeId.add( rst.getInt("employeeId"));
-                employeeName.add( rst.getString("name"));
-                employeeLastname.add(rst.getString("lastname"));
-                employeeAddress.add(rst.getString("address"));
-                //employeeUsername.add(rst.getString("username"));
-                //employeePassword.add(rst.getString("password"));
+           {
+                emp= new Employee();
+                emp.setEmployeeId(rst.getInt("employeeId"));
+                emp.setEmployeeName(rst.getString("name"));
+                emp.setEmployeeLastname(rst.getString("lastname"));
+                emp.setEmployeeAddress(rst.getString("address"));
+                emp.setEmployeeUsername(rst.getString("username"));
+                emp.setEmployeePassword(rst.getString("password"));
+                employees.add(emp);
             }
 
-       }
-       catch (SQLException ex) 
-       {
-           System.out.println("pb recup employee"+ex.getMessage());
-       }
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println("pb recup employee"+ex.getMessage());
+        }
+      
+        return employees;
 
    }
    public void add()
@@ -92,35 +79,8 @@ public class EmployeeDBQuery implements DBQuery{
    
    /*-----------------------Getter-----------------------*/
    
-    public ArrayList getEmployeeId()
-    {
-        return employeeId;
-    }
+    
 
-   public ArrayList getEmployeeName()
-   {
-       return employeeName;
-   }
-   
-   public ArrayList getEmployeeLastname()
-   {
-       return employeeLastname;
-   }
-   
-   public ArrayList getEmployeeAddress()
-   {
-       return employeeAddress;
-   }
-   
-   public ArrayList getEmployeeUsername()
-   {
-       return employeeUsername;
-   }
-   
-   public ArrayList getEmployeePassword()
-   {
-       return employeePassword;
-   }
 
    
   

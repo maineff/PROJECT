@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Controller.EmployeeDBQuery;
 import java.util.ArrayList;
 
 /**
@@ -14,8 +15,20 @@ import java.util.ArrayList;
 public class Store 
 {
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
-    private  ArrayList<Employee>employee = new  ArrayList<Employee>(); 
+    private  ArrayList<Employee>employee= new  ArrayList<Employee>(); 
     private  ArrayList<Customer>customer= new  ArrayList<Customer>(); 
         
+ 
+    
+    public Store() 
+    {
+        this.produit=null;
+        this.employee=null;
+        this.customer=null;
+        
+    }
+    
+    
+    
     
 }

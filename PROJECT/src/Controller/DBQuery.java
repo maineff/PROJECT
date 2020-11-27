@@ -11,7 +11,7 @@ package Controller;
  */
 public interface DBQuery {
     
-    public void add();
+  //  public void add();
 //    public void supp();
 //    public void update();
 //    
