@@ -7,6 +7,7 @@ package View;
 
 import Controller.EmployeeDBQuery;
 import java.awt.Dimension;
+import java.awt.PopupMenu;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 
@@ -20,6 +21,7 @@ public class Page1 extends javax.swing.JFrame {
      * Creates new form Page1
      */
     EmployeeDBQuery employeedb=new EmployeeDBQuery();
+    
     
     public Page1() {
         initComponents();
@@ -431,7 +433,9 @@ public class Page1 extends javax.swing.JFrame {
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
-        new Subscibe().setVisible(true);    
+        new Subscribe().setVisible(true); 
+     
+        
         
     }//GEN-LAST:event_subscribeButonActionPerformed
 
