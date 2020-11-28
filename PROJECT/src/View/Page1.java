@@ -5,11 +5,11 @@
  */
 package View;
 
+import Controller.Dbutils;
 import Controller.EmployeeDBQuery;
-import java.awt.Dimension;
-import java.awt.PopupMenu;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +79,6 @@ public class Page1 extends javax.swing.JFrame {
         okButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
@@ -207,12 +206,6 @@ public class Page1 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(skipButton1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(329, 329, 329))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -220,23 +213,30 @@ public class Page1 extends javax.swing.JFrame {
                         .addComponent(menuButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(438, 438, 438)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(okButton)
-                            .addComponent(log_inLabel)))
+                        .addComponent(log_inLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(410, 410, 410)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idLabel)
                             .addComponent(welcome_customerLabel)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(passwordLabel)
-                        .addGap(119, 119, 119)))
+                        .addGap(358, 358, 358)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(passwordLabel)
+                                .addGap(119, 119, 119))
+                            .addComponent(okButton, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(343, 343, 343)
                 .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 393, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(329, 329, 329))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,13 +252,13 @@ public class Page1 extends javax.swing.JFrame {
                     .addComponent(idLabel))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel))
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66)
                 .addComponent(okButton)
                 .addGap(59, 59, 59)
                 .addComponent(subscribeButon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
                 .addComponent(menuButton)
                 .addContainerGap())
         );
@@ -448,9 +448,22 @@ public class Page1 extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         
-        setVisible(false); 
-        new CustomerPage().setVisible(true);
-        
+        String rq = "SELECT * FROM customer WHERE username='"+idTextfield.getText()+"'and password='"+passwordTextfield.getText()+"'";
+        try 
+        {
+            ResultSet rst = Dbutils.executeQuery(rq);
+            if(rst.next())
+            {   JOptionPane.showMessageDialog(null,"loggin succesfull ");
+               setVisible(false); 
+               new CustomerPage().setVisible(true);
+            }
+            else
+                JOptionPane.showMessageDialog(null,"error password or login");
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
