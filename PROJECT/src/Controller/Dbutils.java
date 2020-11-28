@@ -40,5 +40,23 @@ public class Dbutils {
     {
        return createStatement().executeQuery(rq);
     }
+    
+    
+    public static int executeUpdate(String rq) throws SQLException
+    {
+        return createStatement().executeUpdate(rq); 
+    }
+    
+    //on récupère l'id max pour insérer a la suite
+    public static int max(String table,String iDtable) throws SQLException
+    {
+         ResultSet rst;
+         String rq= "SELECT Max("+iDtable+") FROM "+table;
+         rst=Dbutils.executeQuery(rq);
+         rst.next();
+         int orderId=rst.getInt(1);
+         return orderId+1;
+    }
+    
 
 }

@@ -38,7 +38,6 @@ public class EmployeeDBQuery
                 emp.setEmployeeId(rst.getInt("employeeId"));
                 emp.setEmployeeName(rst.getString("name"));
                 emp.setEmployeeLastname(rst.getString("lastname"));
-                emp.setEmployeeAddress(rst.getString("address"));
                 emp.setEmployeeUsername(rst.getString("username"));
                 emp.setEmployeePassword(rst.getString("password"));
                 employees.add(emp);
@@ -58,10 +57,15 @@ public class EmployeeDBQuery
     {
         try
         {
-             String query="INSERT INTO employee VALUES("+emp.getEmployeeId()+",'"+emp.getEmployeeName()+
-                     "','"+emp.getEmployeeLastname()+"','"+emp.getEmployeeAddress()
-                     +"',"+emp.getEmployeeUsername()+"',"+emp.getEmployeePassword()+")";
-             rst = Dbutils.executeQuery(query);
+             int id = Dbutils.max("employee","employeeId");
+           
+             String query="INSERT INTO employee"
+                     +"(employeeId,name,lastName,username,password)"
+                     +" VALUES "
+                     +"("+id+",'"+emp.getEmployeeName()+"','"+emp.getEmployeeLastname()
+                     +"','"+emp.getEmployeeUsername()+"','"+emp.getEmployeePassword()+"')";
+             
+             int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {
@@ -74,7 +78,7 @@ public class EmployeeDBQuery
         try
         {
              String query="DELETE  FROM employee WHERE employeeId="+emp.getEmployeeId();
-             rst = Dbutils.executeQuery(query);
+             int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {
@@ -88,12 +92,11 @@ public class EmployeeDBQuery
         {
            String query="UPDATE employee SET name='"+emp.getEmployeeName()
                     +"', lastname='"+emp.getEmployeeLastname()
-                    +"', address='"+emp.getEmployeeAddress()
                     +"', username="+emp.getEmployeeUsername()
                     +"', password="+emp.getEmployeePassword()
                     +" WHERE employeeId = "+emp.getEmployeeId();
            
-             rst = Dbutils.executeQuery(query);
+            int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {

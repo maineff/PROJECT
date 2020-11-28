@@ -16,10 +16,11 @@ public class Employee
     private int employeeId;
     private String name;
     private String lastName;
-    private String address;
     private String username;
     private String password;
- 
+    
+    ///////////////pas besoin je crois
+ /*
     //cstct par defaut
      public Employee()
     {
@@ -27,16 +28,15 @@ public class Employee
         this.name="";
     }
        
-   public Employee(int id,String prenom,String nom,String living, String username,String password )
+   public Employee(int id,String prenom,String nom,String username,String password )
    {
         this.employeeId=id;
         this.name=prenom;
         this.lastName=nom;
-        this.address=living;
         this.username=username;
         this.password=password;
     }
-   
+   */
 
    /*-----------------------Setter-----------------------*/
     
@@ -54,10 +54,6 @@ public class Employee
        this.lastName=lastName;
    }
    
-   public void setEmployeeAddress(String address)
-   {
-       this.address=address;
-   }
    
    public void setEmployeeUsername(String username)
    {
@@ -87,10 +83,6 @@ public class Employee
        return lastName;
    }
    
-   public String getEmployeeAddress()
-   {
-       return address;
-   }
    
    public String getEmployeeUsername()
    {

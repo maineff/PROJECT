@@ -7,10 +7,8 @@ package Controller;
 
 
 import Model.Customer;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -62,14 +60,20 @@ public class CustomerDBQuery {
     {
         try
         {
-             String query="INSERT INTO customer VALUES("+cust.getCustomerId()+",'"+cust.getCustomerName()+
-                     "','"+cust.getCustomerLastname()+"','"+cust.getCustomerAddress() +"',"+cust.getCustomerCity()
-                     +"',"+cust.getCustomerUsername()+"',"+cust.getCustomerPassword()+")";
-             rst = Dbutils.executeQuery(query);
+            int id = Dbutils.max("customer","customerId");
+            
+            String query="INSERT INTO customer"
+                    +"(customerId,name,lastName,address,city,username,password)" 
+                    +" VALUES "
+                    +"("+id+",'"+cust.getCustomerName()+"','"+cust.getCustomerLastname()
+                    +"','"+cust.getCustomerAddress()+"','"+cust.getCustomerCity()
+                    +"','"+cust.getCustomerUsername()+"','"+cust.getCustomerPassword()+"')";
+             
+            int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {
-            System.out.println("pb ajout customer"+e.getMessage());
+            System.out.println("pb ajout customer "+e.getMessage());
         }
     }
     
@@ -78,7 +82,7 @@ public class CustomerDBQuery {
         try
         {
              String query="DELETE  FROM customer WHERE customerId="+cust.getCustomerId();
-             rst = Dbutils.executeQuery(query);
+             int rows= Dbutils.executeUpdate(query);
         }
         catch(Exception e)
         {
@@ -90,7 +94,7 @@ public class CustomerDBQuery {
     {
         try
         {
-           String query="UPDATE customer SET name='"+cust.getCustomerName()
+            String query="UPDATE customer SET name='"+cust.getCustomerName()
                     +"', lastname='"+cust.getCustomerLastname()
                     +"', address='"+cust.getCustomerAddress()
                     +"', city='"+cust.getCustomerCity()
@@ -98,7 +102,7 @@ public class CustomerDBQuery {
                     +"', password="+cust.getCustomerPassword()
                     +" WHERE customerId = "+cust.getCustomerId();
            
-             rst = Dbutils.executeQuery(query);
+            int rows= Dbutils.executeUpdate(query);
         }
         catch(Exception e)
         {

@@ -55,9 +55,14 @@ public class ProductDBQuery {
     {
         try
         {
-             String query="INSERT INTO product VALUES("+prod.getProductId()+",'"+prod.getProductName()+
-             "','"+prod.getProductPrice()+"','"+prod.getProductStock()+")";
-             rst = Dbutils.executeQuery(query);
+            int id = Dbutils.max("product","productId");
+             String query="INSERT INTO product"
+                     +"(productId,name,price,stock)"
+                     +"VALUES"
+                     +"("+id+",'"+prod.getProductName()
+                     +"','"+prod.getProductPrice()+"','"+prod.getProductStock()+"')";
+             
+             int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {
@@ -71,7 +76,7 @@ public class ProductDBQuery {
         try
         {
              String query="DELETE  FROM product WHERE productId="+prod.getProductId();
-             rst = Dbutils.executeQuery(query);
+            int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {
@@ -88,7 +93,7 @@ public class ProductDBQuery {
                     +"', stock='"+prod.getProductStock()
                     +" WHERE productId = "+prod.getProductId();
            
-             rst = Dbutils.executeQuery(query);
+             int rows= Dbutils.executeUpdate(query) ;
         }
         catch(Exception e)
         {

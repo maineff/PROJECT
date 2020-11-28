@@ -5,10 +5,10 @@
  */
 package Controller;
 
-import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -17,58 +17,26 @@ import java.sql.Statement;
  */
 public class OrderDBQuery {
      
-   static Connection conn;
-   static Statement st;
    static ResultSet rst;
    
-   public OrderDBQuery ()
-   {
-        try
-        {
-          conn=Dbutils.getDbConnection();
-          st = conn.createStatement();
-          //String sqlStatement = "SELECT * FROM Iceorder";
-          //rst = st.executeQuery(sqlStatement);
-          System.out.println("GREAT");
-        }
-        catch (SQLException ex)
-        {
-           ex.printStackTrace();
-        }
-   }
-   
-   
-   //ajouter une commande dans la base de données 
-    public static void submitOrder(int orderId,int qty,String date,double reduc,double prix) throws SQLException
+    //ajouter une commande dans la base de données 
+    public static void addOrder(int orderId,int qty,String date,double reduc,double prix) throws SQLException
     {  
-        
         try 
         { 
-              orderId=max()+1;
-              String sqlStatement = "INSERT INTO order"+"(orderId,quantity,discount,totalPrice)" +
-                      "VALUES "+ "("+orderId+",'"+qty+"','"+reduc+"','"+prix+"','"+date+"')";
-              st.executeUpdate(sqlStatement);
-            
+            if(prix>0)
+            {
+                int id = Dbutils.max("order","orderId");
+                String query = "INSERT INTO order"+"(orderId,quantity,discount,totalPrice,date)" +
+                       "VALUES "+ "("+id+",'"+qty+"','"+reduc+"','"+prix+"','"+date+"')";
+                int rows= Dbutils.executeUpdate(query) ;
+            }
+            else
+                JOptionPane.showMessageDialog(null,"add elements in your order");   
         } 
         catch (SQLException ex)
         {
             System.out.println(ex.getMessage());
         }
-   
     }
-    
-    public static int max() throws SQLException
-    {
-        conn=Dbutils.getDbConnection();
-        st=conn.createStatement();
-
-        //on récupère l'id max
-         String rq= "SELECT Max(orderNumber) FROM Iceorder";
-         rst=st.executeQuery(rq);
-         rst.next();
-         int orderId=rst.getInt(1);
-         return orderId;
-    }
-    
-   
 }

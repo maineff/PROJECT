@@ -18,7 +18,7 @@ public class Product {
     private double price;
     private int stock;
      
-    public Product()
+   /*  public Product()
      {
          
      }
@@ -28,7 +28,7 @@ public class Product {
         this.name=nom;
         this.price=prix;
         this.stock=qty;
-    }
+    }*/
 
 
     
