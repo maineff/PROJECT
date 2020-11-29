@@ -467,11 +467,8 @@ public class Page1 extends javax.swing.JFrame {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
-  
         setVisible(false);
-        new Subscribe().setVisible(true); 
-     
-        
+        new SubscribeC().setVisible(true); 
         
     }//GEN-LAST:event_subscribeButonActionPerformed
 
@@ -488,12 +485,26 @@ public class Page1 extends javax.swing.JFrame {
     }//GEN-LAST:event_skipButton2ActionPerformed
 
     private void okButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButton1ActionPerformed
-        
+         String rq = "SELECT * FROM employee WHERE username='"+idTextfield1.getText()+"'and password='"+passwordTextfield1.getText()+"'";
+        try 
+        {
+            ResultSet rst = Dbutils.executeQuery(rq);
+            if(rst.next())
+            {   JOptionPane.showMessageDialog(null,"loggin succesfull ");
+               
+            }
+            else
+                JOptionPane.showMessageDialog(null,"error password or login");
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_okButton1ActionPerformed
 
     private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
         setVisible(false);
-        new Subscribe().setVisible(true); 
+        new SubscribeS().setVisible(true); 
     }//GEN-LAST:event_subscribeButtonActionPerformed
 
     /**
