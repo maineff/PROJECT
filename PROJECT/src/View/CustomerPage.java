@@ -5,8 +5,13 @@
  */
 package View;
 
+import Controller.Dbutils;
 import Controller.ProductDBQuery;
-import javax.swing.JFrame;
+import Model.Product;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -15,17 +20,30 @@ import javax.swing.JFrame;
 public class CustomerPage extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
-    
+     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
     public CustomerPage() {
         
-        initComponents();
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        try {
+            initComponents();
+            //setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        int i=0;
 //        product1Label.setText((String)productdb.getProductName().get(i));
 //        i++;
 //        product2Label.setText((String)productdb.getProductName().get(i));
 //        i++;
 //        product3Label.setText((String)productdb.getProductName().get(i));
+            Connection conn= Dbutils.getDbConnection();
+            produit=productdb.getProducts();
+            String str="";
+            for(int i=0;i<produit.size();i++)
+            {
+                str+="\n"+produit.get(i).getProductName()+"\n";
+            }
+            
+           jTextArea1.setText(str);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -43,9 +61,10 @@ public class CustomerPage extends javax.swing.JFrame {
         product1Label = new javax.swing.JLabel();
         product2Label = new javax.swing.JLabel();
         product3Label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 1000));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 1000));
 
@@ -65,6 +84,10 @@ public class CustomerPage extends javax.swing.JFrame {
 
         product3Label.setText("product3");
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -77,26 +100,33 @@ public class CustomerPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(product2Label)
-                            .addComponent(product1Label)
-                            .addComponent(product3Label)))
+                            .addComponent(product3Label)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(product2Label)
+                                    .addComponent(product1Label))
+                                .addGap(169, 169, 169)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(welcome_customerLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(welcome_customerLabel)
-                .addGap(18, 18, 18)
-                .addComponent(product1Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(product2Label)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(welcome_customerLabel)
+                        .addGap(263, 263, 263)
+                        .addComponent(product1Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(product2Label))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(product3Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(go_menuButton)
                 .addContainerGap())
         );
@@ -159,6 +189,8 @@ public class CustomerPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton go_menuButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel product1Label;
     private javax.swing.JLabel product2Label;
     private javax.swing.JLabel product3Label;

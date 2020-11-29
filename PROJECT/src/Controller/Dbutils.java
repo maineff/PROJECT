@@ -26,7 +26,7 @@ public class Dbutils {
        String user="root";
        //String password="root"; 
        String password=""; 
-       return DriverManager.getConnection(DB_URL, user, password);
+       return DriverManager.getConnection(DB_URL,user, password);
     }
      
     public static Statement createStatement() throws SQLException
