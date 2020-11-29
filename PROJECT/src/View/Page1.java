@@ -491,6 +491,8 @@ public class Page1 extends javax.swing.JFrame {
             ResultSet rst = Dbutils.executeQuery(rq);
             if(rst.next())
             {   JOptionPane.showMessageDialog(null,"loggin succesfull ");
+                setVisible(false); 
+               new EmployeePage().setVisible(true);
                
             }
             else
@@ -504,7 +506,7 @@ public class Page1 extends javax.swing.JFrame {
 
     private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
         setVisible(false);
-        new SubscribeS().setVisible(true); 
+        new SubscribeE().setVisible(true); 
     }//GEN-LAST:event_subscribeButtonActionPerformed
 
     /**
