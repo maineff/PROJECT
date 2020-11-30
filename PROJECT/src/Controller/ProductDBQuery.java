@@ -90,7 +90,7 @@ public class ProductDBQuery {
         {
            String query="UPDATE product SET name='"+prod.getProductName()
                     +"', price='"+prod.getProductPrice()
-                    +"', stock='"+prod.getProductStock()
+                    +"', stock="+prod.getProductStock()
                     +" WHERE productId = "+prod.getProductId();
            
              int rows= Dbutils.executeUpdate(query) ;

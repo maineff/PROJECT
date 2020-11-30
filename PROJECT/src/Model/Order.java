@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -23,7 +24,7 @@ public class Order {
     private double totalPrice;
     private String orderDate;		
    
-   /* public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
+  /* public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
     {
         this.orderId=id;
         this.client=person;
