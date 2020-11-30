@@ -6,9 +6,12 @@
 package Controller;
 
 
+import Model.Order;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -20,23 +23,32 @@ public class OrderDBQuery {
    static ResultSet rst;
    
     //ajouter une commande dans la base de données 
-    public static void addOrder(int orderId,int qty,String date,double reduc,double prix) throws SQLException
+    public void addOrder(Order od)
     {  
         try 
         { 
-            if(prix>0)
-            {
+//            if(od.getTotalPrice()>0)
+//            {
                 int id = Dbutils.max("order","orderId");
-                String query = "INSERT INTO order"+"(orderId,quantity,discount,totalPrice,date)" +
-                       "VALUES "+ "("+id+",'"+qty+"','"+reduc+"','"+prix+"','"+date+"')";
+                String date=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+                System.out.println(id);
+                System.out.println(date);
+                String query = "INSERT INTO order"
+                        +"(orderId,quantity,discount,totalPrice,date)" 
+                        +"VALUES"
+                        +"("+id+","+od.getQuantity()
+                        +","+od.getDiscount()+","
+                        +od.getTotalPrice()+",'"+date+"')";
+                
+                System.out.println(query);
                 int rows= Dbutils.executeUpdate(query) ;
-            }
-            else
-                JOptionPane.showMessageDialog(null,"add elements in your order");   
-        } 
-        catch (SQLException ex)
+//            }
+//            else
+//                JOptionPane.showMessageDialog(null,"add elements in your order");   
+        }
+        catch(Exception e)
         {
-            System.out.println(ex.getMessage());
+            System.out.println("pb ajout employee"+e.getMessage());
         }
     }
 }
