@@ -8,6 +8,8 @@ package View;
 import Controller.Dbutils;
 import Controller.ProductDBQuery;
 import Model.Product;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,20 +32,31 @@ public class CustomerPage extends javax.swing.JFrame {
             initComponents();
             //setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-            Connection conn= Dbutils.getDbConnection();
+             Connection conn= Dbutils.getDbConnection();
             produit=productdb.getProducts();
-            //String str="";
+
+            
             int j=100;
             for(int i=0;i<produit.size();i++)
             {
-                //str+="\n"+produit.get(i).getProductName()+"\n";
+                
+                final int number=i;
                 product.add(new JButton(produit.get(i).getProductName()));
                 jPanel1.add(product.get(i));
                 product.get(i).setBounds(100, j, 200, 20);
                 product.get(i).setVisible(true);
+                //final JButton buton=product.get(i);
+                //buton.addActionListener(new ActionListener() { 
+                product.get(i).addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                          dispose();
+                          new Achat(number).setVisible(true);
+                    }
+                });
                 j+=50;
             }
-            
            //jTextArea1.setText(str);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
