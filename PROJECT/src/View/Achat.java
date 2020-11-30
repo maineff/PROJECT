@@ -6,11 +6,15 @@
 package View;
 
 import Controller.Dbutils;
+import Controller.OrderDBQuery;
 import Controller.ProductDBQuery;
+import Model.Order;
 import Model.Product;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +24,9 @@ public class Achat extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+   
+            
+    
     int here;
 
 
@@ -181,11 +188,23 @@ public class Achat extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int nombre=produit.get(here).getProductStock();
         int quantity=Integer.parseInt(jTextField1.getText());
-        System.out.println(nombre+" avant enlevement");
+        
+        
         nombre=produit.get(here).getProductStock()-quantity;
         produit.get(here).setProductStock(nombre);
         productdb.updateProduct(produit.get(here));
-        System.out.println(produit.get(here).getProductStock()+" apres -"+quantity);
+        
+         OrderDBQuery orderdb= new OrderDBQuery();
+         Order order=new Order();
+         order.setDiscount(10);
+         order.setQuantity(quantity);
+         order.setTotalPrice(produit.get(here).getProductPrice());
+        
+         orderdb.addOrder(order);
+         System.out.println("c'est presque bon");
+      
+     
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

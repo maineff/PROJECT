@@ -33,7 +33,79 @@ public class Order {
         this.totalPrice=prix;
         this.orderDate=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
     }*/
+    
+       /*-----------------------Setter-----------------------*/
+    
+    public void setOrderId(int orderId)
+   {
+       this.orderId=orderId;
+   }
+   public void setEmployeeName(Customer client)
+   {
+       this.client=client;
+   }
+   
+   public void setProduct(ArrayList produit)
+   {
+       this.produit=produit;
+   }
+   
+   
+   public void setQuantity(int quantity)
+   {
+       this.quantity=quantity;
+   }
+   
+   public void setDiscount(double discount)
+   {
+       this.discount=discount;
+   }
 
+    public void setTotalPrice(double totalPrice)
+   {
+       this.totalPrice=totalPrice;
+   }
+
+     public void setOrderDate(String orderDate)
+   {
+       this.orderDate=orderDate;
+   }
+     
+        /*-----------------------Getter-----------------------*/
+
+    public int getOrderId()
+   {
+       return orderId;
+   }
+   public Customer getEmployeeName()
+   {
+       return client;
+   }
+   
+   public ArrayList getProduct()
+   {
+       return produit;
+   }
+      
+   public int getQuantity()
+   {
+       return quantity;
+   }
+   
+   public double getDiscount()
+   {
+       return discount;
+   }
+
+    public double getTotalPrice()
+   {
+       return totalPrice;
+   }
+
+     public String getOrderDate()
+   {
+       return orderDate;
+   }
 
 }
 
