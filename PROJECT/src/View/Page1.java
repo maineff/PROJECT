@@ -453,7 +453,8 @@ public class Page1 extends javax.swing.JFrame {
         {
             ResultSet rst = Dbutils.executeQuery(rq);
             if(rst.next())
-            {   JOptionPane.showMessageDialog(null,"loggin succesfull ");
+            {   
+                JOptionPane.showMessageDialog(null,"loggin succesfull ");
                setVisible(false); 
                new CustomerPage().setVisible(true);
             }

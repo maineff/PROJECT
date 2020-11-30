@@ -45,8 +45,7 @@ public class CustomerPage extends javax.swing.JFrame {
                 jPanel1.add(product.get(i));
                 product.get(i).setBounds(100, j, 200, 20);
                 product.get(i).setVisible(true);
-                //final JButton buton=product.get(i);
-                //buton.addActionListener(new ActionListener() { 
+               
                 product.get(i).addActionListener(new ActionListener() {
 
                     @Override

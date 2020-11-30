@@ -13,8 +13,7 @@ import Model.Product;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -195,16 +194,13 @@ public class Achat extends javax.swing.JFrame {
         productdb.updateProduct(produit.get(here));
         
          OrderDBQuery orderdb= new OrderDBQuery();
-         Order order=new Order();
-         order.setDiscount(10);
-         order.setQuantity(quantity);
-         order.setTotalPrice(produit.get(here).getProductPrice());
-        
-         orderdb.addOrder(order);
-         System.out.println("c'est presque bon");
-      
-     
-        
+         Order nv=new Order();
+        nv.setDiscount(10);
+        nv.setQuantity(quantity);
+        nv.setTotalPrice(produit.get(here).getProductPrice());
+        System.out.println(nv.getDiscount()+" "+nv.getQuantity()+" "+nv.getTotalPrice());
+         orderdb.submitOrder(nv);
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

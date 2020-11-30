@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -23,32 +25,31 @@ public class OrderDBQuery {
    static ResultSet rst;
    
     //ajouter une commande dans la base de données 
-    public void addOrder(Order od)
-    {  
-        try 
-        { 
-//            if(od.getTotalPrice()>0)
-//            {
-                int id = Dbutils.max("order","orderId");
-                String date=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-                System.out.println(id);
-                System.out.println(date);
-                String query = "INSERT INTO order"
-                        +"(orderId,quantity,discount,totalPrice,date)" 
-                        +"VALUES"
-                        +"("+id+","+od.getQuantity()
-                        +","+od.getDiscount()+","
-                        +od.getTotalPrice()+",'"+date+"')";
-                
-                System.out.println(query);
-                int rows= Dbutils.executeUpdate(query) ;
-//            }
-//            else
-//                JOptionPane.showMessageDialog(null,"add elements in your order");   
-        }
-        catch(Exception e)
-        {
-            System.out.println("pb ajout employee"+e.getMessage());
-        }
+   
+    public void submitOrder(Order od)
+    {
+        
+       try 
+       {
+         if(od.getTotalPrice()>0)
+         {
+            int id = Dbutils.max("order1","orderId");
+            String date= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+            String query="INSERT INTO order1"
+                    +"(orderId,quantity,discount,totalPrice,date)" 
+                    +" VALUES "
+                    +"("+id+","+od.getQuantity()+","+od.getDiscount()
+                    +","+od.getTotalPrice()+",'"+date
+                    +"')";
+           int rows= Dbutils.executeUpdate(query) ;
+         }
+         else
+            JOptionPane.showMessageDialog(null,"add elements in your order");   
+         
+       } 
+       catch (SQLException ex) 
+       {
+           Logger.getLogger(OrderDBQuery.class.getName()).log(Level.SEVERE, null, ex);
+       }     
     }
 }
