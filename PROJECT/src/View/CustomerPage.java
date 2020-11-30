@@ -11,6 +11,7 @@ import Model.Product;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 
 /**
@@ -21,26 +22,29 @@ public class CustomerPage extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
      private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+     ArrayList<JButton> product=new ArrayList<>();
+     
     public CustomerPage() {
         
         try {
             initComponents();
             //setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        int i=0;
-//        product1Label.setText((String)productdb.getProductName().get(i));
-//        i++;
-//        product2Label.setText((String)productdb.getProductName().get(i));
-//        i++;
-//        product3Label.setText((String)productdb.getProductName().get(i));
+
             Connection conn= Dbutils.getDbConnection();
             produit=productdb.getProducts();
-            String str="";
+            //String str="";
+            int j=100;
             for(int i=0;i<produit.size();i++)
             {
-                str+="\n"+produit.get(i).getProductName()+"\n";
+                //str+="\n"+produit.get(i).getProductName()+"\n";
+                product.add(new JButton(produit.get(i).getProductName()));
+                jPanel1.add(product.get(i));
+                product.get(i).setBounds(100, j, 200, 20);
+                product.get(i).setVisible(true);
+                j+=50;
             }
             
-           jTextArea1.setText(str);
+           //jTextArea1.setText(str);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -58,9 +62,6 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         welcome_customerLabel = new javax.swing.JLabel();
         go_menuButton = new javax.swing.JButton();
-        product1Label = new javax.swing.JLabel();
-        product2Label = new javax.swing.JLabel();
-        product3Label = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -78,12 +79,6 @@ public class CustomerPage extends javax.swing.JFrame {
             }
         });
 
-        product1Label.setText("product1");
-
-        product2Label.setText("product2");
-
-        product3Label.setText("product3");
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -98,35 +93,22 @@ public class CustomerPage extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(go_menuButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(product3Label)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(product2Label)
-                                    .addComponent(product1Label))
-                                .addGap(169, 169, 169)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(welcome_customerLabel)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(welcome_customerLabel)
-                        .addGap(263, 263, 263)
-                        .addComponent(product1Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(product2Label))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(product3Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addComponent(welcome_customerLabel)
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addComponent(go_menuButton)
                 .addContainerGap())
         );
@@ -191,9 +173,6 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel product1Label;
-    private javax.swing.JLabel product2Label;
-    private javax.swing.JLabel product3Label;
     private javax.swing.JLabel welcome_customerLabel;
     // End of variables declaration//GEN-END:variables
 }
