@@ -150,12 +150,13 @@ public class Page1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerButton)
                     .addComponent(sellerButton))
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jPanel2.setPreferredSize(new java.awt.Dimension(850, 600));
         jPanel2.setRequestFocusEnabled(false);
 
+        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         welcome_customerLabel.setText("Welcome customer");
 
         menuButton.setText("Menu");
@@ -267,12 +268,13 @@ public class Page1 extends javax.swing.JFrame {
                 .addComponent(okButton)
                 .addGap(29, 29, 29)
                 .addComponent(subscribeButon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
         jPanel3.setPreferredSize(new java.awt.Dimension(850, 600));
 
+        welcome_selleurLabel.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         welcome_selleurLabel.setText("Welcome selleur");
 
         menu1Button.setText("Menu");
@@ -379,7 +381,7 @@ public class Page1 extends javax.swing.JFrame {
                 .addComponent(subscribeButton)
                 .addGap(35, 35, 35)
                 .addComponent(okButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                 .addComponent(menu1Button))
         );
 

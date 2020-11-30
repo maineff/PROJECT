@@ -23,6 +23,8 @@ public class Achat extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+    OrderDBQuery orderdb= new OrderDBQuery();
+    Order nv=new Order();
    
             
     
@@ -71,6 +73,7 @@ public class Achat extends javax.swing.JFrame {
         quantity1Label = new javax.swing.JLabel();
         quantityTextfield = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        buyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(850, 600));
@@ -113,6 +116,13 @@ public class Achat extends javax.swing.JFrame {
             }
         });
 
+        buyButton.setText("BUY");
+        buyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -127,6 +137,10 @@ public class Achat extends javax.swing.JFrame {
                         .addGap(116, 116, 116)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(quantityLabel)
+                                .addGap(312, 312, 312)
+                                .addComponent(priceLabel))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(nameLabel)
@@ -136,15 +150,13 @@ public class Achat extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bucketButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(quantityLabel)
-                                .addGap(312, 312, 312)
-                                .addComponent(priceLabel))))
+                                .addComponent(bucketButton)))
+                        .addGap(34, 34, 34)
+                        .addComponent(buyButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
                         .addComponent(achatLabel)))
-                .addGap(0, 202, Short.MAX_VALUE))
+                .addGap(0, 105, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +180,9 @@ public class Achat extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(priceLabel)
                         .addGap(41, 41, 41)
-                        .addComponent(bucketButton)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bucketButton)
+                            .addComponent(buyButton))))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -204,16 +218,22 @@ public class Achat extends javax.swing.JFrame {
         produit.get(here).setProductStock(nombre);
         productdb.updateProduct(produit.get(here));
         
-         OrderDBQuery orderdb= new OrderDBQuery();
-         Order nv=new Order();
         nv.setDiscount(10);
         nv.setQuantity(quantity);
-        nv.setTotalPrice(produit.get(here).getProductPrice());
+        nv.setTotalPrice(produit.get(here).getProductPrice()*quantity);
         System.out.println(nv.getDiscount()+" "+nv.getQuantity()+" "+nv.getTotalPrice());
-         orderdb.submitOrder(nv);
+        orderdb.submitOrder(nv);
+         
+        //retour page produits
+        setVisible(false);
+        new CustomerPage().setVisible(true);
        
         
     }//GEN-LAST:event_bucketButtonActionPerformed
+
+    private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
+        
+    }//GEN-LAST:event_buyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,6 +274,7 @@ public class Achat extends javax.swing.JFrame {
     private javax.swing.JLabel achatLabel;
     private javax.swing.JButton backButton;
     private javax.swing.JButton bucketButton;
+    private javax.swing.JButton buyButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
