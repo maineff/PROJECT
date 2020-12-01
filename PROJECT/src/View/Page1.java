@@ -69,7 +69,6 @@ public class Page1 extends javax.swing.JFrame {
         wrongLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        welcome_selleurLabel = new javax.swing.JLabel();
         menu1Button = new javax.swing.JButton();
         skipButton2 = new javax.swing.JButton();
         idLabel1 = new javax.swing.JLabel();
@@ -79,6 +78,7 @@ public class Page1 extends javax.swing.JFrame {
         subscribeButton = new javax.swing.JButton();
         okButton1 = new javax.swing.JButton();
         wrongLabel1 = new javax.swing.JLabel();
+        logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,7 +123,7 @@ public class Page1 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addComponent(customerButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(sellerButton)
                 .addGap(241, 241, 241))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -151,7 +151,7 @@ public class Page1 extends javax.swing.JFrame {
                 .addContainerGap(241, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 153, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(850, 600));
         jPanel2.setRequestFocusEnabled(false);
 
@@ -170,7 +170,7 @@ public class Page1 extends javax.swing.JFrame {
         passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("Password");
 
-        usernameTextfield.setBackground(new java.awt.Color(204, 204, 255));
+        usernameTextfield.setBackground(new java.awt.Color(204, 153, 255));
         usernameTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
         usernameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,7 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        passwordTextfield.setBackground(new java.awt.Color(204, 204, 255));
+        passwordTextfield.setBackground(new java.awt.Color(204, 153, 255));
         passwordTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
         passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,9 +186,7 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        okButton.setBackground(new java.awt.Color(153, 153, 255));
         okButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        okButton.setForeground(new java.awt.Color(255, 255, 255));
         okButton.setText("OK");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,9 +194,9 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        subscribeButon.setBackground(new java.awt.Color(153, 153, 255));
+        subscribeButon.setBackground(new java.awt.Color(255, 255, 255));
         subscribeButon.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        subscribeButon.setForeground(new java.awt.Color(255, 255, 255));
+        subscribeButon.setForeground(new java.awt.Color(204, 153, 255));
         subscribeButon.setText("You don't have an account? Sign in");
         subscribeButon.setBorder(null);
         subscribeButon.setBorderPainted(false);
@@ -224,17 +222,12 @@ public class Page1 extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(skipButton1))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(menuButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(328, Short.MAX_VALUE)
+                .addGap(52, 52, 52)
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordLabel)
                     .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,30 +236,26 @@ public class Page1 extends javax.swing.JFrame {
                 .addGap(323, 323, 323))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(366, 366, 366)
-                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(385, 385, 385)
+                        .addComponent(okButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(293, 293, 293)
+                        .addGap(289, 289, 289)
                         .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(skipButton1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(imageLabel)))
+                .addComponent(skipButton1)
+                .addGap(56, 56, 56)
+                .addComponent(imageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(menuButton)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))))
+                .addComponent(menuButton)
+                .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 168, Short.MAX_VALUE)
                 .addComponent(usernameLabel)
@@ -276,17 +265,20 @@ public class Page1 extends javax.swing.JFrame {
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(okButton)
-                .addGap(63, 63, 63)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(okButton)))
+                .addGap(32, 32, 32)
                 .addComponent(subscribeButon)
-                .addGap(81, 81, 81))
+                .addGap(103, 103, 103))
         );
 
+        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
         jPanel3.setPreferredSize(new java.awt.Dimension(850, 600));
-
-        welcome_selleurLabel.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        welcome_selleurLabel.setText("Welcome selleur");
 
         menu1Button.setText("Menu");
         menu1Button.addActionListener(new java.awt.event.ActionListener() {
@@ -302,22 +294,33 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        idLabel1.setText("Id");
+        idLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        idLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        idLabel1.setText("Username");
 
+        idTextfield1.setBackground(new java.awt.Color(0, 153, 153));
+        idTextfield1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
         idTextfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTextfield1ActionPerformed(evt);
             }
         });
 
-        passwordLabel1.setText("password");
+        passwordLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        passwordLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        passwordLabel1.setText("Password");
 
+        passwordTextfield1.setBackground(new java.awt.Color(0, 153, 153));
+        passwordTextfield1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
         passwordTextfield1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextfield1ActionPerformed(evt);
             }
         });
 
+        subscribeButton.setBackground(new java.awt.Color(255, 255, 255));
+        subscribeButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        subscribeButton.setForeground(new java.awt.Color(0, 153, 153));
         subscribeButton.setText("You don't have an account? Sign in");
         subscribeButton.setBorder(null);
         subscribeButton.setBorderPainted(false);
@@ -327,73 +330,81 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        okButton1.setText("ok");
+        okButton1.setText("OK");
         okButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButton1ActionPerformed(evt);
             }
         });
 
+        wrongLabel1.setBackground(new java.awt.Color(0, 153, 153));
         wrongLabel1.setForeground(new java.awt.Color(255, 0, 0));
+
+        logoLabel.setIcon(new javax.swing.ImageIcon("/Users/alkassoumhaoua/Downloads/icons8-male-user-64.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(skipButton2))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(264, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordLabel1)
-                    .addComponent(idLabel1))
-                .addGap(66, 66, 66)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idTextfield1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTextfield1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(244, 244, 244))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
+                        .addGap(276, 276, 276)
                         .addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(353, 353, 353)
-                        .addComponent(welcome_selleurLabel))
+                        .addGap(357, 357, 357)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addComponent(menu1Button))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(395, 395, 395)
+                        .addGap(371, 371, 371)
                         .addComponent(okButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(menu1Button)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(89, 302, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(skipButton2)
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordLabel1)
+                            .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(337, 337, 337))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(skipButton2)
-                .addGap(94, 94, 94)
-                .addComponent(welcome_selleurLabel)
-                .addGap(103, 103, 103)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idLabel1))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel1)
-                    .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(subscribeButton)
-                .addGap(35, 35, 35)
+                .addComponent(idLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(passwordLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                .addComponent(menu1Button))
+                .addGap(35, 35, 35)
+                .addComponent(subscribeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(menu1Button)
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -481,8 +492,8 @@ public class Page1 extends javax.swing.JFrame {
             }
             else
             {
-                wrongLabel.setText("wrong id or password");
-                wrongLabel.setForeground(new Color(255,0,0));
+                wrongLabel1.setText("wrong id or password");
+                wrongLabel1.setForeground(new Color(255,0,0));
             }
                 
         } 
@@ -588,6 +599,7 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel logoLabel;
     private javax.swing.JButton menu1Button;
     private javax.swing.JButton menuButton;
     private javax.swing.JButton okButton;
@@ -605,7 +617,6 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextfield;
     private javax.swing.JLabel welcomeLabel;
-    private javax.swing.JLabel welcome_selleurLabel;
     private javax.swing.JLabel wrongLabel;
     private javax.swing.JLabel wrongLabel1;
     private javax.swing.JLabel you_areLabel;
