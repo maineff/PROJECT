@@ -8,15 +8,8 @@ package View;
 import Controller.Dbutils;
 import Controller.EmployeeDBQuery;
 import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Paint;
-import java.awt.RenderingHints;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,15 +60,15 @@ public class Page1 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         welcome_customerLabel = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
-        usernameTextfield = new javax.swing.JTextField();
+        log_inLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        idTextfield = new javax.swing.JTextField();
+        passwordLabel = new javax.swing.JLabel();
+        passwordTextfield = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         subscribeButon = new javax.swing.JButton();
         skipButton1 = new javax.swing.JButton();
         wrongLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        passwordLabel = new javax.swing.JLabel();
-        passwordTextfield = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         welcome_selleurLabel = new javax.swing.JLabel();
         menu1Button = new javax.swing.JButton();
@@ -89,6 +82,7 @@ public class Page1 extends javax.swing.JFrame {
         wrongLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(850, 600));
         jLayeredPane1.setRequestFocusEnabled(false);
@@ -156,33 +150,13 @@ public class Page1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerButton)
                     .addComponent(sellerButton))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
-        jPanel2 = new javax.swing.JPanel() {
-            protected void paintComponent(Graphics g) {
-                if (g instanceof Graphics2D) {
-                    final int R = 200;
-                    final int G = 0;
-                    final int B = 100;
-                    //new GradientPaint(0.0f, 0.0f, new Color(R, G, B, 0),
-                        Paint p = new GradientPaint(0, 0,  Color.MAGENTA, 500,getHeight(),Color.CYAN);
-                        //getWidth(), getHeight(), new Color(R, G, B, 255), true);
-                    Graphics2D g2d = (Graphics2D)g;
-                    g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                    g2d.setPaint(p);
-                    g2d.fillRect(0, 0, getWidth(), getHeight());
-                } else {
-                    super.paintComponent(g);
-                }
-            }
-        };
         jPanel2.setPreferredSize(new java.awt.Dimension(850, 600));
         jPanel2.setRequestFocusEnabled(false);
 
-        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
-        welcome_customerLabel.setForeground(new java.awt.Color(255, 255, 255));
+        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         welcome_customerLabel.setText("Welcome customer");
 
         menuButton.setText("Menu");
@@ -192,23 +166,31 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        usernameTextfield.addActionListener(new java.awt.event.ActionListener() {
+        log_inLabel.setText("Log in");
+
+        idLabel.setText("Id");
+
+        idTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTextfieldActionPerformed(evt);
+                idTextfieldActionPerformed(evt);
             }
         });
 
-        okButton.setBackground(new java.awt.Color(255, 255, 255));
-        okButton.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        okButton.setText("Log in");
+        passwordLabel.setText("password");
+
+        passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextfieldActionPerformed(evt);
+            }
+        });
+
+        okButton.setText("ok");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
             }
         });
 
-        subscribeButon.setBackground(new java.awt.Color(255, 255, 255));
-        subscribeButon.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         subscribeButon.setText("You don't have an account? Sign in");
         subscribeButon.setBorder(null);
         subscribeButon.setBorderPainted(false);
@@ -225,93 +207,69 @@ public class Page1 extends javax.swing.JFrame {
             }
         });
 
-        wrongLabel.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         wrongLabel.setForeground(new java.awt.Color(255, 0, 0));
-
-        usernameLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
-        usernameLabel.setText("Username");
-
-        passwordLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
-        passwordLabel.setText("Password");
-
-        passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextfieldActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/alkassoumhaoua/Downloads/295128.png")); // NOI18N
-        //jLabel1.setIcon(new ImageIcon(new ImageIcon("/Users/alkassoumhaoua/Downloads/295128.png").getImage().getScaledInstance(150,150, Image.SCALE_DEFAULT)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(skipButton1)
-                .addGap(19, 19, 19))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(skipButton1))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(menuButton))
+                        .addGap(343, 343, 343)
+                        .addComponent(welcome_customerLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(341, 341, 341)
-                        .addComponent(okButton))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(383, 383, 383)
+                        .addComponent(log_inLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(253, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idLabel)
+                            .addComponent(passwordLabel))
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(331, Short.MAX_VALUE))
+                                .addGap(35, 35, 35)
+                                .addComponent(okButton)))
+                        .addGap(329, 329, 329))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(290, 290, 290))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(skipButton1)
+                .addGap(68, 68, 68)
+                .addComponent(welcome_customerLabel)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(welcome_customerLabel)
-                            .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(skipButton1))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(menuButton)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(okButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(subscribeButon)
-                        .addGap(104, 104, 104))))
+                .addComponent(log_inLabel)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(idTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLabel)
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(okButton)
+                .addGap(29, 29, 29)
+                .addComponent(subscribeButon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(menuButton))
         );
 
         jPanel3.setPreferredSize(new java.awt.Dimension(850, 600));
@@ -439,11 +397,11 @@ public class Page1 extends javax.swing.JFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 599, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE))
         );
         jLayeredPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -489,9 +447,13 @@ public class Page1 extends javax.swing.JFrame {
          jPanel3.setVisible(false);
     }//GEN-LAST:event_menu1ButtonActionPerformed
 
-    private void usernameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextfieldActionPerformed
+    private void idTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTextfieldActionPerformed
+    }//GEN-LAST:event_idTextfieldActionPerformed
+
+    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextfieldActionPerformed
 
     private void idTextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextfield1ActionPerformed
         // TODO add your handling code here:
@@ -503,7 +465,7 @@ public class Page1 extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         
-        String rq = "SELECT * FROM customer WHERE username='"+usernameTextfield.getText()+"'and password='"+passwordTextfield.getText()+"'";
+        String rq = "SELECT * FROM customer WHERE username='"+idTextfield.getText()+"'and password='"+passwordTextfield.getText()+"'";
         try 
         {
             ResultSet rst = Dbutils.executeQuery(rq);
@@ -571,10 +533,6 @@ public class Page1 extends javax.swing.JFrame {
         new SubscribeE().setVisible(true); 
     }//GEN-LAST:event_subscribeButtonActionPerformed
 
-    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextfieldActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -612,13 +570,15 @@ public class Page1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton customerButton;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel idLabel1;
+    private javax.swing.JTextField idTextfield;
     private javax.swing.JTextField idTextfield1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel log_inLabel;
     private javax.swing.JButton menu1Button;
     private javax.swing.JButton menuButton;
     private javax.swing.JButton okButton;
@@ -633,8 +593,6 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JButton skipButton2;
     private javax.swing.JButton subscribeButon;
     private javax.swing.JButton subscribeButton;
-    private javax.swing.JLabel usernameLabel;
-    private javax.swing.JTextField usernameTextfield;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JLabel welcome_customerLabel;
     private javax.swing.JLabel welcome_selleurLabel;
