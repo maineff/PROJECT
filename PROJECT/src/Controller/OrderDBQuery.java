@@ -5,10 +5,15 @@
  */
 package Controller;
 
-import java.sql.Connection;
+
+import Model.Order;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -17,58 +22,34 @@ import java.sql.Statement;
  */
 public class OrderDBQuery {
      
-   static Connection conn;
-   static Statement st;
    static ResultSet rst;
    
-   public OrderDBQuery ()
-   {
-        try
-        {
-          conn=Dbutils.getDbConnection();
-          st = conn.createStatement();
-          //String sqlStatement = "SELECT * FROM Iceorder";
-          //rst = st.executeQuery(sqlStatement);
-          System.out.println("GREAT");
-        }
-        catch (SQLException ex)
-        {
-           ex.printStackTrace();
-        }
-   }
+    //ajouter une commande dans la base de données 
    
-   
-   //ajouter une commande dans la base de données 
-    public static void submitOrder(int orderId,int qty,String date,double reduc,double prix) throws SQLException
-    {  
-        
-        try 
-        { 
-              orderId=max()+1;
-              String sqlStatement = "INSERT INTO order"+"(orderId,quantity,discount,totalPrice)" +
-                      "VALUES "+ "("+orderId+",'"+qty+"','"+reduc+"','"+prix+"','"+date+"')";
-              st.executeUpdate(sqlStatement);
-            
-        } 
-        catch (SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-   
-    }
-    
-    public static int max() throws SQLException
+    public void submitOrder(Order od)
     {
-        conn=Dbutils.getDbConnection();
-        st=conn.createStatement();
-
-        //on récupère l'id max
-         String rq= "SELECT Max(orderNumber) FROM Iceorder";
-         rst=st.executeQuery(rq);
-         rst.next();
-         int orderId=rst.getInt(1);
-         return orderId;
+        
+       try 
+       {
+         if(od.getTotalPrice()>0)
+         {
+            int id = Dbutils.max("order1","orderId");
+            String date= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+            String query="INSERT INTO order1"
+                    +"(orderId,quantity,discount,totalPrice,date)" 
+                    +" VALUES "
+                    +"("+id+","+od.getQuantity()+","+od.getDiscount()
+                    +","+od.getTotalPrice()+",'"+date
+                    +"')";
+           int rows= Dbutils.executeUpdate(query) ;
+         }
+         else
+            JOptionPane.showMessageDialog(null,"add elements in your order");   
+         
+       } 
+       catch (SQLException ex) 
+       {
+           Logger.getLogger(OrderDBQuery.class.getName()).log(Level.SEVERE, null, ex);
+       }     
     }
-    
-   
 }

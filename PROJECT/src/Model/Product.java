@@ -17,14 +17,18 @@ public class Product {
     private String name;
     private double price;
     private int stock;
-    
+     
+   /*  public Product()
+     {
+         
+     }
     public Product(int id,String nom,int prix,int qty)
     {
         this.productId=id;
         this.name=nom;
         this.price=prix;
         this.stock=qty;
-    }
+    }*/
 
 
     

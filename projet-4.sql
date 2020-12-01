@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 27, 2020 at 10:20 AM
+-- Generation Time: Nov 30, 2020 at 09:37 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -32,8 +32,21 @@ CREATE TABLE `customer` (
   `lastName` varchar(20) NOT NULL,
   `address` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `telephoneNumber` int(10) NOT NULL
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customerId`, `name`, `lastName`, `address`, `city`, `username`, `password`) VALUES
+(1, 'a', 'a', 'a', 'a', 'a', 'a'),
+(2, 'b', 'b', 'b', 'b', 'b', 'b'),
+(3, 'haoua', 'alk', 'bop', 'nhu', 'haoua', 'aze'),
+(4, 'a', 'b', 'c', 'd', 'e', 'f'),
+(5, 'n', 'n', 'n', 'n', 'n', 'n'),
+(6, 'd', 'd', 'd', 'd', 'd', 'dd');
 
 -- --------------------------------------------------------
 
@@ -45,20 +58,20 @@ CREATE TABLE `employee` (
   `employeeId` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `telephoneNumber` int(11) NOT NULL
+  `username` varchar(15) NOT NULL,
+  `password` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`employeeId`, `name`, `lastname`, `address`, `telephoneNumber`) VALUES
-(1, 'haoua', 'alkassoum', '3 rue albert', 101010101),
-(2, 'mai-linh', 'neff', '43 rue gambetta', 20202020),
-(3, 'guillaume', 'sanson', '5 rue larue', 30303030),
-(4, 'laurie', 'fourier', '5 rue laferme', 40404040),
-(5, 'laure', 'manaudou', '1 rue piscine', 50505050);
+INSERT INTO `employee` (`employeeId`, `name`, `lastname`, `username`, `password`) VALUES
+(1, 'haoua', 'alkassoum', '', ''),
+(2, 'mai-linh', 'neff', '', ''),
+(3, 'guillaume', 'sanson', '', ''),
+(4, 'laurie', 'fourier', '', ''),
+(5, 'laure', 'manaudou', '', '');
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `employee`

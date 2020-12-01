@@ -5,61 +5,17 @@
  */
 package View;
 
-import Controller.Dbutils;
-import Controller.ProductDBQuery;
-import Model.Product;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.swing.JButton;
-
-
 /**
  *
  * @author maine
  */
-public class CustomerPage extends javax.swing.JFrame {
+public class EmployeePage extends javax.swing.JFrame {
 
-    ProductDBQuery productdb=new ProductDBQuery();
-     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
-     ArrayList<JButton> product=new ArrayList<>();
-     
-    public CustomerPage() {
-        
-        try {
-            initComponents();
-            //setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-             Connection conn= Dbutils.getDbConnection();
-            produit=productdb.getProducts();
-
-            
-            int j=100;
-            for(int i=0;i<produit.size();i++)
-            {
-                
-                final int number=i;
-                product.add(new JButton(produit.get(i).getProductName()));
-                jPanel1.add(product.get(i));
-                product.get(i).setBounds(100, j, 200, 20);
-                product.get(i).setVisible(true);
-               
-                product.get(i).addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                          dispose();
-                          new Achat(number).setVisible(true);
-                    }
-                });
-                j+=50;
-            }
-          
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+    /**
+     * Creates new form EmployeePage
+     */
+    public EmployeePage() {
+        initComponents();
     }
 
     /**
@@ -73,15 +29,10 @@ public class CustomerPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         skipButton = new javax.swing.JButton();
-        welcome_customerLabel = new javax.swing.JLabel();
+        welcome_employeeLabel = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
         skipButton.setText("SKIP");
         skipButton.addActionListener(new java.awt.event.ActionListener() {
@@ -90,8 +41,8 @@ public class CustomerPage extends javax.swing.JFrame {
             }
         });
 
-        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        welcome_customerLabel.setText("WELCOME CUSTOMER");
+        welcome_employeeLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
+        welcome_employeeLabel.setText("WELCOME EMPLOYEE");
 
         menuButton.setText("Menu");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,38 +51,28 @@ public class CustomerPage extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
-                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(skipButton))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(welcome_customerLabel)))
-                .addContainerGap(294, Short.MAX_VALUE))
+                        .addGap(272, 272, 272)
+                        .addComponent(welcome_employeeLabel)))
+                .addGap(0, 293, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(skipButton)
-                .addGap(23, 23, 23)
-                .addComponent(welcome_customerLabel)
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(welcome_employeeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 505, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -139,24 +80,24 @@ public class CustomerPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-       dispose();
-      new Page1().setVisible(true);
-    }//GEN-LAST:event_menuButtonActionPerformed
-
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_skipButtonActionPerformed
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        dispose();
+        new Page1().setVisible(true);
+    }//GEN-LAST:event_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,31 +116,28 @@ public class CustomerPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerPage().setVisible(true);
+                new EmployeePage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton menuButton;
     private javax.swing.JButton skipButton;
-    private javax.swing.JLabel welcome_customerLabel;
+    private javax.swing.JLabel welcome_employeeLabel;
     // End of variables declaration//GEN-END:variables
 }

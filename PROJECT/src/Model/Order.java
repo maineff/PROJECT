@@ -5,11 +5,9 @@
  */
 package Model;
 
-//import java.sql.Date;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 /**
  *
@@ -26,7 +24,7 @@ public class Order {
     private double totalPrice;
     private String orderDate;		
    
-    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
+  /* public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
     {
         this.orderId=id;
         this.client=person;
@@ -35,8 +33,80 @@ public class Order {
         this.discount=reduc;
         this.totalPrice=prix;
         this.orderDate=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-    }
+    }*/
+    
+       /*-----------------------Setter-----------------------*/
+    
+    public void setOrderId(int orderId)
+   {
+       this.orderId=orderId;
+   }
+   public void setEmployeeName(Customer client)
+   {
+       this.client=client;
+   }
+   
+   public void setProduct(ArrayList produit)
+   {
+       this.produit=produit;
+   }
+   
+   
+   public void setQuantity(int quantity)
+   {
+       this.quantity=quantity;
+   }
+   
+   public void setDiscount(double discount)
+   {
+       this.discount=discount;
+   }
 
+    public void setTotalPrice(double totalPrice)
+   {
+       this.totalPrice=totalPrice;
+   }
+
+     public void setOrderDate(String orderDate)
+   {
+       this.orderDate=orderDate;
+   }
+     
+        /*-----------------------Getter-----------------------*/
+
+    public int getOrderId()
+   {
+       return orderId;
+   }
+   public Customer getEmployeeName()
+   {
+       return client;
+   }
+   
+   public ArrayList getProduct()
+   {
+       return produit;
+   }
+      
+   public int getQuantity()
+   {
+       return quantity;
+   }
+   
+   public double getDiscount()
+   {
+       return discount;
+   }
+
+    public double getTotalPrice()
+   {
+       return totalPrice;
+   }
+
+     public String getOrderDate()
+   {
+       return orderDate;
+   }
 
 }
 

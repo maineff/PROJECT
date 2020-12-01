@@ -5,10 +5,10 @@
  */
 package Controller;
 
-import java.sql.Connection;
+
+import Model.Product;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -18,75 +18,92 @@ import java.util.ArrayList;
  */
 public class ProductDBQuery {
   
-   static Connection conn;
-   static Statement st;
    static ResultSet rst;
-   ArrayList<String>productName = new  ArrayList<>();
-   ArrayList<Double>productPrice = new  ArrayList<>();
-   ArrayList<Integer>productStock= new  ArrayList<>();
-   ArrayList<Integer>productId= new  ArrayList<>();
-
-    public ProductDBQuery() 
+  
+   
+   /*-----------------------GetALLproduct-----------------------*/
+    public ArrayList<Product> getProducts() 
     {
-      try
-      {
-        conn=Dbutils.getDbConnection();
-        st = conn.createStatement();
+        ArrayList<Product>products= new  ArrayList<Product>();
         String sqlStatement = "SELECT * FROM product";
-        rst = st.executeQuery(sqlStatement);
-        recup();
-       }
-      catch (SQLException ex)
-      {
-          ex.printStackTrace();
-      }
-    }
-    
-    public  void recup()
-    {
-       try
-       {
-                    
-        while(rst.next())
-        {
-           productId.add(rst.getInt("productId"));
-           productName.add( rst.getString("name"));
-           productPrice.add(Double.parseDouble(rst.getString("price")));
-           productStock.add(Integer.parseInt(rst.getString("stock")));
-        }
-         
-       } 
-       catch (SQLException ex)
-       {
-           System.out.println("pb recup product"+ex.getMessage());
-       }
         
-        System.out.println(productId);
-        System.out.println(productName); 
-        System.out.println(productPrice);
-        System.out.println(productStock);
-   }
-    
-    /*-----------------------Getter-----------------------*/
-     public ArrayList getProductId()
-    {
-        return productId;
-    }
-    
-    public ArrayList getProductName()
-    {
-        return productName;
-    }
-       
-    public ArrayList getProductPrice()
-    {
-        return productPrice;
-    }
+        try
+        {
+           rst = Dbutils.executeQuery(sqlStatement);
+           Product prod;
+           while(rst.next())
+           {
+                prod= new Product();
+                prod.setProductId(rst.getInt("productId"));
+                prod.setProductName(rst.getString("name"));
+                prod.setProductPrice(rst.getDouble("price"));
+                prod.setProductStock(rst.getInt("stock"));
+                products.add(prod);
+            }
 
-    public ArrayList getProductStock()
-    {
-        return productStock;
-    }
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println("pb recup produit"+ex.getMessage());
+        }
+      
+        return products;
 
+    }
     
+    public void addProduct(Product prod)
+    {
+        try
+        {
+            int id = Dbutils.max("product","productId");
+             String query="INSERT INTO product"
+                     +"(productId,name,price,stock)"
+                     +"VALUES"
+                     +"("+id+",'"+prod.getProductName()
+                     +"','"+prod.getProductPrice()+"','"+prod.getProductStock()+"')";
+             
+             int rows= Dbutils.executeUpdate(query) ;
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb ajout produit"+e.getMessage());
+        }
+    }
+    
+    
+   public void deleteProduct(Product prod)
+    {
+        try
+        {
+             String query="DELETE  FROM product WHERE productId="+prod.getProductId();
+            int rows= Dbutils.executeUpdate(query) ;
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb suppression product"+e.getMessage());
+        }
+    }
+   
+    public void updateProduct(Product prod)
+    {
+        try
+        {
+          /* String query="UPDATE product SET name='"+prod.getProductName()
+                    +"', price='"+prod.getProductPrice()
+                    +"', stock="+prod.getProductStock()*/
+            
+                   System.out.println("le produit est modif");
+           
+            String query="UPDATE product SET name='"+prod.getProductName()
+                    +"', price="+prod.getProductPrice()
+                    +", stock="+prod.getProductStock()
+                    +" WHERE productId = "+prod.getProductId();
+           
+             int rows= Dbutils.executeUpdate(query) ;
+        }
+        catch(Exception e)
+        {
+            System.out.println("pb update product"+e.getMessage());
+        }
+    } 
 }
