@@ -18,17 +18,19 @@ public class Product {
     private double price;
     private int stock;
      
-   /*  public Product()
-     {
+    //Constructors
+    public Product()
+    {
          
-     }
+    }
+    
     public Product(int id,String nom,int prix,int qty)
     {
         this.productId=id;
         this.name=nom;
         this.price=prix;
         this.stock=qty;
-    }*/
+    }
 
 
     
@@ -75,5 +77,4 @@ public class Product {
     {
         stock=stk;
     }
-
 }

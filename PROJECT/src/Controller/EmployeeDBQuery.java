@@ -13,16 +13,14 @@ import java.util.ArrayList;
 /**
  *
  * @author alkassoumhaoua
- */
-
-/**
-       Constructor
-   */
+*/
 public class EmployeeDBQuery
 {
    static ResultSet rst;
   
    /*-----------------------GetALLemployee-----------------------*/
+   
+   //Method which creates and returns an array of employees taken from the database
     public ArrayList<Employee> getEmployees() 
     {
         ArrayList<Employee>employees= new  ArrayList<Employee>();
@@ -53,6 +51,7 @@ public class EmployeeDBQuery
     }
    
     
+    //Method which adds an employee in the DataBase
     public void addEmployee(Employee emp)
     {
         try
@@ -73,6 +72,7 @@ public class EmployeeDBQuery
         }
     }
     
+    //Method which deletes an employee from the DataBase
     public void deleteEmployee(Employee emp)
     {
         try
@@ -86,6 +86,7 @@ public class EmployeeDBQuery
         }
     }
    
+    //Method which updates employee data in the database
     public void updateEmployee(Employee emp)
     {
         try

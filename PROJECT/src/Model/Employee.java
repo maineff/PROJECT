@@ -19,13 +19,11 @@ public class Employee
     private String username;
     private String password;
     
-    ///////////////pas besoin je crois
- /*
-    //cstct par defaut
-     public Employee()
+
+    //Constructors
+    public Employee()
     {
-        this.employeeId=0;
-        this.name="";
+        
     }
        
    public Employee(int id,String prenom,String nom,String username,String password )
@@ -36,7 +34,6 @@ public class Employee
         this.username=username;
         this.password=password;
     }
-   */
 
    /*-----------------------Setter-----------------------*/
     
@@ -68,6 +65,7 @@ public class Employee
     
 
    /*-----------------------Getter-----------------------*/
+   
    public int getEmployeeId()
    {
        return employeeId;
@@ -93,6 +91,4 @@ public class Employee
    {
        return password;
    }
-  
-   
 }

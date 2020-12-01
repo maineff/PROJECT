@@ -17,11 +17,14 @@ import java.sql.Statement;
  * @author alkassoumhaoua
  */
 public class Dbutils {
-     
+    
+    //Class used to access utils methods relating to connection and database queries
+    
     //public final static String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
     public final static String DB_URL ="jdbc:mysql://localhost:3306/projet"; 
     
-     public static Connection getDbConnection()throws SQLException
+    //We establish the connection
+    public static Connection getDbConnection()throws SQLException
     {
        String user="root";
        //String password="root"; 
@@ -29,25 +32,27 @@ public class Dbutils {
        return DriverManager.getConnection(DB_URL,user, password);
     }
      
+    //We create the statement
     public static Statement createStatement() throws SQLException
     {
         Connection conn= Dbutils.getDbConnection();
         return conn.createStatement();
-
     }
     
+    //Method which execute the query
     public static ResultSet executeQuery(String rq) throws SQLException
     {
        return createStatement().executeQuery(rq);
     }
     
-    
+    //Method which execute the update
     public static int executeUpdate(String rq) throws SQLException
     {
         return createStatement().executeUpdate(rq); 
     }
     
-    //on récupère l'id max pour insérer a la suite
+    //On récupère l'id max pour insérer a la suite
+    //We get the max id to insert afterwards
     public static int max(String table,String iDtable) throws SQLException
     {
          ResultSet rst;

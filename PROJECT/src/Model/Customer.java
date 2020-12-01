@@ -23,13 +23,15 @@ public class Customer {
     private String username;
     private String password;
     
-  /*    public Customer()
-      {
+    // Constructors
+    public Customer()
+    {
           
-      }
-    public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
+    }
+    
+     public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
             String ville,String username,String password)
-   {
+    {
         this.customerId=id;
         this.name=prenom;
         this.lastName=nom;
@@ -41,6 +43,7 @@ public class Customer {
     }
     
     /*-----------------------Getter-----------------------*/
+    
    public int getCustomerId()
    {
        return customerId;
@@ -79,6 +82,7 @@ public class Customer {
 
    
    /*-----------------------Setter-----------------------*/
+   
    public void setCustomerId(int customerId)
    {
        this.customerId=customerId;

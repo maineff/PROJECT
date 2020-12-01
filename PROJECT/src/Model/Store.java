@@ -18,7 +18,6 @@ public class Store
     private  ArrayList<Employee>employee= new  ArrayList<Employee>(); 
     private  ArrayList<Customer>customer= new  ArrayList<Customer>(); 
         
- 
     
     public Store() 
     {

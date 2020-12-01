@@ -23,7 +23,8 @@ public class CustomerDBQuery {
    
    /*-----------------------GetALLcustomer-----------------------*/
     
-    public ArrayList<Customer> getCustomers() 
+   //Method which creates and returns an array of customers taken from the database 
+   public ArrayList<Customer> getCustomers() 
     {
         ArrayList<Customer>custloyees= new  ArrayList<Customer>();
         String sqlStatement = "SELECT * FROM customer";
@@ -48,7 +49,7 @@ public class CustomerDBQuery {
         }
         catch (SQLException ex) 
         {
-            System.out.println("pb recup customer"+ex.getMessage());
+            System.out.println("pb recup customer "+ex.getMessage());
         }
       
         return custloyees;
@@ -56,6 +57,7 @@ public class CustomerDBQuery {
     }
    
     
+    //Method which adds a customer in the DataBase
     public void addCustomer(Customer cust)
     {
         try
@@ -77,6 +79,7 @@ public class CustomerDBQuery {
         }
     }
     
+    //Method which deletes a customer from the database
     public void deleteCustomer(Customer cust)
     {
         try
@@ -86,10 +89,11 @@ public class CustomerDBQuery {
         }
         catch(Exception e)
         {
-            System.out.println("pb suppression customer"+e.getMessage());
+            System.out.println("pb suppression customer "+e.getMessage());
         }
     }
    
+    //Method which updates customer data in the database
     public void updateCustomer(Customer cust)
     {
         try

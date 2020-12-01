@@ -25,6 +25,7 @@ public class OrderDBQuery {
    static ResultSet rst;
    
     //ajouter une commande dans la base de données 
+   //Add an order in the database
    
     public void submitOrder(Order od)
     {
@@ -44,7 +45,7 @@ public class OrderDBQuery {
            int rows= Dbutils.executeUpdate(query) ;
          }
          else
-            JOptionPane.showMessageDialog(null,"add elements in your order");   
+            JOptionPane.showMessageDialog(null,"Add elements in your order");   
          
        } 
        catch (SQLException ex) 

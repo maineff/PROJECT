@@ -22,6 +22,8 @@ public class ProductDBQuery {
   
    
    /*-----------------------GetALLproduct-----------------------*/
+   
+   //Method which creates and returns an array of product taken from the database
     public ArrayList<Product> getProducts() 
     {
         ArrayList<Product>products= new  ArrayList<Product>();
@@ -51,6 +53,7 @@ public class ProductDBQuery {
 
     }
     
+    //Method which adds a product in the data base
     public void addProduct(Product prod)
     {
         try
@@ -71,7 +74,8 @@ public class ProductDBQuery {
     }
     
     
-   public void deleteProduct(Product prod)
+   //Method which deletes a product from the database
+    public void deleteProduct(Product prod)
     {
         try
         {
@@ -84,6 +88,7 @@ public class ProductDBQuery {
         }
     }
    
+    //Method which updates product data in the database
     public void updateProduct(Product prod)
     {
         try
@@ -103,7 +108,7 @@ public class ProductDBQuery {
         }
         catch(Exception e)
         {
-            System.out.println("pb update product"+e.getMessage());
+            System.out.println("pb update product "+e.getMessage());
         }
     } 
 }

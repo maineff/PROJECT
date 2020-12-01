@@ -7,6 +7,7 @@ package Model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
@@ -24,7 +25,12 @@ public class Order {
     private double totalPrice;
     private String orderDate;		
    
-  /* public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
+    //Constructor
+    public Order(){
+        
+    }
+    
+    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
     {
         this.orderId=id;
         this.client=person;
@@ -33,7 +39,7 @@ public class Order {
         this.discount=reduc;
         this.totalPrice=prix;
         this.orderDate=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-    }*/
+    }
     
        /*-----------------------Setter-----------------------*/
     
@@ -107,6 +113,5 @@ public class Order {
    {
        return orderDate;
    }
-
 }
 
