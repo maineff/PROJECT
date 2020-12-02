@@ -7,6 +7,7 @@ package View;
 
 import Controller.Dbutils;
 import Controller.ProductDBQuery;
+import Model.Customer;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,38 +21,44 @@ import javax.swing.JButton;
  *
  * @author maine
  */
-public class CustomerPage extends javax.swing.JFrame {
+public class ProductPage extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
      private  ArrayList<Product> produit = new  ArrayList<Product>(); 
-     ArrayList<JButton> product=new ArrayList<>();
-     
-    public CustomerPage() {
+     ArrayList<Product> bucket = new  ArrayList<Product>(); 
+     ArrayList<JButton> productButtons=new ArrayList<>();
+     static Customer customerConnected=null;
+    Achat achatPage;
+     public ProductPage( Customer cust) {
         
         try {
             initComponents();
             //setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+            customerConnected=cust;
              Connection conn= Dbutils.getDbConnection();
             produit=productdb.getProducts();
-
+            achatPage= new Achat(this);
             
             int j=100;
             for(int i=0;i<produit.size();i++)
             {
                 
                 final int number=i;
-                product.add(new JButton(produit.get(i).getProductName()));
-                jPanel1.add(product.get(i));
-                product.get(i).setBounds(100, j, 200, 20);
-                product.get(i).setVisible(true);
+                productButtons.add(new JButton(produit.get(i).getProductName()));
+                jPanel1.add(productButtons.get(i));
+                productButtons.get(i).setBounds(100, j, 200, 20);
+                productButtons.get(i).setVisible(true);
                
-                product.get(i).addActionListener(new ActionListener() {
+                productButtons.get(i).addActionListener(new ActionListener() {
 
                     @Override
                     public void actionPerformed(ActionEvent ae) {
                           dispose();
-                          new Achat(number).setVisible(true);
+                        
+                         achatPage.clearQuantity();
+                          achatPage.setAchat(number);
+                         achatPage.setVisible(true);
+                        System.out.println(bucket.size());
                     }
                 });
                 j+=50;
@@ -62,6 +69,11 @@ public class CustomerPage extends javax.swing.JFrame {
         }
     }
 
+     public void addToBucket(Product p)
+     {
+          bucket.add(p);
+          System.out.println(bucket.size());
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +91,6 @@ public class CustomerPage extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
@@ -175,21 +186,23 @@ public class CustomerPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerPage().setVisible(true);
+                new ProductPage(customerConnected).setVisible(true);
             }
         });
     }

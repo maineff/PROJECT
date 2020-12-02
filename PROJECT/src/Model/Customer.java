@@ -49,6 +49,11 @@ public class Customer {
        return customerId;
    }
    
+   public ArrayList<Order>  getCommande()
+   {
+       return commande;
+   }
+   
    public String getCustomerName()
    {
        return name;

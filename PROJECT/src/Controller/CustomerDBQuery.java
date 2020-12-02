@@ -26,7 +26,7 @@ public class CustomerDBQuery {
    //Method which creates and returns an array of customers taken from the database 
    public ArrayList<Customer> getCustomers() 
     {
-        ArrayList<Customer>custloyees= new  ArrayList<Customer>();
+        ArrayList<Customer>customers= new  ArrayList<Customer>();
         String sqlStatement = "SELECT * FROM customer";
        
         try
@@ -43,7 +43,7 @@ public class CustomerDBQuery {
                 cust.setCustomerCity(rst.getString("city"));
                 cust.setCustomerUsername(rst.getString("username"));
                 cust.setCustomerPassword(rst.getString("password"));
-                custloyees.add(cust);
+                customers.add(cust);
             }
 
         }
@@ -52,7 +52,7 @@ public class CustomerDBQuery {
             System.out.println("pb recup customer "+ex.getMessage());
         }
       
-        return custloyees;
+        return customers;
 
     }
    

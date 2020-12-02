@@ -23,24 +23,29 @@ public class Achat extends javax.swing.JFrame {
 
     ProductDBQuery productdb=new ProductDBQuery();
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+    ArrayList<Product> bucket= new  ArrayList<Product>(); 
+   ProductPage parentPage;
     OrderDBQuery orderdb= new OrderDBQuery();
     Order nv=new Order();
-   
+   //Customer customerConnected=null;
             
     
     int here;
 
 
-    public Achat() {
+    public Achat(ProductPage p) {
+          initComponents();
+        parentPage=p;
+      
     }
      
     
-    public Achat(int i) {
+    public void setAchat(int i) {
          try {
-        initComponents();
-        
-
-        
+       
+        //customerConnected=cust;
+       // bucket=list;
+        parentPage.setVisible(false);
         Connection conn= Dbutils.getDbConnection();
         produit=productdb.getProducts();
         nameLabel.setText(produit.get(i).getProductName());
@@ -205,28 +210,37 @@ public class Achat extends javax.swing.JFrame {
     }//GEN-LAST:event_skipButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        setVisible(false);
-        new CustomerPage().setVisible(true);
+        //setVisible(false);
+         this.dispose();
+        parentPage.setVisible(true);
+        
+       // new ProductPage(customerConnected).setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    public void clearQuantity()
+    {
+        quantityTextfield.setText("");
+    }
     private void bucketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucketButtonActionPerformed
-        int nombre=produit.get(here).getProductStock();
+        //int nombre=produit.get(here).getProductStock();
         int quantity=Integer.parseInt(quantityTextfield.getText());
         
         
-        nombre=produit.get(here).getProductStock()-quantity;
-        produit.get(here).setProductStock(nombre);
-        productdb.updateProduct(produit.get(here));
+        //nombre=produit.get(here).getProductStock()-quantity;
+        //produit.get(here).setProductStock(nombre);
+        //productdb.updateProduct(produit.get(here));  pas commandé pour l'instant
         
-        nv.setDiscount(10);
+       /* nv.setDiscount(10);
         nv.setQuantity(quantity);
         nv.setTotalPrice(produit.get(here).getProductPrice()*quantity);
-        System.out.println(nv.getDiscount()+" "+nv.getQuantity()+" "+nv.getTotalPrice());
-        orderdb.submitOrder(nv);
-         
+        System.out.println(nv.getDiscount()+" "+nv.getQuantity()+" "+nv.getTotalPrice());*/
+        //orderdb.submitOrder(nv);
+        parentPage.addToBucket(produit.get(here));
+       
+         // dispose();
         //retour page produits
-        setVisible(false);
-        new CustomerPage().setVisible(true);
+        //setVisible(false);
+        //new ProductPage(customerConnected).setVisible(true);
        
         
     }//GEN-LAST:event_bucketButtonActionPerformed
@@ -238,7 +252,7 @@ public class Achat extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -262,11 +276,11 @@ public class Achat extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+       //  Create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Achat().setVisible(true);
-            }
+         public void run() {
+              //new Achat().setVisible(true);
+         }
         });
     }
 
