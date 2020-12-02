@@ -21,42 +21,44 @@ import java.util.ArrayList;
  */
 public class Achat extends javax.swing.JFrame {
 
-    ProductDBQuery productdb=new ProductDBQuery();
+    //Fields
+    private final ProductDBQuery productdb=new ProductDBQuery();
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
-    ArrayList<Product> bucket= new  ArrayList<Product>(); 
-   ProductPage parentPage;
-    OrderDBQuery orderdb= new OrderDBQuery();
-    Order nv=new Order();
-   //Customer customerConnected=null;
-            
+    private final ProductPage parentPage;
+    private int here;
+    private Order currentOrder;
     
-    int here;
 
-
+    //Constructor
     public Achat(ProductPage p) {
-          initComponents();
+        initComponents();
         parentPage=p;
-      
     }
      
     
-    public void setAchat(int i) {
-         try {
+    //Méthode permettant d'afficher la page Achat sans créer une nouvelle JFrame à chaque fois
+    //et qui affiche les informations du produit selectionné par le customer
+    public void setAchat(int i, Order co) {
+         
+        this.currentOrder=co;
+        this.here=i;
+        
+        try {
        
-        //customerConnected=cust;
-       // bucket=list;
-        parentPage.setVisible(false);
-        Connection conn= Dbutils.getDbConnection();
-        produit=productdb.getProducts();
-        nameLabel.setText(produit.get(i).getProductName());
-        priceLabel.setText(Double.toString(produit.get(i).getProductPrice())+"$");
-        quantityLabel.setText(Integer.toString(produit.get(i).getProductStock())+"/100");
-        here=i;
+            parentPage.setVisible(false);//On désaffiche la page parent, ie la Productpage
+            
+            //On établit la connection
+            Connection conn= Dbutils.getDbConnection();
+            produit=productdb.getProducts();
+            
+            //On affiche les informations relatives au produit choisi par le customer
+            nameLabel.setText(produit.get(i).getProductName());
+            priceLabel.setText(Double.toString(produit.get(i).getProductPrice())+"$");
+            quantityLabel.setText(Integer.toString(produit.get(i).getProductStock())+"/100");
 
-         }  catch (SQLException ex) {
+        }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-         
     }
 
     /**
@@ -78,10 +80,8 @@ public class Achat extends javax.swing.JFrame {
         quantity1Label = new javax.swing.JLabel();
         quantityTextfield = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
-        buyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
@@ -121,13 +121,6 @@ public class Achat extends javax.swing.JFrame {
             }
         });
 
-        buyButton.setText("BUY");
-        buyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buyButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -155,13 +148,11 @@ public class Achat extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bucketButton)))
-                        .addGap(34, 34, 34)
-                        .addComponent(buyButton))
+                                .addComponent(bucketButton))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
                         .addComponent(achatLabel)))
-                .addGap(0, 105, Short.MAX_VALUE))
+                .addGap(0, 202, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +176,7 @@ public class Achat extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(priceLabel)
                         .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bucketButton)
-                            .addComponent(buyButton))))
+                        .addComponent(bucketButton)))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -206,48 +195,45 @@ public class Achat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-       System.exit(0);
+       System.exit(0);//Closing of the system
     }//GEN-LAST:event_skipButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        //setVisible(false);
-         this.dispose();
-        parentPage.setVisible(true);
-        
-       // new ProductPage(customerConnected).setVisible(true);
+        this.dispose();
+        parentPage.setVisible(true);//On rend la Productpage visible
     }//GEN-LAST:event_backButtonActionPerformed
 
+    //Méthode permettant d'effacer l'ancienne saisie de l'utilisateur
     public void clearQuantity()
     {
         quantityTextfield.setText("");
     }
+    
     private void bucketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucketButtonActionPerformed
-        //int nombre=produit.get(here).getProductStock();
-        int quantity=Integer.parseInt(quantityTextfield.getText());
         
-        
-        //nombre=produit.get(here).getProductStock()-quantity;
-        //produit.get(here).setProductStock(nombre);
-        //productdb.updateProduct(produit.get(here));  pas commandé pour l'instant
-        
-       /* nv.setDiscount(10);
-        nv.setQuantity(quantity);
-        nv.setTotalPrice(produit.get(here).getProductPrice()*quantity);
-        System.out.println(nv.getDiscount()+" "+nv.getQuantity()+" "+nv.getTotalPrice());*/
-        //orderdb.submitOrder(nv);
-        parentPage.addToBucket(produit.get(here));
-       
-         // dispose();
-        //retour page produits
-        //setVisible(false);
-        //new ProductPage(customerConnected).setVisible(true);
-       
-        
-    }//GEN-LAST:event_bucketButtonActionPerformed
+        //We manage product stock
+        int quantityInitial=produit.get(here).getProductStock();
+        int quantityBuy=Integer.parseInt(quantityTextfield.getText());
 
-    private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
+        int quantityFinal=quantityInitial-quantityBuy;
+        produit.get(here).setProductStock(quantityFinal);
+        productdb.updateProduct(produit.get(here));
+
+        //We actualize the current order
+        int quanIni=currentOrder.getQuantity();
+        double priceIni=currentOrder.getTotalPrice();
+
+        currentOrder.setDiscount(10);
+        currentOrder.setQuantity(quanIni+quantityBuy);
+        currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
+        System.out.println(currentOrder.getDiscount()+" "+currentOrder.getQuantity()+" "+currentOrder.getTotalPrice());
+
+        parentPage.addToBucket(produit.get(here));
         
-    }//GEN-LAST:event_buyButtonActionPerformed
+        //Back to Product page
+        //setVisible(false);
+        parentPage.setVisible(true);//On rend la Productpage visible
+    }//GEN-LAST:event_bucketButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +274,6 @@ public static void main(String args[]) {
     private javax.swing.JLabel achatLabel;
     private javax.swing.JButton backButton;
     private javax.swing.JButton bucketButton;
-    private javax.swing.JButton buyButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;

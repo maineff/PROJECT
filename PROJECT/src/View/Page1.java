@@ -9,6 +9,7 @@ import Controller.CustomerDBQuery;
 import Controller.Dbutils;
 
 import Model.Customer;
+import Model.Order;
 
 import java.awt.Color;
 import java.sql.ResultSet;
@@ -524,16 +525,22 @@ public class Page1 extends javax.swing.JFrame {
 
     private void okcustButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okcustButtonActionPerformed
 
+        //Requête permettant d'identifier le client
         String rq = "SELECT * FROM customer WHERE username='"+usernameTextfield.getText()+"'and password='"+passwordTextfield.getText()+"'";
         
         try
         {
+            //On exécute la requête
             ResultSet rst = Dbutils.executeQuery(rq);
             if(rst.next())
             {
-                
+                //On ferme la fenêtre Page1
                 setVisible(false);
                 
+                //On crée une commande actuelle
+                Order currentOrder=new Order();
+                
+                //On créé un customer à l'aide des informations de la base de donnée sur le customer en question
                 Customer custConnected=new Customer();
                 custConnected.setCustomerId(rst.getInt("customerId"));
                 custConnected.setCustomerName(rst.getString("name"));
@@ -543,11 +550,11 @@ public class Page1 extends javax.swing.JFrame {
                 custConnected.setCustomerUsername(rst.getString("username"));
                 custConnected.setCustomerPassword(rst.getString("password"));
                 
-                 new ProductPage(custConnected).setVisible(true);
+                new ProductPage(custConnected, currentOrder).setVisible(true); //On ouvre une nouvelle fenêtre en passant les informations du customer connecté
             }
             else
             {
-                wrongLabel.setText("wrong id or password");
+                wrongLabel.setText("Wrong username or password");
                 wrongLabel.setForeground(new Color(255,0,0));
             }
         }

@@ -19,7 +19,7 @@ public class Customer {
     private String lastName;
     private String address;
     private String city;
-    private ArrayList<Order> commande;//jai pas fait de getteur et setteur tkt pas besoin 
+    private ArrayList<Order> commandes;
     private String username;
     private String password;
     
@@ -36,7 +36,7 @@ public class Customer {
         this.name=prenom;
         this.lastName=nom;
         this.address=living;
-        this.commande=cmd;
+        this.commandes=cmd;
         this.city=ville;
         this.username=username;
         this.password=password;
@@ -49,9 +49,9 @@ public class Customer {
        return customerId;
    }
    
-   public ArrayList<Order>  getCommande()
+   public ArrayList<Order>  getCommandes()
    {
-       return commande;
+       return commandes;
    }
    
    public String getCustomerName()
@@ -82,8 +82,7 @@ public class Customer {
    public String getCustomerPassword()
    {
        return password;
-   }
-   
+   } 
 
    
    /*-----------------------Setter-----------------------*/

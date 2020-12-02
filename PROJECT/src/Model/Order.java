@@ -47,7 +47,7 @@ public class Order {
    {
        this.orderId=orderId;
    }
-   public void setEmployeeName(Customer client)
+   public void setCustomerName(Customer client)
    {
        this.client=client;
    }
