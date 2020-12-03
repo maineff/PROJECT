@@ -292,7 +292,6 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         Product prod=new Product();
-        ProductDBQuery nv=new ProductDBQuery();
         
         prod.setProductName(productTextfield.getText());
         prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
@@ -300,7 +299,7 @@ public class EmployeePage extends javax.swing.JFrame {
         prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
         prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
         
-        nv.addProduct(prod);
+        productdb.addProduct(prod);
         
         productTextfield.setText(null);
         priceTextfield.setText(null);
@@ -321,27 +320,31 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_lotTextfieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        Product prod=new Product();
-        ProductDBQuery nv=new ProductDBQuery();
-        
-        prod.setProductName(productTextfield.getText());
-        prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
-        prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
-        prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-        prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-        
-        nv.updateProduct(prod);
+         for(int i=0; i<produit.size();i++)
+       {
+           if(productTextfield.getText().equals(produit.get(i).getProductName()))
+           {
+               produit.get(i).setProductPrice(Double.parseDouble(priceTextfield.getText()));
+               produit.get(i).setProductStock(Integer.parseInt(quantityTextfield.getText()));
+               produit.get(i).setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+               produit.get(i).setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+               productdb.updateProduct(produit.get(i));
+               
+               System.out.println("modif");
+           }
+       }
         
         productTextfield.setText(null);
         priceTextfield.setText(null);
         quantityTextfield.setText(null);
         discountTextfield.setText(null);
         lotTextfield.setText(null);
+        
+        setVisible(false);
+        new EmployeePage().setVisible(true);    
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-//        Product prod=new Product();
-//        ProductDBQuery nv=new ProductDBQuery();
         
        for(int i=0; i<produit.size();i++)
        {
