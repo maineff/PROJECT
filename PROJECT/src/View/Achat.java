@@ -6,7 +6,6 @@
 package View;
 
 import Controller.Dbutils;
-import Controller.OrderDBQuery;
 import Controller.ProductDBQuery;
 import Model.Order;
 import Model.Product;
@@ -232,8 +231,14 @@ public class Achat extends javax.swing.JFrame {
         parentPage.addToBucket(produit.get(here));
         parentPage.addQuantity(quantityBuy);
         
-        //On affiche le panier
-        //parentPage.
+        //On affiche le panier en appelant la méthode updateTable
+        parentPage.updateTable();
+        
+        //On met à jour le statut du panier
+        parentPage.updateStatutBucket();
+        
+        //On met à jour le prix total
+        parentPage.updateTotalPrice();
         
         //Back to Product page
         //setVisible(false);

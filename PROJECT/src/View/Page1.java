@@ -644,4 +644,10 @@ public class Page1 extends javax.swing.JFrame {
     private javax.swing.JLabel wrongLabel1;
     private javax.swing.JLabel you_areLabel;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+
 }
+

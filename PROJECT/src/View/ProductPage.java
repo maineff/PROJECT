@@ -17,6 +17,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -95,6 +98,53 @@ public class ProductPage extends javax.swing.JFrame {
          quantity.add(i);
          System.out.println(quantity.size());
      }
+     
+    //Méthode mettant à jour la table en fonction des achats du customer
+     public void updateTable() {
+        
+        String[][] rowData = new String[bucket.size()][3];
+        String[] colNames = {"Quantity", "Item", "Price"};
+        
+        for (int i=0; i<bucket.size();i++){
+            
+            int n = quantity.get(i);
+            double p = bucket.get(i).getProductPrice();
+            double tp = p*n;
+            String price = String.valueOf(tp) + " $";
+            
+            rowData[i][0]=String.valueOf(n);            //Conversion du int en String
+            rowData[i][1]=bucket.get(i).getProductName();
+            rowData[i][2]=price;
+        }
+		
+        DefaultTableModel dtm = new DefaultTableModel(rowData, colNames);
+	jTableBucket.setModel(dtm);
+    }
+     
+     public void updateTotalPrice(){
+         if (bucket.isEmpty()){
+             jLabelTotalPrice.setText("");
+         }
+         else{
+             jLabelTotalPrice.setText("Total Price : " + currentOrder.getTotalPrice() + " $");
+         }
+     }
+     
+     //Méthode mettant à jour le label affichant le statut du panier
+     public void updateStatutBucket(){
+         if (bucket.isEmpty()){
+             jLabelStatutBucket.setText("Empty for the moment");
+         }
+         else if (bucket.size()==1){
+             jLabelStatutBucket.setText(bucket.size()+" item for the moment");
+         }
+         else{
+             jLabelStatutBucket.setText(bucket.size()+" items for the moment");
+         }
+         
+     }
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,9 +158,12 @@ public class ProductPage extends javax.swing.JFrame {
         skipButton = new javax.swing.JButton();
         welcome_customerLabel = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         BuyButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableBucket = new javax.swing.JTable();
+        jLabelBucket = new javax.swing.JLabel();
+        jLabelStatutBucket = new javax.swing.JLabel();
+        jLabelTotalPrice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,16 +186,41 @@ public class ProductPage extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         BuyButton.setText("BUY");
         BuyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuyButtonActionPerformed(evt);
             }
         });
+
+        jTableBucket.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Quantity", "Item", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableBucket);
+        if (jTableBucket.getColumnModel().getColumnCount() > 0) {
+            jTableBucket.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTableBucket.getColumnModel().getColumn(2).setPreferredWidth(1);
+        }
+
+        jLabelBucket.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabelBucket.setText("Your bucket :");
+
+        jLabelStatutBucket.setText("Empty for the moment");
+
+        jLabelTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,20 +231,26 @@ public class ProductPage extends javax.swing.JFrame {
                     .addComponent(menuButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
-                        .addComponent(welcome_customerLabel)))
-                .addContainerGap(215, Short.MAX_VALUE))
+                        .addComponent(welcome_customerLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(755, 755, 755)
+                        .addComponent(BuyButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(skipButton))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(470, 470, 470)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelBucket)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelStatutBucket)))
+                        .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BuyButton)
-                        .addGap(93, 93, 93))))
+                        .addComponent(jLabelTotalPrice)
+                        .addGap(178, 178, 178))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,11 +258,17 @@ public class ProductPage extends javax.swing.JFrame {
                 .addComponent(skipButton)
                 .addGap(23, 23, 23)
                 .addComponent(welcome_customerLabel)
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(90, 90, 90)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelBucket)
+                    .addComponent(jLabelStatutBucket))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(jLabelTotalPrice)
+                .addGap(82, 82, 82)
                 .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -186,11 +276,11 @@ public class ProductPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
 
         pack();
@@ -213,10 +303,11 @@ public class ProductPage extends javax.swing.JFrame {
         currentOrder.setProduct(produit);
         
         //Lorsque la commande est passée on met à jour la liste de commande du customer
-        customerConnected.getCommandes().add(currentOrder);
+        //customerConnected.getCommandes().add(currentOrder);
         
     }//GEN-LAST:event_BuyButtonActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -260,11 +351,28 @@ public class ProductPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuyButton;
+    private javax.swing.JLabel jLabelBucket;
+    private javax.swing.JLabel jLabelStatutBucket;
+    private javax.swing.JLabel jLabelTotalPrice;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableBucket;
     private javax.swing.JButton menuButton;
     private javax.swing.JButton skipButton;
     private javax.swing.JLabel welcome_customerLabel;
     // End of variables declaration//GEN-END:variables
+
+
+   /*-----------------------Getter-----------------------*/
+    
+    public ArrayList<Product> getBucket()
+    {
+        return bucket;
+    }
+    
+    public ArrayList<Integer> getQuantity()
+    {
+        return quantity;
+    }
+
 }
