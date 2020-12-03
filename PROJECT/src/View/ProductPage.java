@@ -72,7 +72,6 @@ public class ProductPage extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent ae) {
                          
                         dispose();
-                        
                         achatPage.clearQuantity();
                         achatPage.setAchat(number, currentOrder);
                         achatPage.setVisible(true);//We display the purchase window if we click on a JButton

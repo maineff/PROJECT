@@ -40,6 +40,8 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> orderDiscountLabel=new ArrayList<>();
     private ArrayList<JLabel> orderDateLabel=new ArrayList<>(); 
     private ArrayList<JLabel> orderUserLabel=new ArrayList<>();
+    private ArrayList<JButton> selectorder= new ArrayList<>();
+    Details detailpage=new Details(this);
     
     String employeeAction="";
     
@@ -47,6 +49,8 @@ public class EmployeePage extends javax.swing.JFrame {
        
         try{
         initComponents();
+        
+        
         jPanel1.add(jPanel2);
         jPanel1.add(jScrollPane);
         
@@ -118,6 +122,7 @@ public class EmployeePage extends javax.swing.JFrame {
            orderPriceLabel.add(new JLabel(Double.toString(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
            orderUserLabel.add(new JLabel(commande.get(i).getUsername()));
+           selectorder.add(new JButton());
            
            jPanel5.add(orderIdLabel1.get(i));
            jPanel5.add(orderQuantityLabel.get(i));
@@ -125,7 +130,9 @@ public class EmployeePage extends javax.swing.JFrame {
            jPanel5.add(orderPriceLabel.get(i));
            jPanel5.add(orderDateLabel.get(i));
            jPanel5.add(orderUserLabel.get(i));
+           jPanel5.add(selectorder.get(i));
            
+           selectorder.get(i).setBounds(50, k, 20, 20);
            orderIdLabel1.get(i).setBounds(100, k, 200, 20);
            orderDiscountLabel.get(i).setBounds(210, k, 200, 20);
            orderQuantityLabel.get(i).setBounds(350, k, 200, 20);
@@ -133,12 +140,22 @@ public class EmployeePage extends javax.swing.JFrame {
            orderDateLabel.get(i).setBounds(600, k, 200, 20);
            orderUserLabel.get(i).setBounds(730, k, 200, 20);
            
+           selectorder.get(i).setVisible(true);
            orderIdLabel1.get(i).setVisible(true);
            orderQuantityLabel.get(i).setVisible(true);
            orderDiscountLabel.get(i).setVisible(true);
            orderPriceLabel.get(i).setVisible(true);
            orderDateLabel.get(i).setVisible(true);
            orderUserLabel.get(i).setVisible(true);
+           
+           selectorder.get(i).addActionListener(new ActionListener() {
+
+               @Override
+               public void actionPerformed(ActionEvent ae) {
+                   dispose();
+                   detailpage.setVisible(true);
+               }
+           });
            
            
             k+=30;
