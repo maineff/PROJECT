@@ -21,7 +21,7 @@ public class Order {
     private Customer client;
     private ArrayList<Product> produit;
     private int quantity;
-    private double discount;
+    private int discount;
     private double totalPrice;
     private String orderDate;	
     private String username;	
@@ -31,7 +31,7 @@ public class Order {
         
     }
     
-    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, double reduc,double prix)
+    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, int reduc,double prix)
     {
         this.orderId=id;
         this.client=person;
@@ -64,7 +64,7 @@ public class Order {
        this.quantity=quantity;
    }
    
-   public void setDiscount(double discount)
+   public void setDiscount(int discount)
    {
        this.discount=discount;
    }
@@ -104,7 +104,7 @@ public class Order {
        return quantity;
    }
    
-   public double getDiscount()
+   public int getDiscount()
    {
        return discount;
    }

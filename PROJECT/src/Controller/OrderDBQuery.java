@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,5 +53,35 @@ public class OrderDBQuery {
        {
            Logger.getLogger(OrderDBQuery.class.getName()).log(Level.SEVERE, null, ex);
        }     
+    }
+    
+     public ArrayList<Order> getOrder() 
+    {
+        ArrayList<Order>orders= new  ArrayList<>();
+        String sqlStatement = "SELECT * FROM order1";
+       
+        try
+        {
+           rst = Dbutils.executeQuery(sqlStatement);
+           Order od ;
+           while(rst.next())
+           {
+                od= new Order();
+                od.setOrderId(rst.getInt("orderId"));
+                od.setQuantity(rst.getInt("quantity"));
+                od.setDiscount(rst.getInt("discount"));
+                od.setTotalPrice(rst.getDouble("totalPrice"));
+                od.setOrderDate(rst.getString("date"));
+                od.setUsername(rst.getString("username"));
+                orders.add(od);
+           }
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println("pb recup orders"+ex.getMessage());
+        }
+      
+        return orders;
+
     }
 }

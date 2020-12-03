@@ -6,7 +6,9 @@
 package View;
 
 import Controller.Dbutils;
+import Controller.OrderDBQuery;
 import Controller.ProductDBQuery;
+import Model.Order;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,24 +32,35 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> productDiscountLabels=new ArrayList<>();
     private ArrayList<JLabel> productLotLabels=new ArrayList<>();
     
+    private final OrderDBQuery orderdb=new OrderDBQuery();
+    private  ArrayList<Order> commande = new  ArrayList<Order>();
+    private ArrayList<JLabel> orderIdLabel1=new ArrayList<>();
+    private ArrayList<JLabel> orderPriceLabel=new ArrayList<>();
+    private ArrayList<JLabel> orderQuantityLabel=new ArrayList<>();
+    private ArrayList<JLabel> orderDiscountLabel=new ArrayList<>();
+    private ArrayList<JLabel> orderDateLabel=new ArrayList<>(); 
+    private ArrayList<JLabel> orderUserLabel=new ArrayList<>();
+    
     public EmployeePage() {
        
         try{
         initComponents();
         jPanel1.add(jPanel2);
         jPanel1.add(jScrollPane);
+
         
         //We establish the connexion
         
         Connection conn= Dbutils.getDbConnection();
         
         produit=productdb.getProducts();
+        commande=orderdb.getOrder();
         
         //Display of the products
-            int j=50;
+            int j=20;
             for(int i=0;i<produit.size();i++)
             {
-                final int number=i;
+                
                 productNameLabels.add(new JLabel(produit.get(i).getProductName()));
                 productPriceLabels.add(new JLabel(Double.toString(produit.get(i).getProductPrice())+"$"));
                 productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())+"    /100"));
@@ -82,6 +95,41 @@ public class EmployeePage extends javax.swing.JFrame {
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
+        int k=20;
+        for(int i=0;i<commande.size();i++)
+        {
+           orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
+           orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
+           orderDiscountLabel.add(new JLabel(Integer.toString(commande.get(i).getDiscount())));
+           orderPriceLabel.add(new JLabel(Double.toString(commande.get(i).getTotalPrice())));
+           orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
+           orderUserLabel.add(new JLabel(commande.get(i).getUsername()));
+           
+           jPanel5.add(orderIdLabel1.get(i));
+           jPanel5.add(orderQuantityLabel.get(i));
+           jPanel5.add(orderDiscountLabel.get(i));
+           jPanel5.add(orderPriceLabel.get(i));
+           jPanel5.add(orderDateLabel.get(i));
+           jPanel5.add(orderUserLabel.get(i));
+           
+           orderIdLabel1.get(i).setBounds(100, k, 200, 20);
+           orderDiscountLabel.get(i).setBounds(210, k, 200, 20);
+           orderQuantityLabel.get(i).setBounds(350, k, 200, 20);
+           orderPriceLabel.get(i).setBounds(480, k, 200, 20);
+           orderDateLabel.get(i).setBounds(600, k, 200, 20);
+           orderUserLabel.get(i).setBounds(730, k, 200, 20);
+           
+           orderIdLabel1.get(i).setVisible(true);
+           orderQuantityLabel.get(i).setVisible(true);
+           orderDiscountLabel.get(i).setVisible(true);
+           orderPriceLabel.get(i).setVisible(true);
+           orderDateLabel.get(i).setVisible(true);
+           orderUserLabel.get(i).setVisible(true);
+           
+           
+            k+=30;
+        }
+        
         
         
     }
@@ -121,8 +169,9 @@ public class EmployeePage extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         discountLabel = new javax.swing.JLabel();
         quantityLabel = new javax.swing.JLabel();
-        totalpriceLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
         ownerLabel = new javax.swing.JLabel();
+        totalpriceLabel1 = new javax.swing.JLabel();
         STATPANEL = new javax.swing.JPanel();
         skipButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
@@ -286,6 +335,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("PRODUCTS", PRODUCTSPANEL);
 
+        orderIdLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         orderIdLabel.setText("OrderId");
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -303,13 +353,20 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel5);
 
+        discountLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         discountLabel.setText("Discount");
 
+        quantityLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         quantityLabel.setText("Quantity");
 
-        totalpriceLabel.setText("Total price");
+        dateLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        dateLabel.setText("Date");
 
+        ownerLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         ownerLabel.setText("Owner");
+
+        totalpriceLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        totalpriceLabel1.setText("Total price");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -319,13 +376,15 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(orderIdLabel)
-                .addGap(84, 84, 84)
+                .addGap(56, 56, 56)
                 .addComponent(discountLabel)
-                .addGap(102, 102, 102)
+                .addGap(62, 62, 62)
                 .addComponent(quantityLabel)
-                .addGap(77, 77, 77)
-                .addComponent(totalpriceLabel)
+                .addGap(63, 63, 63)
+                .addComponent(totalpriceLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dateLabel)
+                .addGap(60, 60, 60)
                 .addComponent(ownerLabel)
                 .addGap(82, 82, 82))
         );
@@ -337,8 +396,9 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(orderIdLabel)
                     .addComponent(discountLabel)
                     .addComponent(quantityLabel)
-                    .addComponent(totalpriceLabel)
-                    .addComponent(ownerLabel))
+                    .addComponent(dateLabel)
+                    .addComponent(ownerLabel)
+                    .addComponent(totalpriceLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
@@ -551,6 +611,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JPanel PRODUCTSPANEL;
     private javax.swing.JPanel STATPANEL;
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel dateLabel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel discountLabel;
     private javax.swing.JTextField discountTextfield;
@@ -576,7 +637,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel quantityLabel;
     private javax.swing.JTextField quantityTextfield;
     private javax.swing.JButton skipButton;
-    private javax.swing.JLabel totalpriceLabel;
+    private javax.swing.JLabel totalpriceLabel1;
     private javax.swing.JButton updateButton;
     private javax.swing.JLabel welcome_employeeLabel;
     // End of variables declaration//GEN-END:variables

@@ -330,13 +330,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="orderIdLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="discountLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="quantityLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                          <Component id="totalpriceLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="totalpriceLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="dateLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="ownerLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
@@ -350,8 +352,9 @@
                               <Component id="orderIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="discountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="quantityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="totalpriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ownerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="totalpriceLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="284" max="-2" attributes="0"/>
@@ -363,6 +366,9 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="orderIdLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="OrderId"/>
                   </Properties>
                 </Component>
@@ -392,22 +398,42 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="discountLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Discount"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="quantityLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Quantity"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="totalpriceLabel">
+                <Component class="javax.swing.JLabel" name="dateLabel">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Total price"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Date"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ownerLabel">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Owner"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="totalpriceLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="16" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Total price"/>
                   </Properties>
                 </Component>
               </SubComponents>
