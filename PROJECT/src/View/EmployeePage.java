@@ -162,8 +162,18 @@ public class EmployeePage extends javax.swing.JFrame {
         });
 
         updateButton.setText("update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         priceTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,6 +307,8 @@ public class EmployeePage extends javax.swing.JFrame {
         quantityTextfield.setText(null);
         discountTextfield.setText(null);
         lotTextfield.setText(null);
+        setVisible(false);
+        new EmployeePage().setVisible(true);
         
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -307,6 +319,51 @@ public class EmployeePage extends javax.swing.JFrame {
     private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lotTextfieldActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        Product prod=new Product();
+        ProductDBQuery nv=new ProductDBQuery();
+        
+        prod.setProductName(productTextfield.getText());
+        prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
+        prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
+        prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+        prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+        
+        nv.updateProduct(prod);
+        
+        productTextfield.setText(null);
+        priceTextfield.setText(null);
+        quantityTextfield.setText(null);
+        discountTextfield.setText(null);
+        lotTextfield.setText(null);
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+//        Product prod=new Product();
+//        ProductDBQuery nv=new ProductDBQuery();
+        
+       for(int i=0; i<produit.size();i++)
+       {
+           if(productTextfield.getText().equals(produit.get(i).getProductName()))
+           {
+               productdb.deleteProduct(produit.get(i));
+               System.out.println("supp");
+           }
+       }
+        
+        
+//        nv.deleteProduct(prod);
+        
+        productTextfield.setText(null);
+        priceTextfield.setText(null);
+        quantityTextfield.setText(null);
+        discountTextfield.setText(null);
+        lotTextfield.setText(null);
+        
+        setVisible(false);
+        new EmployeePage().setVisible(true);
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
