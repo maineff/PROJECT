@@ -41,12 +41,26 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> orderDateLabel=new ArrayList<>(); 
     private ArrayList<JLabel> orderUserLabel=new ArrayList<>();
     
+    String employeeAction="";
+    
     public EmployeePage() {
        
         try{
         initComponents();
         jPanel1.add(jPanel2);
         jPanel1.add(jScrollPane);
+        
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+        productTextfield.setVisible(false);
+        priceTextfield.setVisible(false);
+        quantityTextfield.setVisible(false);
+        discountTextfield.setVisible(false);
+        lotTextfield.setVisible(false);
+        okButton.setVisible(false);
 
         
         //We establish the connexion
@@ -162,6 +176,12 @@ public class EmployeePage extends javax.swing.JFrame {
         lotTextfield = new javax.swing.JTextField();
         discountTextfield = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
+        okButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         ORDERPANEL = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderIdLabel = new javax.swing.JLabel();
@@ -242,45 +262,88 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         });
 
+        okButton.setText("ok");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Name :");
+
+        jLabel2.setText("Price :");
+
+        jLabel3.setText("Quantity :");
+
+        jLabel4.setText("Disocunt :");
+
+        jLabel5.setText("Lots :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteButton))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
-                .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(39, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(addButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addGap(5, 5, 5)
+                        .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(okButton)
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(updateButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                        .addComponent(deleteButton)
+                        .addGap(162, 162, 162))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton)
+                    .addComponent(deleteButton)
+                    .addComponent(addButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(deleteButton)
-                    .addComponent(updateButton)))
+                    .addComponent(okButton)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -348,7 +411,7 @@ public class EmployeePage extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
+            .addGap(0, 627, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel5);
@@ -400,8 +463,7 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(ownerLabel)
                     .addComponent(totalpriceLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ORDERPANELLayout = new javax.swing.GroupLayout(ORDERPANEL);
@@ -423,7 +485,7 @@ public class EmployeePage extends javax.swing.JFrame {
         STATPANEL.setLayout(STATPANELLayout);
         STATPANELLayout.setHorizontalGroup(
             STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 852, Short.MAX_VALUE)
         );
         STATPANELLayout.setVerticalGroup(
             STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +515,7 @@ public class EmployeePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(skipButton))
@@ -464,7 +526,7 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(menuButton)
-                    .addGap(0, 784, Short.MAX_VALUE)))
+                    .addGap(0, 786, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +556,65 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        Product prod=new Product();
+        jLabel1.setVisible(true);
+        jLabel2.setVisible(true);
+        jLabel3.setVisible(true);
+        jLabel4.setVisible(true);
+        jLabel5.setVisible(true);
+        productTextfield.setVisible(true);
+        priceTextfield.setVisible(true);
+        quantityTextfield.setVisible(true);
+        discountTextfield.setVisible(true);
+        lotTextfield.setVisible(true);
+        okButton.setVisible(true);
+        
+        employeeAction="add";
+        
+        
+        
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void priceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceTextfieldActionPerformed
+
+    private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lotTextfieldActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+         jLabel1.setVisible(true);
+        jLabel2.setVisible(true);
+        jLabel3.setVisible(true);
+        jLabel4.setVisible(true);
+        jLabel5.setVisible(true);
+        productTextfield.setVisible(true);
+        priceTextfield.setVisible(true);
+        quantityTextfield.setVisible(true);
+        discountTextfield.setVisible(true);
+        lotTextfield.setVisible(true);
+        okButton.setVisible(true);
+        
+        employeeAction="update";
+        
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        
+        jLabel1.setVisible(true);
+        
+        productTextfield.setVisible(true);
+        
+        okButton.setVisible(true);
+        
+        employeeAction="delete";
+        
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        if(employeeAction=="add")
+        {
+            Product prod=new Product();
         
         prod.setProductName(productTextfield.getText());
         prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
@@ -511,19 +631,11 @@ public class EmployeePage extends javax.swing.JFrame {
         lotTextfield.setText(null);
         setVisible(false);
         new EmployeePage().setVisible(true);
-        
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void priceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceTextfieldActionPerformed
-
-    private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lotTextfieldActionPerformed
-
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-         for(int i=0; i<produit.size();i++)
+            
+        }
+        else if(employeeAction=="update")
+        {
+             for(int i=0; i<produit.size();i++)
        {
            if(productTextfield.getText().equals(produit.get(i).getProductName()))
            {
@@ -544,12 +656,12 @@ public class EmployeePage extends javax.swing.JFrame {
         lotTextfield.setText(null);
         
         setVisible(false);
-        new EmployeePage().setVisible(true);    
-    }//GEN-LAST:event_updateButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        new EmployeePage().setVisible(true);
+        }
         
-       for(int i=0; i<produit.size();i++)
+        else if(employeeAction=="delete")
+        {
+            for(int i=0; i<produit.size();i++)
        {
            if(productTextfield.getText().equals(produit.get(i).getProductName()))
            {
@@ -557,10 +669,7 @@ public class EmployeePage extends javax.swing.JFrame {
                System.out.println("supp");
            }
        }
-        
-        
-//        nv.deleteProduct(prod);
-        
+
         productTextfield.setText(null);
         priceTextfield.setText(null);
         quantityTextfield.setText(null);
@@ -569,7 +678,8 @@ public class EmployeePage extends javax.swing.JFrame {
         
         setVisible(false);
         new EmployeePage().setVisible(true);
-    }//GEN-LAST:event_deleteButtonActionPerformed
+        }
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -616,6 +726,11 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel discountLabel;
     private javax.swing.JTextField discountTextfield;
     private javax.swing.JLabel discountsLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -627,6 +742,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JTextField lotTextfield;
     private javax.swing.JLabel lotsLabel;
     private javax.swing.JButton menuButton;
+    private javax.swing.JButton okButton;
     private javax.swing.JLabel orderIdLabel;
     private javax.swing.JLabel ownerLabel;
     private javax.swing.JTextField priceTextfield;
