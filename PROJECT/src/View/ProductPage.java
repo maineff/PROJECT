@@ -103,7 +103,7 @@ public class ProductPage extends javax.swing.JFrame {
      public void updateTable() {
         
         String[][] rowData = new String[bucket.size()][3];
-        String[] colNames = {"Quantity", "Item", "Price"};
+        String[] colNames = {"Item", "Quantity", "Price"};
          double tp =0;
         for (int i=0; i<bucket.size();i++){
             
@@ -121,9 +121,11 @@ public class ProductPage extends javax.swing.JFrame {
              psr+=p*n;
              System.out.println("prix sans reduc="+psr);
             String price = String.valueOf(tp) + " $";
+            String quant = "x"+String.valueOf(n);
             
-            rowData[i][0]=String.valueOf(n);            //Conversion du int en String
-            rowData[i][1]=bucket.get(i).getProductName();
+            
+            rowData[i][0]=bucket.get(i).getProductName();
+            rowData[i][1]=quant;            //Conversion du int en String
             rowData[i][2]=price;
         }
 		
@@ -208,11 +210,11 @@ public class ProductPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Quantity", "Item", "Price"
+                "Item", "Quantity", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -221,7 +223,8 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableBucket);
         if (jTableBucket.getColumnModel().getColumnCount() > 0) {
-            jTableBucket.getColumnModel().getColumn(0).setPreferredWidth(1);
+            jTableBucket.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTableBucket.getColumnModel().getColumn(1).setPreferredWidth(1);
             jTableBucket.getColumnModel().getColumn(2).setPreferredWidth(1);
         }
 
@@ -369,6 +372,7 @@ public class ProductPage extends javax.swing.JFrame {
             public void run() {
                 
                 Order currentOrder = new Order();
+                Customer currentCustomer = new Customer();
                 
                 new ProductPage(currentCustomer, currentOrder).setVisible(true);
             }
