@@ -219,37 +219,34 @@ public class Page1 extends javax.swing.JFrame {
 
         wrongLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        imageLabel.setIcon(new javax.swing.ImageIcon("/Users/alkassoumhaoua/Downloads/295128.png")); // NOI18N
-
         javax.swing.GroupLayout customerLoginLayout = new javax.swing.GroupLayout(customerLogin);
         customerLogin.setLayout(customerLoginLayout);
         customerLoginLayout.setHorizontalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerLoginLayout.createSequentialGroup()
+                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
+                    .addGroup(customerLoginLayout.createSequentialGroup()
+                        .addGap(385, 385, 385)
+                        .addComponent(okcustButton))
+                    .addGroup(customerLoginLayout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(297, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(skipButton1))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(passwordLabel)
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
+                    .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(usernameLabel)
+                    .addComponent(wrongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(323, 323, 323))
-            .addGroup(customerLoginLayout.createSequentialGroup()
-                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuButton)
-                    .addGroup(customerLoginLayout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(okcustButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(customerLoginLayout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         customerLoginLayout.setVerticalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,7 +258,7 @@ public class Page1 extends javax.swing.JFrame {
                 .addComponent(menuButton)
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
-                .addGap(0, 168, Short.MAX_VALUE)
+                .addGap(0, 167, Short.MAX_VALUE)
                 .addComponent(usernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,13 +266,10 @@ public class Page1 extends javax.swing.JFrame {
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(customerLoginLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(customerLoginLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(okcustButton)))
+                .addGap(13, 13, 13)
+                .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okcustButton)
                 .addGap(32, 32, 32)
                 .addComponent(subscribeButon)
                 .addGap(103, 103, 103))
@@ -343,8 +337,6 @@ public class Page1 extends javax.swing.JFrame {
 
         wrongLabel1.setBackground(new java.awt.Color(0, 153, 153));
         wrongLabel1.setForeground(new java.awt.Color(255, 0, 0));
-
-        logoLabel.setIcon(new javax.swing.ImageIcon("/Users/alkassoumhaoua/Downloads/icons8-male-user-64.png")); // NOI18N
 
         javax.swing.GroupLayout employeeLoginLayout = new javax.swing.GroupLayout(employeeLogin);
         employeeLogin.setLayout(employeeLoginLayout);

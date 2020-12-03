@@ -41,7 +41,7 @@ public class OrderDBQuery {
                     +" VALUES "
                     +"("+id+","+od.getQuantity()+","+od.getDiscount()
                     +","+od.getTotalPrice()+",'"+date
-                    +",'"+od.getUsername()+"')";
+                    +"','"+od.getUsername()+"')";
            int rows= Dbutils.executeUpdate(query) ;
          }
          else

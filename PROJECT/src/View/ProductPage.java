@@ -34,7 +34,7 @@ public class ProductPage extends javax.swing.JFrame {
     private ArrayList<Product> bucket = new  ArrayList<Product>(); 
     private ArrayList<Integer> quantity = new ArrayList<Integer>();
     private ArrayList<JButton> productButtons=new ArrayList<>();
-    private static Customer customerConnected=null;
+    private static Customer currentCustomer=null;
     private Achat achatPage;
     private Order currentOrder;
     private OrderDBQuery orderdb= new OrderDBQuery();
@@ -53,7 +53,8 @@ public class ProductPage extends javax.swing.JFrame {
             Connection conn= Dbutils.getDbConnection();
             
             //Field initialization
-            customerConnected=cust;
+            currentCustomer=cust;
+            welcome_customerLabel.setText("Welcome "+currentCustomer.getCustomerName());
             produit=productdb.getProducts();
             achatPage= new Achat(this);
             
@@ -177,7 +178,6 @@ public class ProductPage extends javax.swing.JFrame {
         });
 
         welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        welcome_customerLabel.setText("WELCOME CUSTOMER");
 
         menuButton.setText("Menu");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -226,18 +226,8 @@ public class ProductPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuButton)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(welcome_customerLabel))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(755, 755, 755)
-                        .addComponent(BuyButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -251,14 +241,25 @@ public class ProductPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelTotalPrice)
                         .addGap(178, 178, 178))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuButton)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(755, 755, 755)
+                        .addComponent(BuyButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(224, 224, 224)
+                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(skipButton)
-                .addGap(23, 23, 23)
-                .addComponent(welcome_customerLabel)
-                .addGap(90, 90, 90)
+                .addGap(9, 9, 9)
+                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBucket)
                     .addComponent(jLabelStatutBucket))
@@ -268,7 +269,7 @@ public class ProductPage extends javax.swing.JFrame {
                 .addComponent(jLabelTotalPrice)
                 .addGap(82, 82, 82)
                 .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -276,7 +277,7 @@ public class ProductPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,16 +298,16 @@ public class ProductPage extends javax.swing.JFrame {
 
     private void BuyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyButtonActionPerformed
        
-        currentOrder.setUsername(customerConnected.getCustomerUsername());
+        currentOrder.setUsername(currentCustomer.getCustomerUsername());
         orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
-        currentOrder.setCustomerName(customerConnected);
+        currentOrder.setCustomerName(currentCustomer);
         currentOrder.setProduct(produit);
         
         //Lorsque la commande est passée on met à jour la liste de commande du customer
-        //customerConnected.getCommandes().add(currentOrder);
-        
+        currentCustomer.getCommandes().add(currentOrder);
+        currentOrder.getProduct().add(bucket);
     }//GEN-LAST:event_BuyButtonActionPerformed
 
     
@@ -346,7 +347,7 @@ public class ProductPage extends javax.swing.JFrame {
                 
                 Order currentOrder = new Order();
                 
-                new ProductPage(customerConnected, currentOrder).setVisible(true);
+                new ProductPage(currentCustomer, currentOrder).setVisible(true);
             }
         });
     }
