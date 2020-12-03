@@ -17,8 +17,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -38,6 +36,7 @@ public class ProductPage extends javax.swing.JFrame {
     private Achat achatPage;
     private Order currentOrder;
     private OrderDBQuery orderdb= new OrderDBQuery();
+    double psr=0;
     
     //Constructor
     public ProductPage(Customer cust, Order co) {
@@ -105,12 +104,22 @@ public class ProductPage extends javax.swing.JFrame {
         
         String[][] rowData = new String[bucket.size()][3];
         String[] colNames = {"Quantity", "Item", "Price"};
-        
+         double tp =0;
         for (int i=0; i<bucket.size();i++){
             
-            int n = quantity.get(i);
-            double p = bucket.get(i).getProductPrice();
-            double tp = p*n;
+             int n = quantity.get(i);
+             double p = bucket.get(i).getProductPrice();
+            if(bucket.get(i).getProductQuantityDiscount()>0 && bucket.get(i).getProductDiscount()>0)
+            {
+                tp=(n/bucket.get(i).getProductQuantityDiscount())*bucket.get(i).getProductDiscount()
+                        +(n%bucket.get(i).getProductQuantityDiscount())*bucket.get(i).getProductPrice();
+            }
+            else
+            {
+                tp=p*n;
+            }
+             psr+=p*n;
+             System.out.println("prix sans reduc="+psr);
             String price = String.valueOf(tp) + " $";
             
             rowData[i][0]=String.valueOf(n);            //Conversion du int en String
@@ -165,6 +174,7 @@ public class ProductPage extends javax.swing.JFrame {
         jLabelBucket = new javax.swing.JLabel();
         jLabelStatutBucket = new javax.swing.JLabel();
         jLabelTotalPrice = new javax.swing.JLabel();
+        economieLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,6 +232,8 @@ public class ProductPage extends javax.swing.JFrame {
 
         jLabelTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        economieLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -237,10 +249,7 @@ public class ProductPage extends javax.swing.JFrame {
                                 .addComponent(jLabelBucket)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelStatutBucket)))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelTotalPrice)
-                        .addGap(178, 178, 178))))
+                        .addGap(30, 30, 30))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuButton)
@@ -252,6 +261,15 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGap(224, 224, 224)
                 .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(191, 191, 191))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,11 +283,13 @@ public class ProductPage extends javax.swing.JFrame {
                     .addComponent(jLabelStatutBucket))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
-                .addComponent(jLabelTotalPrice)
-                .addGap(82, 82, 82)
+                .addGap(55, 55, 55)
+                .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -308,6 +328,9 @@ public class ProductPage extends javax.swing.JFrame {
         //Lorsque la commande est passée on met à jour la liste de commande du customer
         currentCustomer.getCommandes().add(currentOrder);
         currentOrder.getProduct().add(bucket);
+        
+        double save=psr-currentOrder.getTotalPrice();
+        economieLabel1.setText("you save £"+save);
     }//GEN-LAST:event_BuyButtonActionPerformed
 
     
@@ -354,6 +377,7 @@ public class ProductPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuyButton;
+    private javax.swing.JLabel economieLabel1;
     private javax.swing.JLabel jLabelBucket;
     private javax.swing.JLabel jLabelStatutBucket;
     private javax.swing.JLabel jLabelTotalPrice;

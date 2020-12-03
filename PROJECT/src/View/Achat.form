@@ -82,10 +82,10 @@
                   </Group>
                   <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                  <Component id="discountLabel" min="-2" pref="237" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="discountLabel" min="-2" pref="237" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="275" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -117,9 +117,9 @@
                           <Component id="bucketButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="83" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="discountLabel" min="-2" pref="43" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                  <EmptySpace pref="157" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

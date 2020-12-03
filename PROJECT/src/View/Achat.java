@@ -26,6 +26,7 @@ public class Achat extends javax.swing.JFrame {
     private final ProductPage parentPage;
     private int here;
     private Order currentOrder;
+
     
 
     //Constructor
@@ -42,7 +43,8 @@ public class Achat extends javax.swing.JFrame {
         this.currentOrder=co;
         this.here=i;
         
-        try {
+        try 
+        {
        
             parentPage.setVisible(false);//On désaffiche la page parent, ie la Productpage
             
@@ -54,8 +56,19 @@ public class Achat extends javax.swing.JFrame {
             nameLabel.setText(produit.get(i).getProductName());
             priceLabel.setText(Double.toString(produit.get(i).getProductPrice())+"$");
             quantityLabel.setText(Integer.toString(produit.get(i).getProductStock())+"/100");
-
-        }catch (SQLException ex) {
+            //on clear le label si il n'y a pas de reductions
+            if(produit.get(i).getProductQuantityDiscount()>0 && produit.get(i).getProductDiscount()>0)
+             {
+                 discountLabel.setText(produit.get(i).getProductQuantityDiscount()+"for £"+produit.get(i).getProductDiscount());
+             }
+             else 
+             {
+                 discountLabel.setText(" ");
+             }
+        
+        }
+        catch (SQLException ex) 
+        {
             System.out.println(ex.getMessage());
         }
     }
@@ -153,10 +166,10 @@ public class Achat extends javax.swing.JFrame {
                         .addGap(351, 351, 351)
                         .addComponent(achatLabel)))
                 .addGap(0, 203, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(275, 275, 275))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,9 +194,9 @@ public class Achat extends javax.swing.JFrame {
                         .addComponent(priceLabel)
                         .addGap(41, 41, 41)
                         .addComponent(bucketButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,14 +218,16 @@ public class Achat extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+
         this.dispose();
         parentPage.setVisible(true);//On rend la Productpage visible
+        
     }//GEN-LAST:event_backButtonActionPerformed
 
     //Méthode permettant d'effacer l'ancienne saisie de l'utilisateur
     public void clearQuantity()
     {
-        quantityTextfield.setText("");
+        quantityTextfield.setText("");   
     }
     
     private void bucketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucketButtonActionPerformed
@@ -229,13 +244,25 @@ public class Achat extends javax.swing.JFrame {
         int quanIni=currentOrder.getQuantity();
         double priceIni=currentOrder.getTotalPrice();
 
-        currentOrder.setDiscount(10);
-        
-        
         currentOrder.setQuantity(quanIni+quantityBuy);
-        currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
-        System.out.println(currentOrder.getDiscount()+" "+currentOrder.getQuantity()+" "+currentOrder.getTotalPrice());
+     
+        int  n=quantityBuy;
+        
+        //si le produit a une reduction ...........
+        if(produit.get(here).getProductQuantityDiscount()>0 && produit.get(here).getProductDiscount()>0)
+        {
 
+            currentOrder.setTotalPrice((n/produit.get(here).getProductQuantityDiscount()
+                    *(produit.get(here).getProductDiscount())
+                    +(n%produit.get(here).getProductQuantityDiscount())
+                    *produit.get(here).getProductPrice())+priceIni);
+        }
+        else
+        {
+           currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
+        }
+        
+           
         //On ajoute le produit au panier
         parentPage.addToBucket(produit.get(here));
         parentPage.addQuantity(quantityBuy);
