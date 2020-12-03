@@ -12,6 +12,10 @@ import Model.Order;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -41,9 +45,10 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> orderDateLabel=new ArrayList<>(); 
     private ArrayList<JLabel> orderUserLabel=new ArrayList<>();
     private ArrayList<JButton> selectorder= new ArrayList<>();
-    Details detailpage=new Details(this);
-    
+    Details detailpage=new Details(this);    
     String employeeAction="";
+
+
     
     public EmployeePage() {
        
@@ -116,6 +121,7 @@ public class EmployeePage extends javax.swing.JFrame {
         int k=20;
         for(int i=0;i<commande.size();i++)
         {
+           final int number=i;
            orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
            orderDiscountLabel.add(new JLabel(Integer.toString(commande.get(i).getDiscount())));
@@ -156,10 +162,17 @@ public class EmployeePage extends javax.swing.JFrame {
                    detailpage.setVisible(true);
                }
            });
+
+           
+           
+          
            
            
             k+=30;
         }
+        
+        
+       
         
         
         

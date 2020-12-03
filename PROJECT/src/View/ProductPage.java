@@ -13,6 +13,8 @@ import Model.Order;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -84,6 +86,19 @@ public class ProductPage extends javax.swing.JFrame {
         }catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+          
+            //rentre les commandes dans un fichier texte
+           try
+            {
+                String filename="order.txt";
+                FileWriter fw = new FileWriter("order.txt",true);
+                fw.write(Integer.toString(currentOrder.getOrderId()));
+                fw.close();
+            }
+            catch(IOException ioe)
+            {
+                System.out.println(ioe.getMessage());
+            }
     }
 
      public void addToBucket(Product p)

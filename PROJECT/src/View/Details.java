@@ -5,17 +5,61 @@
  */
 package View;
 
+import Controller.Dbutils;
+import Controller.OrderDBQuery;
+import Model.Order;
+import java.sql.Connection;
+import java.util.ArrayList;
+
 /**
  *
  * @author maine
  */
 public class Details extends javax.swing.JFrame {
 
+    private final OrderDBQuery orderdb=new OrderDBQuery();
+    private  ArrayList<Order> commande = new  ArrayList<>(); 
     private EmployeePage parentpage;
+    private int here;
     
     public Details(EmployeePage p) {
         initComponents();
         parentpage=p;
+    }
+    
+     public void setDetail(int i) {
+         
+        
+        this.here=i;
+//        
+//        try 
+//        {
+//       
+//            parentpage.setVisible(false);//On désaffiche la page parent, ie la Productpage
+//            
+//            //On établit la connection
+//            Connection conn= Dbutils.getDbConnection();
+//            commande=orderdb.getOrder();
+//            
+//            //On affiche les informations relatives au produit choisi par le customer
+//            nameLabel.setText(produit.get(i).getProductName());
+//            priceLabel.setText(Double.toString(produit.get(i).getProductPrice())+"$");
+//            quantityLabel.setText(Integer.toString(produit.get(i).getProductStock())+"/100");
+//            //on clear le label si il n'y a pas de reductions
+//            if(produit.get(i).getProductQuantityDiscount()>0 && produit.get(i).getProductDiscount()>0)
+//             {
+//                 discountLabel.setText(produit.get(i).getProductQuantityDiscount()+"for £"+produit.get(i).getProductDiscount());
+//             }
+//             else 
+//             {
+//                 discountLabel.setText(" ");
+//             }
+//        
+//        }
+//        catch (SQLException ex) 
+//        {
+//            System.out.println(ex.getMessage());
+//        }
     }
 
     /**
