@@ -374,5 +374,10 @@ public class ProductPage extends javax.swing.JFrame {
     {
         return quantity;
     }
+    
+    public Achat getAchatPage()
+    {
+        return achatPage;
+    }
 
 }

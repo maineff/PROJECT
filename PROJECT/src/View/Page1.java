@@ -550,7 +550,7 @@ public class Page1 extends javax.swing.JFrame {
                 custConnected.setCustomerUsername(rst.getString("username"));
                 custConnected.setCustomerPassword(rst.getString("password"));
                 
-                new ProductPage(custConnected, currentOrder).setVisible(true); //On ouvre une nouvelle fenêtre en passant les informations du customer connecté
+                new ProductPage(custConnected,currentOrder).setVisible(true); //On ouvre une nouvelle fenêtre en passant les informations du customer connecté
             }
             else
             {

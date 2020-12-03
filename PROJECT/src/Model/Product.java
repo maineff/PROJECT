@@ -17,6 +17,8 @@ public class Product {
     private String name;
     private double price;
     private int stock;
+    private int discount;
+    private int quantitydiscount;
      
     //Constructors
     public Product()
@@ -24,12 +26,14 @@ public class Product {
          
     }
     
-    public Product(int id,String nom,int prix,int qty)
+    public Product(int id,String nom,int prix,int qty, int disc, int qtydisc)
     {
         this.productId=id;
         this.name=nom;
         this.price=prix;
         this.stock=qty;
+        this.discount=disc;
+        this.quantitydiscount=qtydisc;
     }
 
 
@@ -55,6 +59,14 @@ public class Product {
     {
         return stock;
     }
+    public int getProductDiscount()
+    {
+        return discount;
+    }
+    public int getProductQuantityDiscount()
+    {
+        return quantitydiscount;
+    }
     
     /*-----------------------Setter-----------------------*/
     
@@ -77,4 +89,16 @@ public class Product {
     {
         stock=stk;
     }
+     public void setProductDiscount(int disc)
+    {
+        discount=disc;
+    }
+
+    public void setProductQuantityDiscount(int qtydisc)
+    {
+        quantitydiscount=qtydisc;
+    }
+    
+    
+    
 }
