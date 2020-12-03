@@ -26,7 +26,7 @@ public class Achat extends javax.swing.JFrame {
     private final ProductPage parentPage;
     private int here;
     private Order currentOrder;
-
+    double psr=0;
     
 
     //Constructor
@@ -262,7 +262,10 @@ public class Achat extends javax.swing.JFrame {
            currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
         }
         
-           
+        //calcu du prix sans reduc
+        psr+=produit.get(here).getProductPrice()*quantityBuy;
+        System.out.println("prix ss reduc ="+psr);
+        
         //On ajoute le produit au panier
         parentPage.addToBucket(produit.get(here));
         parentPage.addQuantity(quantityBuy);
@@ -315,7 +318,10 @@ public static void main(String args[]) {
          }
         });
     }
-
+    public double getPsr()
+    {
+        return psr;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel achatLabel;
     private javax.swing.JButton backButton;

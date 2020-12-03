@@ -37,6 +37,7 @@ public class ProductPage extends javax.swing.JFrame {
     private Order currentOrder;
     private OrderDBQuery orderdb= new OrderDBQuery();
     double psr=0;
+    double save=0;
     
     //Constructor
     public ProductPage(Customer cust, Order co) {
@@ -46,8 +47,6 @@ public class ProductPage extends javax.swing.JFrame {
          try {
             
             initComponents();
-            //setExtendedState(JFrame.MAXIMIZED_BOTH);
-            
             //We establish the connexion
             Connection conn= Dbutils.getDbConnection();
             
@@ -94,7 +93,8 @@ public class ProductPage extends javax.swing.JFrame {
           System.out.println(bucket.size());
      }
      
-     public void addQuantity (int i){
+     public void addQuantity (int i)
+     {
          quantity.add(i);
          System.out.println(quantity.size());
      }
@@ -105,10 +105,12 @@ public class ProductPage extends javax.swing.JFrame {
         String[][] rowData = new String[bucket.size()][3];
         String[] colNames = {"Quantity", "Item", "Price"};
          double tp =0;
-        for (int i=0; i<bucket.size();i++){
-            
-             int n = quantity.get(i);
-             double p = bucket.get(i).getProductPrice();
+        for (int i=0; i<bucket.size();i++)
+        {
+            int n = quantity.get(i);
+            double p = bucket.get(i).getProductPrice();
+            // psr+=p*n;
+             
             if(bucket.get(i).getProductQuantityDiscount()>0 && bucket.get(i).getProductDiscount()>0)
             {
                 tp=(n/bucket.get(i).getProductQuantityDiscount())*bucket.get(i).getProductDiscount()
@@ -118,14 +120,15 @@ public class ProductPage extends javax.swing.JFrame {
             {
                 tp=p*n;
             }
-             psr+=p*n;
-             System.out.println("prix sans reduc="+psr);
+            
             String price = String.valueOf(tp) + " $";
             
             rowData[i][0]=String.valueOf(n);            //Conversion du int en String
             rowData[i][1]=bucket.get(i).getProductName();
             rowData[i][2]=price;
         }
+        
+            // System.out.println("prix sans reduc="+psr);
 		
         DefaultTableModel dtm = new DefaultTableModel(rowData, colNames);
 	jTableBucket.setModel(dtm);
@@ -232,8 +235,6 @@ public class ProductPage extends javax.swing.JFrame {
 
         jLabelTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
-        economieLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -328,7 +329,9 @@ public class ProductPage extends javax.swing.JFrame {
         //Lorsque la commande est passée on met à jour la liste de commande du customer
         currentCustomer.getCommandes().add(currentOrder);
         currentOrder.getProduct().add(bucket);
-        double save=psr-currentOrder.getTotalPrice();
+        
+        
+        save=achatPage.getPsr()-currentOrder.getTotalPrice();
         economieLabel1.setText("you save £"+save);
     }//GEN-LAST:event_BuyButtonActionPerformed
 
