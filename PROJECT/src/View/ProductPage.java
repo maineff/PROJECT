@@ -29,6 +29,7 @@ public class ProductPage extends javax.swing.JFrame {
     private ProductDBQuery productdb=new ProductDBQuery();
     private ArrayList<Product> produit = new  ArrayList<Product>(); 
     private ArrayList<Product> bucket = new  ArrayList<Product>(); 
+    private ArrayList<Integer> quantity = new ArrayList<Integer>();
     private ArrayList<JButton> productButtons=new ArrayList<>();
     private static Customer customerConnected=null;
     private Achat achatPage;
@@ -89,6 +90,11 @@ public class ProductPage extends javax.swing.JFrame {
           bucket.add(p);
           System.out.println(bucket.size());
      }
+     
+     public void addQuantity (int i){
+         quantity.add(i);
+         System.out.println(quantity.size());
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +110,7 @@ public class ProductPage extends javax.swing.JFrame {
         menuButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        BuyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,10 +137,10 @@ public class ProductPage extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setText("BUY");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BuyButton.setText("BUY");
+        BuyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BuyButtonActionPerformed(evt);
             }
         });
 
@@ -151,13 +157,15 @@ public class ProductPage extends javax.swing.JFrame {
                 .addContainerGap(215, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(skipButton))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(470, 470, 470)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
-                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(BuyButton)
                         .addGap(93, 93, 93))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -169,7 +177,7 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(BuyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
@@ -197,7 +205,7 @@ public class ProductPage extends javax.swing.JFrame {
         System.exit(0); //Closing of the system
     }//GEN-LAST:event_skipButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BuyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyButtonActionPerformed
         orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
@@ -207,7 +215,7 @@ public class ProductPage extends javax.swing.JFrame {
         //Lorsque la commande est passée on met à jour la liste de commande du customer
         customerConnected.getCommandes().add(currentOrder);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BuyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,7 +259,7 @@ public class ProductPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BuyButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

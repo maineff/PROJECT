@@ -19,7 +19,7 @@ public class Customer {
     private String lastName;
     private String address;
     private String city;
-    private ArrayList<Order> commandes;
+    private ArrayList<Order> commandes = new ArrayList<Order>();
     private String username;
     private String password;
     

@@ -228,7 +228,12 @@ public class Achat extends javax.swing.JFrame {
         currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
         System.out.println(currentOrder.getDiscount()+" "+currentOrder.getQuantity()+" "+currentOrder.getTotalPrice());
 
+        //On ajoute le produit au panier
         parentPage.addToBucket(produit.get(here));
+        parentPage.addQuantity(quantityBuy);
+        
+        //On affiche le panier
+        //parentPage.
         
         //Back to Product page
         //setVisible(false);
