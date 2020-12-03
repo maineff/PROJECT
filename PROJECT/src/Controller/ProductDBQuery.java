@@ -40,6 +40,9 @@ public class ProductDBQuery {
                 prod.setProductName(rst.getString("name"));
                 prod.setProductPrice(rst.getDouble("price"));
                 prod.setProductStock(rst.getInt("stock"));
+                prod.setProductDiscount(rst.getInt("discount"));
+                prod.setProductQuantityDiscount(rst.getInt("quantitydiscount"));
+                
                 products.add(prod);
             }
 
@@ -60,10 +63,10 @@ public class ProductDBQuery {
         {
             int id = Dbutils.max("product","productId");
              String query="INSERT INTO product"
-                     +"(productId,name,price,stock)"
+                     +"(productId,name,price,stock,discount,quantitydiscount)"
                      +"VALUES"
                      +"("+id+",'"+prod.getProductName()
-                     +"','"+prod.getProductPrice()+"','"+prod.getProductStock()+"')";
+                     +"','"+prod.getProductPrice()+"','"+prod.getProductStock()+"','"+prod.getProductDiscount()+"','"+prod.getProductQuantityDiscount()+"')";
              
              int rows= Dbutils.executeUpdate(query) ;
         }
@@ -102,6 +105,8 @@ public class ProductDBQuery {
             String query="UPDATE product SET name='"+prod.getProductName()
                     +"', price="+prod.getProductPrice()
                     +", stock="+prod.getProductStock()
+                    +", discount="+prod.getProductDiscount()
+                    +", quantitydiscount="+prod.getProductQuantityDiscount()
                     +" WHERE productId = "+prod.getProductId();
            
              int rows= Dbutils.executeUpdate(query) ;
