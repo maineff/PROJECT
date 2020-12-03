@@ -5,17 +5,92 @@
  */
 package View;
 
+import Controller.Dbutils;
+import Controller.ProductDBQuery;
+import Model.Product;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author maine
  */
 public class EmployeePage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EmployeePage
-     */
+    private final ProductDBQuery productdb=new ProductDBQuery();
+    private  ArrayList<Product> produit = new  ArrayList<Product>(); 
+    private ArrayList<JLabel> productNameLabels=new ArrayList<>();
+    private ArrayList<JLabel> productPriceLabels=new ArrayList<>();
+    private ArrayList<JLabel> productQuantityLabels=new ArrayList<>();
+    private ArrayList<JLabel> productDiscountLabels=new ArrayList<>();
+    private ArrayList<JLabel> productLotLabels=new ArrayList<>();
+    
     public EmployeePage() {
+       
+        try{
         initComponents();
+        
+        //We establish the connexion
+        Connection conn= Dbutils.getDbConnection();
+        
+        produit=productdb.getProducts();
+        
+        //Display of the products
+            int j=150;
+            for(int i=0;i<produit.size();i++)
+            {
+                final int number=i;
+                productNameLabels.add(new JLabel(produit.get(i).getProductName()));
+                productPriceLabels.add(new JLabel(Double.toString(produit.get(i).getProductPrice())+"$"));
+                productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())+"    /100"));
+                productDiscountLabels.add(new JLabel(Integer.toString(produit.get(i).getProductDiscount())));
+                productLotLabels.add(new JLabel(Integer.toString(produit.get(i).getProductQuantityDiscount())));
+                
+                jPanel1.add(productNameLabels.get(i));
+                jPanel1.add(productPriceLabels.get(i));
+                jPanel1.add(productQuantityLabels.get(i));
+                jPanel1.add(productDiscountLabels.get(i));
+                jPanel1.add(productLotLabels.get(i));
+                
+                productNameLabels.get(i).setBounds(50, j, 200, 20);
+                productPriceLabels.get(i).setBounds(260, j, 200, 20);
+                productQuantityLabels.get(i).setBounds(380, j, 200, 20);
+                productDiscountLabels.get(i).setBounds(580, j, 200, 20);
+                productLotLabels.get(i).setBounds(750, j, 200, 20);
+                
+                
+                productNameLabels.get(i).setVisible(true);
+                productPriceLabels.get(i).setVisible(true);
+                productQuantityLabels.get(i).setVisible(true);
+                productDiscountLabels.get(i).setVisible(true);
+                productLotLabels.get(i).setVisible(true);
+                
+               
+//                productLabels.get(i).addActionListener(new ActionListener() {
+//
+//                    @Override
+//                    public void actionPerformed(ActionEvent ae) {
+//                         
+//                        dispose();
+//                        
+//                        achatPage.clearQuantity();
+//                        achatPage.setAchat(number, currentOrder);
+//                        achatPage.setVisible(true);//We display the purchase window if we click on a JButton
+//                        System.out.println(bucket.size());
+//                    }
+//                });
+                j+=30;
+            }
+        
+        
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
@@ -31,6 +106,19 @@ public class EmployeePage extends javax.swing.JFrame {
         skipButton = new javax.swing.JButton();
         welcome_employeeLabel = new javax.swing.JLabel();
         menuButton = new javax.swing.JButton();
+        productsLabel = new javax.swing.JLabel();
+        pricesLabel = new javax.swing.JLabel();
+        quantitiesLabel = new javax.swing.JLabel();
+        discountsLabel = new javax.swing.JLabel();
+        lotsLabel = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        productTextfield = new javax.swing.JTextField();
+        priceTextfield = new javax.swing.JTextField();
+        quantityTextfield = new javax.swing.JTextField();
+        lotTextfield = new javax.swing.JTextField();
+        discountTextfield = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +139,44 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         });
 
+        productsLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        productsLabel.setText("Products");
+
+        pricesLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        pricesLabel.setText("Prices");
+
+        quantitiesLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        quantitiesLabel.setText("Quantities");
+
+        discountsLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        discountsLabel.setText("Discounts");
+
+        lotsLabel.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lotsLabel.setText("Lots");
+
+        addButton.setText("add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        updateButton.setText("update");
+
+        deleteButton.setText("delete");
+
+        priceTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceTextfieldActionPerformed(evt);
+            }
+        });
+
+        lotTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lotTextfieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -64,7 +190,43 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(welcome_employeeLabel)))
-                .addGap(0, 293, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(addButton)
+                .addGap(149, 149, 149)
+                .addComponent(updateButton)
+                .addGap(149, 149, 149)
+                .addComponent(deleteButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(productsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(productTextfield))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(pricesLabel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(69, 69, 69)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(quantityTextfield)
+                    .addComponent(quantitiesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(discountsLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lotsLabel)
+                        .addGap(81, 81, 81))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +234,26 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addComponent(skipButton)
                 .addGap(24, 24, 24)
                 .addComponent(welcome_employeeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 505, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(productsLabel)
+                    .addComponent(pricesLabel)
+                    .addComponent(quantitiesLabel)
+                    .addComponent(discountsLabel)
+                    .addComponent(lotsLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateButton)
+                    .addComponent(deleteButton)
+                    .addComponent(addButton))
+                .addGap(30, 30, 30)
                 .addComponent(menuButton))
         );
 
@@ -98,6 +279,34 @@ public class EmployeePage extends javax.swing.JFrame {
         dispose();
         new Page1().setVisible(true);
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        Product prod=new Product();
+        ProductDBQuery nv=new ProductDBQuery();
+        
+        prod.setProductName(productTextfield.getText());
+        prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
+        prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
+        prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+        prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+        
+        nv.addProduct(prod);
+        
+        productTextfield.setText(null);
+        priceTextfield.setText(null);
+        quantityTextfield.setText(null);
+        discountTextfield.setText(null);
+        lotTextfield.setText(null);
+        
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void priceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceTextfieldActionPerformed
+
+    private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lotTextfieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,9 +344,22 @@ public class EmployeePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JTextField discountTextfield;
+    private javax.swing.JLabel discountsLabel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField lotTextfield;
+    private javax.swing.JLabel lotsLabel;
     private javax.swing.JButton menuButton;
+    private javax.swing.JTextField priceTextfield;
+    private javax.swing.JLabel pricesLabel;
+    private javax.swing.JTextField productTextfield;
+    private javax.swing.JLabel productsLabel;
+    private javax.swing.JLabel quantitiesLabel;
+    private javax.swing.JTextField quantityTextfield;
     private javax.swing.JButton skipButton;
+    private javax.swing.JButton updateButton;
     private javax.swing.JLabel welcome_employeeLabel;
     // End of variables declaration//GEN-END:variables
 }
