@@ -6,7 +6,6 @@
 package View;
 
 import Controller.Dbutils;
-import Controller.OrderDBQuery;
 import Controller.ProductDBQuery;
 import Model.Order;
 import Model.Product;
@@ -74,12 +73,13 @@ public class Achat extends javax.swing.JFrame {
         achatLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        skipButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
         quantityLabel = new javax.swing.JLabel();
         bucketButton = new javax.swing.JButton();
         quantity1Label = new javax.swing.JLabel();
         quantityTextfield = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        discountLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,10 +94,10 @@ public class Achat extends javax.swing.JFrame {
         priceLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         priceLabel.setText("price");
 
-        skipButton.setText("SKIP");
-        skipButton.addActionListener(new java.awt.event.ActionListener() {
+        exitButton.setText("EXIT");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                skipButtonActionPerformed(evt);
+                exitButtonActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class Achat extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(backButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(skipButton))
+                .addComponent(exitButton))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,7 +152,11 @@ public class Achat extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
                         .addComponent(achatLabel)))
-                .addGap(0, 202, Short.MAX_VALUE))
+                .addGap(0, 203, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +164,7 @@ public class Achat extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(skipButton)
+                            .addComponent(exitButton)
                             .addComponent(backButton))
                         .addGap(157, 157, 157)
                         .addComponent(nameLabel)
@@ -177,7 +181,9 @@ public class Achat extends javax.swing.JFrame {
                         .addComponent(priceLabel)
                         .addGap(41, 41, 41)
                         .addComponent(bucketButton)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,9 +200,9 @@ public class Achat extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
        System.exit(0);//Closing of the system
-    }//GEN-LAST:event_skipButtonActionPerformed
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
@@ -224,6 +230,8 @@ public class Achat extends javax.swing.JFrame {
         double priceIni=currentOrder.getTotalPrice();
 
         currentOrder.setDiscount(10);
+        
+        
         currentOrder.setQuantity(quanIni+quantityBuy);
         currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
         System.out.println(currentOrder.getDiscount()+" "+currentOrder.getQuantity()+" "+currentOrder.getTotalPrice());
@@ -231,13 +239,9 @@ public class Achat extends javax.swing.JFrame {
         //On ajoute le produit au panier
         parentPage.addToBucket(produit.get(here));
         parentPage.addQuantity(quantityBuy);
-        
-        //On affiche le panier
-        //parentPage.
-        
+      
         //Back to Product page
-        //setVisible(false);
-        parentPage.setVisible(true);//On rend la Productpage visible
+        parentPage.setVisible(true);
     }//GEN-LAST:event_bucketButtonActionPerformed
 
     /**
@@ -279,12 +283,13 @@ public static void main(String args[]) {
     private javax.swing.JLabel achatLabel;
     private javax.swing.JButton backButton;
     private javax.swing.JButton bucketButton;
+    private javax.swing.JLabel discountLabel;
+    private javax.swing.JButton exitButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JLabel quantity1Label;
     private javax.swing.JLabel quantityLabel;
     private javax.swing.JTextField quantityTextfield;
-    private javax.swing.JButton skipButton;
     // End of variables declaration//GEN-END:variables
 }

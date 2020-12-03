@@ -31,7 +31,7 @@ public class ProductPage extends javax.swing.JFrame {
     private ArrayList<Product> bucket = new  ArrayList<Product>(); 
     private ArrayList<Integer> quantity = new ArrayList<Integer>();
     private ArrayList<JButton> productButtons=new ArrayList<>();
-    private static Customer customerConnected=null;
+    private static Customer currentCustomer=null;
     private Achat achatPage;
     private Order currentOrder;
     private OrderDBQuery orderdb= new OrderDBQuery();
@@ -50,10 +50,10 @@ public class ProductPage extends javax.swing.JFrame {
             Connection conn= Dbutils.getDbConnection();
             
             //Field initialization
-            customerConnected=cust;
+            currentCustomer=cust;
             produit=productdb.getProducts();
             achatPage= new Achat(this);
-            
+            welcome_customerLabel.setText("Welcome "+currentCustomer.getCustomerName());
             //Display of the products
             int j=100;
             for(int i=0;i<produit.size();i++)
@@ -70,9 +70,8 @@ public class ProductPage extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent ae) {
                          
                         dispose();
-                        
                         achatPage.clearQuantity();
-                        achatPage.setAchat(number, currentOrder);
+                        achatPage.setAchat(number,currentOrder);
                         achatPage.setVisible(true);//We display the purchase window if we click on a JButton
                         System.out.println(bucket.size());
                     }
@@ -124,7 +123,6 @@ public class ProductPage extends javax.swing.JFrame {
         });
 
         welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        welcome_customerLabel.setText("WELCOME CUSTOMER");
 
         menuButton.setText("Menu");
         menuButton.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +152,7 @@ public class ProductPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addComponent(welcome_customerLabel)))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(516, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(skipButton))
@@ -178,7 +176,7 @@ public class ProductPage extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -209,12 +207,12 @@ public class ProductPage extends javax.swing.JFrame {
         orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
-        currentOrder.setCustomerName(customerConnected);
+        currentOrder.setCustomerName(currentCustomer);
         currentOrder.setProduct(produit);
         
         //Lorsque la commande est passée on met à jour la liste de commande du customer
-        customerConnected.getCommandes().add(currentOrder);
-        
+        currentCustomer.getCommandes().add(currentOrder);
+        currentOrder.getProduct().add(bucket);
     }//GEN-LAST:event_BuyButtonActionPerformed
 
     /**
@@ -253,7 +251,7 @@ public class ProductPage extends javax.swing.JFrame {
                 
                 Order currentOrder = new Order();
                 
-                new ProductPage(customerConnected, currentOrder).setVisible(true);
+                new ProductPage(currentCustomer,currentOrder).setVisible(true);
             }
         });
     }
