@@ -23,7 +23,8 @@ public class Order {
     private int quantity;
     private double discount;
     private double totalPrice;
-    private String orderDate;		
+    private String orderDate;	
+    private String username;	
    
     //Constructor
     public Order(){
@@ -78,6 +79,10 @@ public class Order {
        this.orderDate=orderDate;
    }
      
+    public void setUsername(String name) 
+    {
+         username=name;
+    }
         /*-----------------------Getter-----------------------*/
 
     public int getOrderId()
@@ -113,5 +118,10 @@ public class Order {
    {
        return orderDate;
    }
+
+    public String getUsername()
+    {
+         return username;
+    }
 }
 

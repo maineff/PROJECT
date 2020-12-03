@@ -37,11 +37,11 @@ public class OrderDBQuery {
             int id = Dbutils.max("order1","orderId");
             String date= new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
             String query="INSERT INTO order1"
-                    +"(orderId,quantity,discount,totalPrice,date)" 
+                    +"(orderId,quantity,discount,totalPrice,date,username)" 
                     +" VALUES "
                     +"("+id+","+od.getQuantity()+","+od.getDiscount()
                     +","+od.getTotalPrice()+",'"+date
-                    +"')";
+                    +",'"+od.getUsername()+"')";
            int rows= Dbutils.executeUpdate(query) ;
          }
          else

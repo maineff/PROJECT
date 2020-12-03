@@ -296,6 +296,8 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_skipButtonActionPerformed
 
     private void BuyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyButtonActionPerformed
+       
+        currentOrder.setUsername(customerConnected.getCustomerUsername());
         orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
