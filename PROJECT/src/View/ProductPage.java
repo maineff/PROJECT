@@ -88,7 +88,7 @@ public class ProductPage extends javax.swing.JFrame {
         }
           
             //rentre les commandes dans un fichier texte
-           try
+          /* try
             {
                 String filename="order.txt";
                 FileWriter fw = new FileWriter("order.txt",true);
@@ -98,7 +98,7 @@ public class ProductPage extends javax.swing.JFrame {
             catch(IOException ioe)
             {
                 System.out.println(ioe.getMessage());
-            }
+            }*/
     }
 
      public void addToBucket(Product p)
@@ -347,6 +347,25 @@ public class ProductPage extends javax.swing.JFrame {
         currentCustomer.getCommandes().add(currentOrder);
         currentOrder.getProduct().add(bucket);
         
+        try
+            {
+                String filename="order.txt";
+                FileWriter fw = new FileWriter("order.txt",true);
+                //fw.write(Integer.toString(currentOrder.getProduct()));
+                fw.append(currentCustomer.getCustomerName()+"\n");
+                for (int i = 0; i <bucket.size(); i++)
+                {
+                   
+                    fw.append(bucket.get(i).getProductName()+"\n");
+                   
+                }
+                 fw.append("******\n");
+                fw.close();
+            }
+            catch(IOException ioe)
+            {
+                System.out.println(ioe.getMessage());
+            }
         
         save=achatPage.getPsr()-currentOrder.getTotalPrice();
         economieLabel1.setText("you save £"+save);
