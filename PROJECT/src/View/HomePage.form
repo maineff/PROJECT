@@ -115,7 +115,7 @@
                           <Component id="customerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="sellerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="241" max="32767" attributes="0"/>
+                      <EmptySpace pref="237" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -198,12 +198,10 @@
                       <EmptySpace pref="142" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPasswordField1" pref="199" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="usernameTextfield" alignment="0" pref="199" max="32767" attributes="0"/>
-                              <Component id="usernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="wrongLabel" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="usernameTextfield" alignment="0" pref="199" max="32767" attributes="0"/>
+                          <Component id="usernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="wrongLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
                   </Group>
