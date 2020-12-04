@@ -64,7 +64,31 @@ public class ProductPage extends javax.swing.JFrame {
             jPanel1.add(jScrollPane1);
             
             //Display of the products
-            int j=30;
+            displayProducts();
+            
+          
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+          
+            //rentre les commandes dans un fichier texte
+          /* try
+            {
+                String filename="order.txt";
+                FileWriter fw = new FileWriter("order.txt",true);
+                fw.write(Integer.toString(currentOrder.getOrderId()));
+                fw.close();
+            }
+            catch(IOException ioe)
+            {
+                System.out.println(ioe.getMessage());
+            }*/
+    }
+    
+    
+    public void displayProducts()
+    {
+        int j=30;
             for(int i=0;i<produit.size();i++)
             {
                 String str=(produit.get(i).getProductName().replace(" ", "")+".jpg");
@@ -104,23 +128,6 @@ public class ProductPage extends javax.swing.JFrame {
                 });
                 j+=150;
             }
-          
-        }catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-          
-            //rentre les commandes dans un fichier texte
-          /* try
-            {
-                String filename="order.txt";
-                FileWriter fw = new FileWriter("order.txt",true);
-                fw.write(Integer.toString(currentOrder.getOrderId()));
-                fw.close();
-            }
-            catch(IOException ioe)
-            {
-                System.out.println(ioe.getMessage());
-            }*/
     }
 
      public void addToBucket(Product p)
@@ -140,7 +147,7 @@ public class ProductPage extends javax.swing.JFrame {
          deleteButtons.add(new JButton("Delete"));
          jPanel1.add(deleteButtons.get(deleteButtons.size()-1));
          if (deleteButtons.size()==1){
-             deleteButtons.get(deleteButtons.size()-1).setBounds(750, 225, 80, 15);
+             deleteButtons.get(deleteButtons.size()-1).setBounds(760, 225, 80, 15);
          }
          else{
              int j = deleteButtons.get(deleteButtons.size()-2).getY();
@@ -367,18 +374,6 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGap(224, 224, 224)
                 .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelBucket)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelStatutBucket))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(73, 73, 73))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuButton)
@@ -389,6 +384,20 @@ public class ProductPage extends javax.swing.JFrame {
                         .addGap(367, 367, 367)
                         .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelBucket)
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabelStatutBucket)))
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,9 +409,9 @@ public class ProductPage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelBucket)
                     .addComponent(jLabelStatutBucket))
-                .addGap(33, 33, 33)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(58, 58, 58)
                 .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
