@@ -8,16 +8,12 @@ package View;
 import Controller.Dbutils;
 import Controller.OrderDBQuery;
 import Controller.ProductDBQuery;
+import Model.Employee;
 import Model.Order;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,15 +43,16 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JButton> selectorder= new ArrayList<>();
     Details detailpage=new Details(this);    
     String employeeAction="";
-
+    Employee currentEmployee;
 
     
-    public EmployeePage() {
+    public EmployeePage(Employee emp) {
        
         try{
         initComponents();
         
-        
+        currentEmployee=emp;
+        welcome_employeeLabel.setText("WELCOME "+currentEmployee.getEmployeeName());
         jPanel1.add(jPanel2);
         jPanel1.add(jScrollPane);
         
@@ -324,8 +321,7 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(addButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(addButton)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -506,7 +502,7 @@ public class EmployeePage extends javax.swing.JFrame {
             ORDERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ORDERPANELLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ORDER", ORDERPANEL);
@@ -539,19 +535,18 @@ public class EmployeePage extends javax.swing.JFrame {
         });
 
         welcome_employeeLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        welcome_employeeLabel.setText("WELCOME EMPLOYEE");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(skipButton))
             .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(welcome_employeeLabel)
+                .addGap(226, 226, 226)
+                .addComponent(welcome_employeeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -660,7 +655,7 @@ public class EmployeePage extends javax.swing.JFrame {
         discountTextfield.setText(null);
         lotTextfield.setText(null);
         setVisible(false);
-        new EmployeePage().setVisible(true);
+        new EmployeePage(currentEmployee).setVisible(true);
             
         }
         else if(employeeAction=="update")
@@ -686,7 +681,7 @@ public class EmployeePage extends javax.swing.JFrame {
         lotTextfield.setText(null);
         
         setVisible(false);
-        new EmployeePage().setVisible(true);
+        new EmployeePage(currentEmployee).setVisible(true);
         }
         
         else if(employeeAction=="delete")
@@ -707,20 +702,20 @@ public class EmployeePage extends javax.swing.JFrame {
         lotTextfield.setText(null);
         
         setVisible(false);
-        new EmployeePage().setVisible(true);
+        new EmployeePage(currentEmployee).setVisible(true);
         }
     }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+    /*    try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -739,12 +734,12 @@ public class EmployeePage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeePage().setVisible(true);
+                new EmployeePage(currentEmployee).setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ORDERPANEL;

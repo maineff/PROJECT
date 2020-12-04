@@ -7,8 +7,10 @@ package View;
 
 import Controller.CustomerDBQuery;
 import Controller.Dbutils;
+import Controller.EmployeeDBQuery;
 
 import Model.Customer;
+import Model.Employee;
 import Model.Order;
 
 import java.awt.Color;
@@ -25,8 +27,8 @@ public class HomePage extends javax.swing.JFrame {
     /**
      * Creates new form HomePage
      */
-    CustomerDBQuery customerdb=new CustomerDBQuery();
-
+    CustomerDBQuery customerdb= new CustomerDBQuery();
+    EmployeeDBQuery employeedb= new EmployeeDBQuery();
     
     public HomePage() {
         initComponents();
@@ -472,10 +474,19 @@ public class HomePage extends javax.swing.JFrame {
         {
             ResultSet rst = Dbutils.executeQuery(rq);
             if(rst.next())
-            {  
-                //customerConnected=new Customer();
+            { 
+                //On ferme la fenêtre HomePage
                 setVisible(false); 
-               new EmployeePage().setVisible(true);
+                
+                //On créé un employée à l'aide des informations de la base de donnée sur l'employee en question
+                Employee empConnected=new Employee();
+                empConnected.setEmployeeId(rst.getInt("employeeId"));
+                empConnected.setEmployeeName(rst.getString("name"));
+                empConnected.setEmployeeLastname(rst.getString("lastname"));
+                empConnected.setEmployeeUsername(rst.getString("username"));
+                empConnected.setEmployeePassword(rst.getString("password"));
+                
+               new EmployeePage(empConnected).setVisible(true);
                
             }
             else
