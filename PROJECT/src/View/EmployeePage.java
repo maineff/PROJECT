@@ -582,7 +582,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         dispose();
-        new Page1().setVisible(true);
+        new HomePage().setVisible(true);
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed

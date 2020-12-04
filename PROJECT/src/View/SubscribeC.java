@@ -220,7 +220,7 @@ public class SubscribeC extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         setVisible(false);
-        new Page1().setVisible(true);
+        new HomePage().setVisible(true);
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
@@ -242,7 +242,7 @@ public class SubscribeC extends javax.swing.JFrame {
              nv.addCustomer(cust);
              
              setVisible(false);
-             new Page1().setVisible(true);
+             new HomePage().setVisible(true);
          }
          else
          {

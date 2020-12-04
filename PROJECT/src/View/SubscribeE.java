@@ -196,7 +196,7 @@ public class SubscribeE extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         setVisible(false);
-        new Page1().setVisible(true);
+        new HomePage().setVisible(true);
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
@@ -212,7 +212,7 @@ public class SubscribeE extends javax.swing.JFrame {
             nv.addEmployee(employ);
 
             setVisible(false);
-            new Page1().setVisible(true);
+            new HomePage().setVisible(true);
         }
         else
         {

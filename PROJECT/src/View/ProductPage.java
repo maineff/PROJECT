@@ -327,7 +327,7 @@ public class ProductPage extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
       dispose();
-      new Page1().setVisible(true); //Back to Page 1
+      new HomePage().setVisible(true); //Back to Page 1
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed

@@ -20,15 +20,15 @@ import javax.swing.JOptionPane;
  *
  * @author maine
  */
-public class Page1 extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
 
     /**
-     * Creates new form Page1
+     * Creates new form HomePage
      */
     CustomerDBQuery customerdb=new CustomerDBQuery();
 
     
-    public Page1() {
+    public HomePage() {
         initComponents();
 //        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 //        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -526,7 +526,7 @@ public class Page1 extends javax.swing.JFrame {
             ResultSet rst = Dbutils.executeQuery(rq);
             if(rst.next())
             {
-                //On ferme la fenêtre Page1
+                //On ferme la fenêtre HomePage
                 setVisible(false);
                 
                 //On crée une commande actuelle
@@ -587,20 +587,23 @@ public class Page1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Page1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Page1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Page1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Page1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Page1().setVisible(true);
+                new HomePage().setVisible(true);
             }
         });
     }
