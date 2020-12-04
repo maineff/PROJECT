@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -34,6 +36,7 @@ public class ProductPage extends javax.swing.JFrame {
     private ArrayList<Product> bucket = new  ArrayList<Product>(); 
     private ArrayList<Integer> quantity = new ArrayList<Integer>();
     private ArrayList<JButton> productButtons=new ArrayList<>();
+    private ArrayList<JLabel> productLabel=new ArrayList<>();
     private static Customer currentCustomer=null;
     private Achat achatPage;
     private Order currentOrder;
@@ -57,16 +60,34 @@ public class ProductPage extends javax.swing.JFrame {
             welcome_customerLabel.setText("Welcome "+currentCustomer.getCustomerName());
             produit=productdb.getProducts();
             achatPage= new Achat(this);
+            jPanel1.add(jScrollPane1);
             
             //Display of the products
-            int j=100;
+            int j=30;
             for(int i=0;i<produit.size();i++)
             {
+                String str=(produit.get(i).getProductName().replace(" ", "")+".jpg");
+                ImageIcon img;
+                System.out.println(str);
+                try{
+                    img=new ImageIcon(str);
+                    
+                }catch(Exception e)
+                {
+                    img=new ImageIcon("notfound.jpg");
+                    System.out.println("salut");
+                }
                 final int number=i;
-                productButtons.add(new JButton(produit.get(i).getProductName()));
-                jPanel1.add(productButtons.get(i));
-                productButtons.get(i).setBounds(100, j, 200, 20);
+                productLabel.add(new JLabel(produit.get(i).getProductName()));
+                productButtons.add(new JButton());
+                productButtons.get(i).setIcon(img);
+                
+                jPanel2.add(productButtons.get(i));
+                jPanel2.add(productLabel.get(i));
+                productButtons.get(i).setBounds(30, j, 100, 100);
+                productLabel.get(i).setBounds(200, j+50, 200, 20);
                 productButtons.get(i).setVisible(true);
+                productLabel.get(i).setVisible(true);
                
                 productButtons.get(i).addActionListener(new ActionListener() {
 
@@ -80,7 +101,7 @@ public class ProductPage extends javax.swing.JFrame {
                         System.out.println(bucket.size());
                     }
                 });
-                j+=50;
+                j+=150;
             }
           
         }catch (SQLException ex) {
@@ -194,6 +215,8 @@ public class ProductPage extends javax.swing.JFrame {
         jLabelStatutBucket = new javax.swing.JLabel();
         jLabelTotalPrice = new javax.swing.JLabel();
         economieLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -258,8 +281,28 @@ public class ProductPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(skipButton))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(menuButton)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(755, 755, 755)
+                        .addComponent(BuyButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(224, 224, 224)
+                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(367, 367, 367)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(191, 191, 191))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,26 +311,6 @@ public class ProductPage extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelStatutBucket)))
                         .addGap(30, 30, 30))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuButton)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(755, 755, 755)
-                        .addComponent(BuyButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,25 +324,51 @@ public class ProductPage extends javax.swing.JFrame {
                     .addComponent(jLabelStatutBucket))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(63, 63, 63)
                 .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addGap(53, 53, 53)
                 .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(504, 3000));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1003, Short.MAX_VALUE)
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 340, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(117, 117, 117)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(38, Short.MAX_VALUE)))
         );
 
         pack();
@@ -421,6 +470,8 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelStatutBucket;
     private javax.swing.JLabel jLabelTotalPrice;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableBucket;
     private javax.swing.JButton menuButton;
