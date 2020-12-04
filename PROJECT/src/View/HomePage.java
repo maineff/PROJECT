@@ -55,7 +55,7 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        homePage = new javax.swing.JPanel();
+        Acceuil = new javax.swing.JPanel();
         you_areLabel = new javax.swing.JLabel();
         customerButton = new javax.swing.JButton();
         sellerButton = new javax.swing.JButton();
@@ -66,30 +66,30 @@ public class HomePage extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameTextfield = new javax.swing.JTextField();
-        passwordTextfield = new javax.swing.JTextField();
         okcustButton = new javax.swing.JButton();
         subscribeButon = new javax.swing.JButton();
         skipButton1 = new javax.swing.JButton();
         wrongLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         employeeLogin = new javax.swing.JPanel();
         menu1Button = new javax.swing.JButton();
         skipButton2 = new javax.swing.JButton();
         idLabel1 = new javax.swing.JLabel();
         idTextfield1 = new javax.swing.JTextField();
         passwordLabel1 = new javax.swing.JLabel();
-        passwordTextfield1 = new javax.swing.JTextField();
         subscribeButton = new javax.swing.JButton();
         okempButton1 = new javax.swing.JButton();
         wrongLabel1 = new javax.swing.JLabel();
         logoLabel = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(850, 600));
         jLayeredPane1.setRequestFocusEnabled(false);
 
-        homePage.setPreferredSize(new java.awt.Dimension(850, 600));
+        Acceuil.setPreferredSize(new java.awt.Dimension(850, 600));
 
         you_areLabel.setText("You are :");
 
@@ -117,39 +117,39 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout homePageLayout = new javax.swing.GroupLayout(homePage);
-        homePage.setLayout(homePageLayout);
-        homePageLayout.setHorizontalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homePageLayout.createSequentialGroup()
+        javax.swing.GroupLayout AcceuilLayout = new javax.swing.GroupLayout(Acceuil);
+        Acceuil.setLayout(AcceuilLayout);
+        AcceuilLayout.setHorizontalGroup(
+            AcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AcceuilLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(skipButton))
-            .addGroup(homePageLayout.createSequentialGroup()
+            .addGroup(AcceuilLayout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addComponent(customerButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(sellerButton)
                 .addGap(241, 241, 241))
-            .addGroup(homePageLayout.createSequentialGroup()
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homePageLayout.createSequentialGroup()
+            .addGroup(AcceuilLayout.createSequentialGroup()
+                .addGroup(AcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AcceuilLayout.createSequentialGroup()
                         .addGap(301, 301, 301)
                         .addComponent(welcomeLabel))
-                    .addGroup(homePageLayout.createSequentialGroup()
+                    .addGroup(AcceuilLayout.createSequentialGroup()
                         .addGap(374, 374, 374)
                         .addComponent(you_areLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        homePageLayout.setVerticalGroup(
-            homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(homePageLayout.createSequentialGroup()
+        AcceuilLayout.setVerticalGroup(
+            AcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AcceuilLayout.createSequentialGroup()
                 .addComponent(skipButton)
                 .addGap(89, 89, 89)
                 .addComponent(welcomeLabel)
                 .addGap(104, 104, 104)
                 .addComponent(you_areLabel)
                 .addGap(60, 60, 60)
-                .addGroup(homePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(AcceuilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerButton)
                     .addComponent(sellerButton))
                 .addContainerGap(241, Short.MAX_VALUE))
@@ -182,14 +182,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        passwordTextfield.setBackground(new java.awt.Color(204, 153, 255));
-        passwordTextfield.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
-        passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextfieldActionPerformed(evt);
-            }
-        });
-
         okcustButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         okcustButton.setText("OK");
         okcustButton.addActionListener(new java.awt.event.ActionListener() {
@@ -219,10 +211,16 @@ public class HomePage extends javax.swing.JFrame {
 
         wrongLabel.setForeground(new java.awt.Color(255, 0, 0));
 
+        jPasswordField1.setBackground(new java.awt.Color(204, 153, 255));
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
+
         javax.swing.GroupLayout customerLoginLayout = new javax.swing.GroupLayout(customerLogin);
         customerLogin.setLayout(customerLoginLayout);
         customerLoginLayout.setHorizontalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(skipButton1))
             .addGroup(customerLoginLayout.createSequentialGroup()
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuButton)
@@ -232,47 +230,46 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(customerLoginLayout.createSequentialGroup()
                         .addGap(289, 289, 289)
                         .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(297, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(skipButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordLabel)
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addComponent(usernameLabel)
-                    .addComponent(wrongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(passwordLabel)
+                        .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                        .addComponent(usernameLabel)
+                        .addComponent(wrongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(323, 323, 323))
         );
         customerLoginLayout.setVerticalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(customerLoginLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
                 .addComponent(skipButton1)
                 .addGap(56, 56, 56)
                 .addComponent(imageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(menuButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerLoginLayout.createSequentialGroup()
+                        .addGap(403, 403, 403)
+                        .addComponent(menuButton))
+                    .addGroup(customerLoginLayout.createSequentialGroup()
+                        .addComponent(usernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(passwordLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(okcustButton)
+                        .addGap(32, 32, 32)
+                        .addComponent(subscribeButon)))
                 .addGap(27, 27, 27))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
-                .addGap(0, 167, Short.MAX_VALUE)
-                .addComponent(usernameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(passwordLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(okcustButton)
-                .addGap(32, 32, 32)
-                .addComponent(subscribeButon)
-                .addGap(103, 103, 103))
         );
 
         employeeLogin.setBackground(new java.awt.Color(0, 153, 153));
@@ -308,14 +305,6 @@ public class HomePage extends javax.swing.JFrame {
         passwordLabel1.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel1.setText("Password");
 
-        passwordTextfield1.setBackground(new java.awt.Color(0, 153, 153));
-        passwordTextfield1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
-        passwordTextfield1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordTextfield1ActionPerformed(evt);
-            }
-        });
-
         subscribeButton.setBackground(new java.awt.Color(255, 255, 255));
         subscribeButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         subscribeButton.setForeground(new java.awt.Color(0, 153, 153));
@@ -337,6 +326,14 @@ public class HomePage extends javax.swing.JFrame {
 
         wrongLabel1.setBackground(new java.awt.Color(0, 153, 153));
         wrongLabel1.setForeground(new java.awt.Color(255, 0, 0));
+
+        jPasswordField2.setBackground(new java.awt.Color(0, 153, 153));
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(255, 255, 255)));
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout employeeLoginLayout = new javax.swing.GroupLayout(employeeLogin);
         employeeLogin.setLayout(employeeLoginLayout);
@@ -361,21 +358,19 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(okempButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeLoginLayout.createSequentialGroup()
-                .addGap(89, 302, Short.MAX_VALUE)
+                .addGap(89, 291, Short.MAX_VALUE)
                 .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeLoginLayout.createSequentialGroup()
                         .addComponent(skipButton2)
                         .addGap(15, 15, 15))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeLoginLayout.createSequentialGroup()
-                        .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(idTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                             .addComponent(passwordLabel1)
-                            .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(employeeLoginLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(337, 337, 337))))
+                            .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField2))
+                        .addGap(348, 348, 348))))
         );
         employeeLoginLayout.setVerticalGroup(
             employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,9 +385,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(passwordLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okempButton1)
@@ -407,7 +402,7 @@ public class HomePage extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homePage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Acceuil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(customerLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,13 +410,13 @@ public class HomePage extends javax.swing.JFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homePage, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+            .addComponent(Acceuil, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(customerLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(employeeLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
         );
-        jLayeredPane1.setLayer(homePage, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(Acceuil, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(customerLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(employeeLogin, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -440,21 +435,21 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void customerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerButtonActionPerformed
-        homePage.setVisible(false);
+        Acceuil.setVisible(false);
         customerLogin.setVisible(true);
         employeeLogin.setVisible(false);
         
     }//GEN-LAST:event_customerButtonActionPerformed
 
     private void sellerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellerButtonActionPerformed
-        homePage.setVisible(false);
+        Acceuil.setVisible(false);
         customerLogin.setVisible(false);
         employeeLogin.setVisible(true);
         
     }//GEN-LAST:event_sellerButtonActionPerformed
 
     private void menu1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu1ButtonActionPerformed
-         homePage.setVisible(true);
+         Acceuil.setVisible(true);
          customerLogin.setVisible(false);
          employeeLogin.setVisible(false);
     }//GEN-LAST:event_menu1ButtonActionPerformed
@@ -462,10 +457,6 @@ public class HomePage extends javax.swing.JFrame {
     private void idTextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextfield1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextfield1ActionPerformed
-
-    private void passwordTextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfield1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextfield1ActionPerformed
 
     private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
        System.exit(0);
@@ -476,7 +467,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_skipButton2ActionPerformed
 
     private void okempButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okempButton1ActionPerformed
-         String rq = "SELECT * FROM employee WHERE username='"+idTextfield1.getText()+"'and password='"+passwordTextfield1.getText()+"'";
+         String rq = "SELECT * FROM employee WHERE username='"+idTextfield1.getText()+"'and password='"+jPasswordField2.getText()+"'";
         try 
         {
             ResultSet rst = Dbutils.executeQuery(rq);
@@ -518,7 +509,7 @@ public class HomePage extends javax.swing.JFrame {
     private void okcustButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okcustButtonActionPerformed
 
         //Requête permettant d'identifier le client
-        String rq = "SELECT * FROM customer WHERE username='"+usernameTextfield.getText()+"'and password='"+passwordTextfield.getText()+"'";
+        String rq = "SELECT * FROM customer WHERE username='"+usernameTextfield.getText()+"'and password='"+jPasswordField1.getText()+"'";
         
         try
         {
@@ -556,19 +547,19 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_okcustButtonActionPerformed
 
-    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextfieldActionPerformed
-
     private void usernameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTextfieldActionPerformed
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-        homePage.setVisible(true);
+        Acceuil.setVisible(true);
         customerLogin.setVisible(false);
         employeeLogin.setVisible(false);
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -609,14 +600,16 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Acceuil;
     private javax.swing.JButton customerButton;
     private javax.swing.JPanel customerLogin;
     private javax.swing.JPanel employeeLogin;
-    private javax.swing.JPanel homePage;
     private javax.swing.JLabel idLabel1;
     private javax.swing.JTextField idTextfield1;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JButton menu1Button;
     private javax.swing.JButton menuButton;
@@ -624,8 +617,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton okempButton1;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel passwordLabel1;
-    private javax.swing.JTextField passwordTextfield;
-    private javax.swing.JTextField passwordTextfield1;
     private javax.swing.JButton sellerButton;
     private javax.swing.JButton skipButton;
     private javax.swing.JButton skipButton1;
