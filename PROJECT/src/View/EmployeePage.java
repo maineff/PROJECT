@@ -209,6 +209,7 @@ public class EmployeePage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        pbnameLabel = new javax.swing.JLabel();
         ORDERPANEL = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderIdLabel = new javax.swing.JLabel();
@@ -347,6 +348,10 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                         .addComponent(deleteButton)
                         .addGap(162, 162, 162))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pbnameLabel)
+                .addContainerGap(603, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +374,8 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pbnameLabel))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -639,7 +645,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         if(employeeAction=="add")
         {
-            Product prod=new Product();
+        Product prod=new Product();
         
         prod.setProductName(productTextfield.getText());
         prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
@@ -770,6 +776,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel orderIdLabel;
     private javax.swing.JLabel ownerLabel;
+    private javax.swing.JLabel pbnameLabel;
     private javax.swing.JTextField priceTextfield;
     private javax.swing.JLabel pricesLabel;
     private javax.swing.JTextField productTextfield;
