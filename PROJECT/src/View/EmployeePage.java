@@ -303,7 +303,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jLabel3.setText("Quantity :");
 
-        jLabel4.setText("Disocunt :");
+        jLabel4.setText("Discount :");
 
         jLabel5.setText("Lots :");
 
@@ -351,7 +351,7 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pbnameLabel)
-                .addContainerGap(603, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
