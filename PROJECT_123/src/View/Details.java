@@ -8,59 +8,88 @@ package View;
 import Controller.Dbutils;
 import Controller.OrderDBQuery;
 import Model.Order;
-import java.sql.Connection;
+import Model.Product;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author maine
  */
+
+
+
 public class Details extends javax.swing.JFrame {
 
     private final OrderDBQuery orderdb=new OrderDBQuery();
     private  ArrayList<Order> commande = new  ArrayList<>(); 
     private EmployeePage parentpage;
-    private int here;
+    private int currentOrderId;
     
     public Details(EmployeePage p) {
         initComponents();
         parentpage=p;
+       
+        
     }
     
-     public void setDetail(int i) {
+     public void setOrderId(int id) {
          
+        currentOrderId=id;
+
+        ArrayList<Product> produits=getOrderDetails();
+        String[] colNames =new String[] {"Name", "Quantity", "Price","Discount"};
+        Object[][] data= new Object[produits.size()][4];
         
-        this.here=i;
-//        
-//        try 
-//        {
-//       
-//            parentpage.setVisible(false);//On désaffiche la page parent, ie la Productpage
-//            
-//            //On établit la connection
-//            Connection conn= Dbutils.getDbConnection();
-//            commande=orderdb.getOrder();
-//            
-//            //On affiche les informations relatives au produit choisi par le customer
-//            nameLabel.setText(produit.get(i).getProductName());
-//            priceLabel.setText(Double.toString(produit.get(i).getProductPrice())+"$");
-//            quantityLabel.setText(Integer.toString(produit.get(i).getProductStock())+"/100");
-//            //on clear le label si il n'y a pas de reductions
-//            if(produit.get(i).getProductQuantityDiscount()>0 && produit.get(i).getProductDiscount()>0)
-//             {
-//                 discountLabel.setText(produit.get(i).getProductQuantityDiscount()+"for £"+produit.get(i).getProductDiscount());
-//             }
-//             else 
-//             {
-//                 discountLabel.setText(" ");
-//             }
-//        
-//        }
-//        catch (SQLException ex) 
-//        {
-//            System.out.println(ex.getMessage());
-//        }
+        
+        for(int i=0;i<produits.size();i++)
+        {
+          data[i][0]= produits.get(i).getProductName();
+          data[i][1]= produits.get(i).getProductQuantityDiscount();
+          data[i][2]= produits.get(i).getProductPrice();
+          data[i][3]= produits.get(i).getProductDiscount();
+
+        }
+      
+         DefaultTableModel dtm = new DefaultTableModel(data,colNames);
+	 jTable1.setModel(dtm);
+    
     }
+     
+    public ArrayList<Product> getOrderDetails() 
+    {
+        try
+        {
+            ArrayList<Product> products= new  ArrayList<>();
+            Product prod;
+         
+            //On établit la connection
+            String rq="select a.name, b.quantity, b.price, b.discount from product a, orderdetails b ";
+                   rq+=" where a.productId=b.productId";
+                   rq+=" and b.orderId="+currentOrderId;
+            ResultSet rst = Dbutils.executeQuery(rq);
+            
+            while(rst.next())
+            {
+                prod=new Product();
+                prod.setProductName(rst.getString("name"));
+                prod.setProductQuantityDiscount(rst.getInt("quantity"));
+                prod.setProductPrice(rst.getDouble("price"));
+                prod.setProductDiscount(rst.getInt("discount"));
+                products.add(prod);
+            }
+            
+            return products;
+        } 
+        catch (SQLException ex) 
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+ 
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,6 +104,8 @@ public class Details extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +126,16 @@ public class Details extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
         jLabel1.setText("ORDER DETAILS");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,9 +145,14 @@ public class Details extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(jLabel1)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +160,11 @@ public class Details extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(exitButton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addGap(0, 508, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 272, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,5 +232,7 @@ public class Details extends javax.swing.JFrame {
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

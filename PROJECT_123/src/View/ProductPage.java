@@ -134,83 +134,87 @@ public class ProductPage extends javax.swing.JFrame {
      {
          deleteButtons.add(new JButton("Delete"));
          jPanel1.add(deleteButtons.get(deleteButtons.size()-1));
-         if (deleteButtons.size()==1){
-             deleteButtons.get(deleteButtons.size()-1).setBounds(760, 225, 80, 15);
+         if (deleteButtons.size()==1)
+         {
+            deleteButtons.get(deleteButtons.size()-1).setBounds(760, 225, 80, 15);
          }
-         else{
-             int j = deleteButtons.get(deleteButtons.size()-2).getY();
-             deleteButtons.get(deleteButtons.size()-1).setBounds(760, j+17, 80, 15);
+         else
+         {
+            int j = deleteButtons.get(deleteButtons.size()-2).getY();
+            deleteButtons.get(deleteButtons.size()-1).setBounds(760, j+17, 80, 15);
          }
-            deleteButtons.get(deleteButtons.size()-1).setVisible(true);
+         deleteButtons.get(deleteButtons.size()-1).setVisible(true);
             
-            deleteButtons.get(deleteButtons.size()-1).addActionListener(new ActionListener(){
-                
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    Object o = ae.getSource();
-                    int here=0;
-                    for (int i=0; i<deleteButtons.size();i++){
-                        if (deleteButtons.get(i)==o){
-                            here=i;
-                        }
-                    }
-                    System.out.println(bucket.get(here).getProductName());
-                    
-                    //We manage product stock
-                    int quantityInitial=bucket.get(here).getProductStock();
-                    int quantityBuy=quantity.get(here);
-                    int quantityFinal=quantityInitial+quantityBuy;
-                    bucket.get(here).setProductStock(quantityFinal);
-                    productdb.updateProduct(bucket.get(here));
-                    
-                    //We actualize the current order
-                    int quanIni=currentOrder.getQuantity();
-                    double priceIni=currentOrder.getTotalPrice();
-                    int n = quantityBuy;
-                    double tp;
-                    double p = bucket.get(here).getProductPrice();
-                        
-                    if(bucket.get(here).getProductQuantityDiscount()>0 && bucket.get(here).getProductDiscount()>0)
-                    {
-                        tp=(n/bucket.get(here).getProductQuantityDiscount())*bucket.get(here).getProductDiscount()
-                            +(n%bucket.get(here).getProductQuantityDiscount())*bucket.get(here).getProductPrice();
-                    }
-                    else
-                    {
-                        tp=p*n;
-                    }
-                        
-                    currentOrder.setQuantity(quanIni-quantityBuy);
-                    currentOrder.setTotalPrice(priceIni-tp);
-                    
-                    //calcul du prix sans reduc
-                    psr-=bucket.get(here).getProductPrice()*quantityBuy;
-                    
-                    //On supprime des ArrayList ce que l'on vient d'enlever
-                    bucket.remove(here);
-                    quantity.remove(here);
-                    jPanel1.remove(deleteButtons.get(here));
-                    jPanel1.revalidate();
-                    jPanel1.repaint();
-                    deleteButtons.remove(here);
-                    for(int l=here;l<deleteButtons.size();l++){
-                        deleteButtons.get(l).setBounds(750, deleteButtons.get(l).getY()-17, 80, 15);
-                    }
-                    
-                    //On affiche le panier en appelant la méthode updateTable
-                    updateTable();
-   
-                    //On met à jour le statut du panier
-                    updateStatutBucket();
-      
-                    //On met à jour le prix total
-                    updateTotalPrice();
-                       
-                    //On rend la page visible
-                    setVisible(true);
+    deleteButtons.get(deleteButtons.size()-1).addActionListener(new ActionListener()
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) 
+        {
+            Object o = ae.getSource();
+            int here=0;
+            for (int i=0; i<deleteButtons.size();i++){
+                if (deleteButtons.get(i)==o){
+                    here=i;
                 }
-            });
-     }
+            }
+            System.out.println(bucket.get(here).getProductName());
+
+            //We manage product stock
+            int quantityInitial=bucket.get(here).getProductStock();
+            int quantityBuy=quantity.get(here);
+            int quantityFinal=quantityInitial+quantityBuy;
+            bucket.get(here).setProductStock(quantityFinal);
+            productdb.updateProduct(bucket.get(here));
+
+            //We actualize the current order
+            int quanIni=currentOrder.getQuantity();
+            double priceIni=currentOrder.getTotalPrice();
+            int n = quantityBuy;
+            double tp;
+            double p = bucket.get(here).getProductPrice();
+
+            if(bucket.get(here).getProductQuantityDiscount()>0 && bucket.get(here).getProductDiscount()>0)
+            {
+                tp=(n/bucket.get(here).getProductQuantityDiscount())*bucket.get(here).getProductDiscount()
+                    +(n%bucket.get(here).getProductQuantityDiscount())*bucket.get(here).getProductPrice();
+            }
+            else
+            {
+                tp=p*n;
+            }
+
+            currentOrder.setQuantity(quanIni-quantityBuy);
+            currentOrder.setTotalPrice(priceIni-tp);
+
+            //calcul du prix sans reduc
+            psr-=bucket.get(here).getProductPrice()*quantityBuy;
+
+            //On supprime des ArrayList ce que l'on vient d'enlever
+            bucket.remove(here);
+            quantity.remove(here);
+            jPanel1.remove(deleteButtons.get(here));
+            jPanel1.revalidate();
+            jPanel1.repaint();
+            deleteButtons.remove(here);
+            for(int l=here;l<deleteButtons.size();l++){
+                deleteButtons.get(l).setBounds(750, deleteButtons.get(l).getY()-17, 80, 15);
+            }
+
+            //On affiche le panier en appelant la méthode updateTable
+            updateTable();
+
+            //On met à jour le statut du panier
+            updateStatutBucket();
+
+            //On met à jour le prix total
+            updateTotalPrice();
+
+            //On rend la page visible
+            setVisible(true);
+        }
+    });
+}
      
     //Méthode mettant à jour la table en fonction des achats du customer
      public void updateTable() {

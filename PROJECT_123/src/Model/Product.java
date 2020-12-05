@@ -26,7 +26,7 @@ public class Product {
          
     }
     
-    public Product(int id,String nom,int prix,int qty, int disc, int qtydisc)
+   /*public Product(int id,String nom,int prix,int qty, int disc, int qtydisc)
     {
         this.productId=id;
         this.name=nom;
@@ -34,7 +34,7 @@ public class Product {
         this.stock=qty;
         this.discount=disc;
         this.quantitydiscount=qtydisc;
-    }
+    }*/
 
 
     

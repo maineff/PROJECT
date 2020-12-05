@@ -19,8 +19,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -45,16 +46,18 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> orderDateLabel=new ArrayList<>(); 
     private ArrayList<JLabel> orderUserLabel=new ArrayList<>();
     private ArrayList<JButton> selectorder= new ArrayList<>();
-    Details detailpage=new Details(this);    
+    Details detailPage;    
     String employeeAction="";
     Employee currentEmployee;
+    JTable detailsTable;
 
+ 
     
     public EmployeePage(Employee emp) {
        
         try{
         initComponents();
-        
+        detailPage=new Details(this);
         currentEmployee=emp;
         welcome_employeeLabel.setText("WELCOME "+currentEmployee.getEmployeeName());
         jPanel1.add(jPanel2);
@@ -81,42 +84,40 @@ public class EmployeePage extends javax.swing.JFrame {
         commande=orderdb.getOrder();
         
         //Display of the products
-            int j=20;
-            for(int i=0;i<produit.size();i++)
-            {
-                
-                productNameLabels.add(new JLabel(produit.get(i).getProductName()));
-                productPriceLabels.add(new JLabel(Double.toString(produit.get(i).getProductPrice())+"$"));
-                productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())+"    /100"));
-                productDiscountLabels.add(new JLabel(Integer.toString(produit.get(i).getProductDiscount())));
-                productLotLabels.add(new JLabel(Integer.toString(produit.get(i).getProductQuantityDiscount())));
-                
-                jPanel3.add(productNameLabels.get(i));
-                jPanel3.add(productPriceLabels.get(i));
-                jPanel3.add(productQuantityLabels.get(i));
-                jPanel3.add(productDiscountLabels.get(i));
-                jPanel3.add(productLotLabels.get(i));
-                
-                productNameLabels.get(i).setBounds(50, j, 200, 20);
-                productPriceLabels.get(i).setBounds(260, j, 200, 20);
-                productQuantityLabels.get(i).setBounds(380, j, 200, 20);
-                productDiscountLabels.get(i).setBounds(580, j, 200, 20);
-                productLotLabels.get(i).setBounds(750, j, 200, 20);
-                
-                
-                productNameLabels.get(i).setVisible(true);
-                productPriceLabels.get(i).setVisible(true);
-                productQuantityLabels.get(i).setVisible(true);
-                productDiscountLabels.get(i).setVisible(true);
-                productLotLabels.get(i).setVisible(true);
-                
-               
-                
-                j+=30;
-            }
+        int j=20;
+        for(int i=0;i<produit.size();i++)
+        {
+            productNameLabels.add(new JLabel(produit.get(i).getProductName()));
+            productPriceLabels.add(new JLabel(Double.toString(produit.get(i).getProductPrice())+"$"));
+            productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())+"    /100"));
+            productDiscountLabels.add(new JLabel(Integer.toString(produit.get(i).getProductDiscount())));
+            productLotLabels.add(new JLabel(Integer.toString(produit.get(i).getProductQuantityDiscount())));
+
+            jPanel3.add(productNameLabels.get(i));
+            jPanel3.add(productPriceLabels.get(i));
+            jPanel3.add(productQuantityLabels.get(i));
+            jPanel3.add(productDiscountLabels.get(i));
+            jPanel3.add(productLotLabels.get(i));
+
+            productNameLabels.get(i).setBounds(50, j, 200, 20);
+            productPriceLabels.get(i).setBounds(260, j, 200, 20);
+            productQuantityLabels.get(i).setBounds(380, j, 200, 20);
+            productDiscountLabels.get(i).setBounds(580, j, 200, 20);
+            productLotLabels.get(i).setBounds(750, j, 200, 20);
+
+
+            productNameLabels.get(i).setVisible(true);
+            productPriceLabels.get(i).setVisible(true);
+            productQuantityLabels.get(i).setVisible(true);
+            productDiscountLabels.get(i).setVisible(true);
+            productLotLabels.get(i).setVisible(true);
+            j+=30;
+        }
         
         
-        }catch(Exception ex){
+        }
+        catch(Exception ex)
+        {
             System.out.println(ex.getMessage());
         }
         int k=20;
@@ -154,28 +155,19 @@ public class EmployeePage extends javax.swing.JFrame {
            orderPriceLabel.get(i).setVisible(true);
            orderDateLabel.get(i).setVisible(true);
            orderUserLabel.get(i).setVisible(true);
-           
            selectorder.get(i).addActionListener(new ActionListener() {
 
                @Override
-               public void actionPerformed(ActionEvent ae) {
+               public void actionPerformed(ActionEvent ae)
+               {
                    dispose();
-                   detailpage.setVisible(true);
+                   detailPage.setVisible(true);
+                   detailPage.setOrderId(commande.get(number).getOrderId());
                }
            });
 
-           
-           
-          
-           
-           
-            k+=30;
+           k+=30;
         }
-        
-        
-       
-        
-        
         
     }
 
