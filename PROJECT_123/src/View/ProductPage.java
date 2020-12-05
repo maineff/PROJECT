@@ -99,7 +99,7 @@ public class ProductPage extends javax.swing.JFrame {
                     
                 }catch(Exception e)
                 {
-                    img=new ImageIcon("notfound.jpg");
+                    img=new ImageIcon("notfound.jpg"); 
                     System.out.println("salut");
                 }
                 final int number=i;
