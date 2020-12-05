@@ -74,7 +74,7 @@ public class SubscribeC extends javax.swing.JFrame {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(receipient));
             message.setSubject("welcome to our application");
-            message.setText("Hey Dear, \n We are happy to welcome you to our app.\n" +
+            message.setText("Hey, \nWe are happy to welcome you to our app.\n" +
             "thank you for signing up");
             return message;
         } catch (MessagingException ex) {
