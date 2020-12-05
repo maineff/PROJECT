@@ -190,6 +190,8 @@ public class ProductPage extends javax.swing.JFrame {
                     bucket.remove(here);
                     quantity.remove(here);
                     jPanel1.remove(deleteButtons.get(here));
+                    jPanel1.revalidate();
+                    jPanel1.repaint();
                     deleteButtons.remove(here);
                     for(int l=here;l<deleteButtons.size();l++){
                         deleteButtons.get(l).setBounds(750, deleteButtons.get(l).getY()-17, 80, 15);
