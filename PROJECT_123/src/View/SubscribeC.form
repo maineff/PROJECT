@@ -57,7 +57,7 @@
                       </Group>
                       <Component id="menuButton" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="301" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="302" max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -75,6 +75,7 @@
                               <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -85,6 +86,7 @@
                               <Component id="cityTextfield" alignment="0" max="32767" attributes="0"/>
                               <Component id="usernameTextfield" alignment="0" max="32767" attributes="0"/>
                               <Component id="passwordTextfield1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="emailTextfield" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -122,7 +124,12 @@
                       <Component id="cityTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="emailTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="usernameTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -139,9 +146,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="okButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="confirmeLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <EmptySpace pref="56" max="32767" attributes="0"/>
                   <Component id="menuButton" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -241,6 +248,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="usernameTextfield">
+        </Component>
+        <Component class="javax.swing.JTextField" name="emailTextfield">
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="email"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

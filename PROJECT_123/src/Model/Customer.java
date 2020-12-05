@@ -20,6 +20,7 @@ public class Customer {
     private String address;
     private String city;
     private ArrayList<Order> commandes = new ArrayList<Order>();
+    private String email;
     private String username;
     private String password;
     
@@ -30,7 +31,7 @@ public class Customer {
     }
     
      public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
-            String ville,String username,String password)
+            String ville,String email,String username,String password)
     {
         this.customerId=id;
         this.name=prenom;
@@ -38,6 +39,7 @@ public class Customer {
         this.address=living;
         this.commandes=cmd;
         this.city=ville;
+        this.email=email;
         this.username=username;
         this.password=password;
     }
@@ -73,7 +75,10 @@ public class Customer {
    {
        return address;
    }
-   
+   public String getCustomerEmail()
+   {
+       return email;
+   }
    public String getCustomerUsername()
    {
        return username;
@@ -112,6 +117,10 @@ public class Customer {
        this.city=ville;
    }
    
+   public void setCustomerEmail(String email)
+   {
+       this.email=email;
+   }
    
    public void setCustomerUsername(String username)
    {
