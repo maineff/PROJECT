@@ -7,9 +7,11 @@ package View;
 
 import Controller.Dbutils;
 import Controller.OrderDBQuery;
+import Controller.OrderDetailsDBQuery;
 import Controller.ProductDBQuery;
 import Model.Customer;
 import Model.Order;
+import Model.OrderDetails;
 import Model.Product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,18 +73,6 @@ public class ProductPage extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
           
-            //rentre les commandes dans un fichier texte
-          /* try
-            {
-                String filename="order.txt";
-                FileWriter fw = new FileWriter("order.txt",true);
-                fw.write(Integer.toString(currentOrder.getOrderId()));
-                fw.close();
-            }
-            catch(IOException ioe)
-            {
-                System.out.println(ioe.getMessage());
-            }*/
     }
     
     
@@ -483,33 +473,48 @@ public class ProductPage extends javax.swing.JFrame {
         currentCustomer.getCommandes().add(currentOrder);
         currentOrder.getProduct().add(bucket);
         
-        try
-            {
-                String filename="order.txt";
-                FileWriter fw = new FileWriter("order.txt",true);
-                //fw.write(Integer.toString(currentOrder.getProduct()));
-                fw.append(currentCustomer.getCustomerName()+"\n");
-                for (int i = 0; i <bucket.size(); i++)
-                {
-                   
-                    fw.append(bucket.get(i).getProductName()+"\n");
-                   
-                }
-                 fw.append("******\n");
-                fw.close();
-            }
-            catch(IOException ioe)
-            {
-                System.out.println(ioe.getMessage());
-            }
-        
+         //calculs economies
         save=psr-currentOrder.getTotalPrice();
         economieLabel1.setText("you save £"+save);
         
+        OrderDetails panier;
+        OrderDetailsDBQuery od =new OrderDetailsDBQuery();
+        
+        //boucle for pour le détails de chaque article du panier
+        for(int i=0;i<bucket.size();i++)
+        {
+            panier=new OrderDetails();
+            //chaque produit de la meme commande a le meme id
+            panier.setOrderId(currentOrder.getOrderId());
+            panier.setProductId(bucket.get(i).getProductId());
+            panier.setQuantity(quantity.get(i));
+            if(bucket.get(i).getProductQuantityDiscount()>0 && bucket.get(i).getProductDiscount()>0)
+            {  
+                //calcul prix sans reduc
+                double p=bucket.get(i).getProductPrice()*quantity.get(i);
+                //calcul prix avec reduc
+                double n=(quantity.get(i)/bucket.get(i).getProductQuantityDiscount())
+                        *(bucket.get(i).getProductDiscount())
+                        +(quantity.get(i)%bucket.get(i).getProductQuantityDiscount())
+                        *bucket.get(i).getProductPrice();
+                //calcul de la reduction
+                double d=p-n;
+                
+                panier.setPrice(n);
+                panier.setDiscount(d);
+            }
+            else
+            {
+                panier.setPrice(bucket.get(i).getProductPrice()*quantity.get(i));
+                panier.setDiscount(0);
+            }
+            
+            od.submitBucket(panier);
+        }  
         
     }//GEN-LAST:event_BuyButtonActionPerformed
 
-    
+   
     /**
      * @param args the command line arguments
      */
