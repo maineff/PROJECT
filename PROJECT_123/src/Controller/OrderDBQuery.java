@@ -56,7 +56,7 @@ public class OrderDBQuery {
        }     
     }
     
-     public ArrayList<Order> getOrder() 
+    public ArrayList<Order> getOrder() 
     {
         ArrayList<Order>orders= new  ArrayList<>();
         String sqlStatement = "SELECT * FROM order1";

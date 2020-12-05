@@ -8,6 +8,7 @@ package Controller;
 import Model.OrderDetails;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,4 +44,33 @@ public class OrderDetailsDBQuery {
        }     
     }
     
+    public ArrayList<OrderDetails> getAllOrderDetails() 
+    {
+        ArrayList<OrderDetails>orderdetails= new  ArrayList<>();
+        String sqlStatement = "SELECT * FROM orderdetails";
+       
+        try
+        {
+           rst = Dbutils.executeQuery(sqlStatement);
+           OrderDetails od ;
+           while(rst.next())
+           {
+                od= new OrderDetails();
+                od.setOrderDetailsId(rst.getInt("orderdetailsId"));
+                od.setOrderId(rst.getInt("orderId"));
+                od.setProductId(rst.getInt("productId"));
+                od.setQuantity(rst.getInt("quantity"));
+                od.setPrice(rst.getDouble("price"));
+                od.setDiscount(rst.getInt("discount"));
+                orderdetails.add(od);
+           }
+        }
+        catch (SQLException ex) 
+        {
+            System.out.println("pb recup orders"+ex.getMessage());
+        }
+      
+        return orderdetails;
+
+    }
 }
