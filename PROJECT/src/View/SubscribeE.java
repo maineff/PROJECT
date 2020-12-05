@@ -5,15 +5,9 @@
  */
 package View;
 
-import Controller.Dbutils;
 import Controller.EmployeeDBQuery;
 import Model.Employee;
 import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -210,35 +204,15 @@ public class SubscribeE extends javax.swing.JFrame {
         EmployeeDBQuery nv = new EmployeeDBQuery();
         if(passwordTextfield.getText().compareTo(passwordTextfield1.getText())==0)
         {
-            try
-            {
-                String rq="SELECT COUNT(*) FROM employee WHERE username = '"+usernameTextfield.getText()+"' and password='"+passwordTextfield.getText()+"'";
-                ResultSet rst = Dbutils.executeQuery(rq);
-                rst.next();
-                int count=rst.getInt(1);
-                System.out.println(count);
-                
-                if(count==0)
-                {
-                    Employee employ = new Employee();
-                    employ.setEmployeeName(nameTextfield.getText());
-                    employ.setEmployeeLastname(lastnameTextfield.getText());
-                    employ.setEmployeeUsername(usernameTextfield.getText());
-                    employ.setEmployeePassword(passwordTextfield.getText());
-                    nv.addEmployee(employ);
-                    
-                    setVisible(false);
-                    new HomePage().setVisible(true);
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,"your account already exists");
-                }
-            } 
-            catch (SQLException ex)
-            {
-                System.out.println(ex.getMessage());
-            }
+            Employee employ = new Employee();
+            employ.setEmployeeName(nameTextfield.getText());
+            employ.setEmployeeLastname(lastnameTextfield.getText());
+            employ.setEmployeeUsername(usernameTextfield.getText());
+            employ.setEmployeePassword(passwordTextfield.getText());
+            nv.addEmployee(employ);
+
+            setVisible(false);
+            new HomePage().setVisible(true);
         }
         else
         {
