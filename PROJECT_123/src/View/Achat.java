@@ -9,6 +9,8 @@ import Controller.Dbutils;
 import Controller.ProductDBQuery;
 import Model.Order;
 import Model.Product;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -92,6 +94,7 @@ public class Achat extends javax.swing.JFrame {
         quantityTextfield = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
         discountLabel = new javax.swing.JLabel();
+        invalaibleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +129,15 @@ public class Achat extends javax.swing.JFrame {
         quantity1Label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         quantity1Label.setText("QUANTITY");
 
+        quantityTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                quantityTextfieldKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                quantityTextfieldKeyTyped(evt);
+            }
+        });
+
         backButton.setText("BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,17 +170,21 @@ public class Achat extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(quantity1Label)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bucketButton))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bucketButton))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
                         .addComponent(achatLabel)))
-                .addGap(0, 203, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(275, 275, 275))
+                .addGap(0, 162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,9 +209,11 @@ public class Achat extends javax.swing.JFrame {
                         .addComponent(priceLabel)
                         .addGap(41, 41, 41)
                         .addComponent(bucketButton)))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -286,6 +304,28 @@ public class Achat extends javax.swing.JFrame {
         parentPage.setVisible(true);
     }//GEN-LAST:event_bucketButtonActionPerformed
 
+    private void quantityTextfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyTyped
+        
+        
+    }//GEN-LAST:event_quantityTextfieldKeyTyped
+
+    private void quantityTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyPressed
+      invalaibleLabel.setText("");
+        char car= evt.getKeyChar();
+        if((car<'0' || car>'9' ) && quantityTextfield.getText().contains(".")
+            && (car!=(char)KeyEvent.VK_BACK_SPACE))
+        {
+            invalaibleLabel.setText("");
+            
+        }
+            
+         else if((car<'0' ||car>'9')&&(car!='.')&&(car!=(char)KeyEvent.VK_BACK_SPACE))
+    {
+        invalaibleLabel.setText("please enter a number");
+        invalaibleLabel.setForeground(Color.RED);
+    }
+    }//GEN-LAST:event_quantityTextfieldKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -327,6 +367,7 @@ public static void main(String args[]) {
     private javax.swing.JButton bucketButton;
     private javax.swing.JLabel discountLabel;
     private javax.swing.JButton exitButton;
+    private javax.swing.JLabel invalaibleLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel priceLabel;

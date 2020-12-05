@@ -11,12 +11,16 @@ import Controller.ProductDBQuery;
 import Model.Employee;
 import Model.Order;
 import Model.Product;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -210,6 +214,7 @@ public class EmployeePage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         pbnameLabel = new javax.swing.JLabel();
+        invalaibleLabel = new javax.swing.JLabel();
         ORDERPANEL = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         orderIdLabel = new javax.swing.JLabel();
@@ -271,15 +276,43 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         });
 
+        productTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                productTextfieldKeyPressed(evt);
+            }
+        });
+
         priceTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceTextfieldActionPerformed(evt);
+            }
+        });
+        priceTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                priceTextfieldKeyPressed(evt);
+            }
+        });
+
+        quantityTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                quantityTextfieldKeyPressed(evt);
             }
         });
 
         lotTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lotTextfieldActionPerformed(evt);
+            }
+        });
+        lotTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lotTextfieldKeyPressed(evt);
+            }
+        });
+
+        discountTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                discountTextfieldKeyPressed(evt);
             }
         });
 
@@ -312,17 +345,25 @@ public class EmployeePage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(130, 130, 130)
+                .addComponent(addButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addComponent(updateButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addComponent(deleteButton)
+                .addGap(162, 162, 162))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(addButton)))
+                        .addGap(10, 10, 10)
+                        .addComponent(pbnameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -336,32 +377,25 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(okButton)
-                        .addGap(0, 25, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(updateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
-                        .addComponent(deleteButton)
-                        .addGap(162, 162, 162))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pbnameLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(okButton)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton)
                     .addComponent(deleteButton)
                     .addComponent(addButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,8 +408,15 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pbnameLabel))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pbnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -394,9 +435,8 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lotsLabel)
                 .addGap(87, 87, 87))
-            .addComponent(jScrollPane)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 867, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,11 +450,8 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(lotsLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 329, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout PRODUCTSPANELLayout = new javax.swing.GroupLayout(PRODUCTSPANEL);
@@ -425,7 +462,7 @@ public class EmployeePage extends javax.swing.JFrame {
         );
         PRODUCTSPANELLayout.setVerticalGroup(
             PRODUCTSPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("PRODUCTS", PRODUCTSPANEL);
@@ -557,7 +594,7 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(menuButton)
-                    .addGap(0, 786, Short.MAX_VALUE)))
+                    .addGap(0, 801, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,7 +651,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_lotTextfieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-         jLabel1.setVisible(true);
+        jLabel1.setVisible(true);
         jLabel2.setVisible(true);
         jLabel3.setVisible(true);
         jLabel4.setVisible(true);
@@ -654,40 +691,44 @@ public class EmployeePage extends javax.swing.JFrame {
         prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
         
         productdb.addProduct(prod);
-        
-        productTextfield.setText(null);
-        priceTextfield.setText(null);
-        quantityTextfield.setText(null);
-        discountTextfield.setText(null);
-        lotTextfield.setText(null);
-        setVisible(false);
-        new EmployeePage(currentEmployee).setVisible(true);
-            
+
         }
         else if(employeeAction=="update")
         {
              for(int i=0; i<produit.size();i++)
-       {
-           if(productTextfield.getText().equals(produit.get(i).getProductName()))
-           {
-               produit.get(i).setProductPrice(Double.parseDouble(priceTextfield.getText()));
-               produit.get(i).setProductStock(Integer.parseInt(quantityTextfield.getText()));
-               produit.get(i).setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-               produit.get(i).setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+            {
+                if(productTextfield.getText().equals(produit.get(i).getProductName()))
+                {
+                    //si le textfields est vide garde son ancienne valeur
+                    if (priceTextfield.getText().isEmpty()||priceTextfield.getText().length()==0)  
+                        produit.get(i).setProductPrice(produit.get(i).getProductPrice());
+                    else
+                         produit.get(i).setProductPrice(Double.parseDouble(priceTextfield.getText()));
+                    
+                    
+                    if(quantityTextfield.getText().isEmpty()||quantityTextfield.getText().length()==0)
+                        produit.get(i).setProductStock(produit.get(i).getProductStock());
+                    else
+                        produit.get(i).setProductStock(Integer.parseInt(quantityTextfield.getText()));
+                    
+                    
+                    if(discountTextfield.getText().isEmpty()||discountTextfield.getText().length()==0)
+                        produit.get(i).setProductDiscount(produit.get(i).getProductDiscount());
+                    else
+                        produit.get(i).setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+                    
+                    
+                    if(lotTextfield.getText().isEmpty()||lotTextfield.getText().length()==0)
+                        produit.get(i).setProductQuantityDiscount(produit.get(i).getProductQuantityDiscount());
+                    else
+                        produit.get(i).setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+                    
+                    
                productdb.updateProduct(produit.get(i));
                
                System.out.println("modif");
-           }
-       }
-        
-        productTextfield.setText(null);
-        priceTextfield.setText(null);
-        quantityTextfield.setText(null);
-        discountTextfield.setText(null);
-        lotTextfield.setText(null);
-        
-        setVisible(false);
-        new EmployeePage(currentEmployee).setVisible(true);
+                }
+            }
         }
         
         else if(employeeAction=="delete")
@@ -701,6 +742,9 @@ public class EmployeePage extends javax.swing.JFrame {
            }
        }
 
+        }
+        
+        
         productTextfield.setText(null);
         priceTextfield.setText(null);
         quantityTextfield.setText(null);
@@ -709,9 +753,55 @@ public class EmployeePage extends javax.swing.JFrame {
         
         setVisible(false);
         new EmployeePage(currentEmployee).setVisible(true);
-        }
     }//GEN-LAST:event_okButtonActionPerformed
 
+    private void productTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productTextfieldKeyPressed
+        
+         pbnameLabel.setText("");
+        char car= evt.getKeyChar();
+        if((car<'a' || car>'z' ) && (car<'A' || car>'Z' )
+            && (car!=(char)KeyEvent.VK_BACK_SPACE)&& (car!=(char)KeyEvent.VK_SPACE))
+        {
+            pbnameLabel.setText("please enter a corect name");
+            pbnameLabel.setForeground(Color.red);
+        }  
+        else 
+            pbnameLabel.setText("");
+    }//GEN-LAST:event_productTextfieldKeyPressed
+
+    private void priceTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceTextfieldKeyPressed
+        enterANumber(evt, priceTextfield);
+    }//GEN-LAST:event_priceTextfieldKeyPressed
+
+    private void quantityTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyPressed
+        enterANumber(evt, quantityTextfield);
+    }//GEN-LAST:event_quantityTextfieldKeyPressed
+
+    private void discountTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountTextfieldKeyPressed
+        enterANumber(evt, discountTextfield);
+    }//GEN-LAST:event_discountTextfieldKeyPressed
+
+    private void lotTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lotTextfieldKeyPressed
+        enterANumber(evt, lotTextfield);
+    }//GEN-LAST:event_lotTextfieldKeyPressed
+
+    //blinder les textfields
+    public void enterANumber(java.awt.event.KeyEvent evt, JTextField txtId)
+    {
+         invalaibleLabel.setText("");
+         char car= evt.getKeyChar();
+        if((car<'0' || car>'9' ) && txtId.getText().contains(".")
+            && (car!=(char)KeyEvent.VK_BACK_SPACE))
+        {
+             invalaibleLabel.setText("");
+        } else if
+        ((car<'0' ||car>'9')&&(car!='.')
+            &&(car!=(char)KeyEvent.VK_BACK_SPACE)){
+           
+             invalaibleLabel.setText("please enter a number");
+             invalaibleLabel.setForeground(Color.red);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -757,6 +847,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel discountLabel;
     private javax.swing.JTextField discountTextfield;
     private javax.swing.JLabel discountsLabel;
+    private javax.swing.JLabel invalaibleLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
