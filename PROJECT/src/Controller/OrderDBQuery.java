@@ -44,6 +44,7 @@ public class OrderDBQuery {
                     +","+od.getTotalPrice()+",'"+date
                     +"','"+od.getUsername()+"')";
            int rows= Dbutils.executeUpdate(query) ;
+           od.setOrderId(id);
          }
          else
             JOptionPane.showMessageDialog(null,"Add elements in your order");   
