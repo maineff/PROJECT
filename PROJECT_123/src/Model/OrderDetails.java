@@ -22,10 +22,10 @@ public class OrderDetails {
     
     /*-----------------------Setter-----------------------*/
     
-   /*public void setOrderDetailsId(int id)
+    public void setOrderDetailsId(int id)
     {
         this.orderdetailsId=id;
-    }*/
+    }
     public void setOrderId(int id)
     {
         this.orderId=id;
