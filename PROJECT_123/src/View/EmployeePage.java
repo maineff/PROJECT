@@ -670,8 +670,17 @@ public class EmployeePage extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         
         jLabel1.setVisible(true);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
         
         productTextfield.setVisible(true);
+        priceTextfield.setVisible(false);
+        quantityTextfield.setVisible(false);
+        discountTextfield.setVisible(false);
+        lotTextfield.setVisible(false);
+        
         
         okButton.setVisible(true);
         
@@ -690,7 +699,22 @@ public class EmployeePage extends javax.swing.JFrame {
         prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
         prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
         
-        productdb.addProduct(prod);
+        if (priceTextfield.getText().isEmpty()||priceTextfield.getText().length()==0
+                ||productTextfield.getText().isEmpty()||productTextfield.getText().length()==0
+                ||quantityTextfield.getText().isEmpty()||quantityTextfield.getText().length()==0
+                ||discountTextfield.getText().isEmpty()||discountTextfield.getText().length()==0
+                ||lotTextfield.getText().isEmpty()||lotTextfield.getText().length()==0)
+        {
+            
+            JOptionPane.showMessageDialog(null,"SVP mes ds champs bg","message de confirmation d'ecrire seulment des numero "
+                ,JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else
+        {
+            productdb.addProduct(prod);
+            System.out.println("ici");
+        }
 
         }
         else if(employeeAction=="update")
@@ -734,13 +758,13 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(employeeAction=="delete")
         {
             for(int i=0; i<produit.size();i++)
-       {
-           if(productTextfield.getText().equals(produit.get(i).getProductName()))
-           {
-               productdb.deleteProduct(produit.get(i));
-               System.out.println("supp");
-           }
-       }
+            {
+                if(productTextfield.getText().equals(produit.get(i).getProductName()))
+                 {
+                    productdb.deleteProduct(produit.get(i));
+                    System.out.println("supp");
+                 }
+            }
 
         }
         
