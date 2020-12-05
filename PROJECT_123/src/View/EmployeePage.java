@@ -699,22 +699,7 @@ public class EmployeePage extends javax.swing.JFrame {
         prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
         prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
         
-        if (priceTextfield.getText().isEmpty()||priceTextfield.getText().length()==0
-                ||productTextfield.getText().isEmpty()||productTextfield.getText().length()==0
-                ||quantityTextfield.getText().isEmpty()||quantityTextfield.getText().length()==0
-                ||discountTextfield.getText().isEmpty()||discountTextfield.getText().length()==0
-                ||lotTextfield.getText().isEmpty()||lotTextfield.getText().length()==0)
-        {
-            
-            JOptionPane.showMessageDialog(null,"SVP mes ds champs bg","message de confirmation d'ecrire seulment des numero "
-                ,JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        else
-        {
-            productdb.addProduct(prod);
-            System.out.println("ici");
-        }
+        productdb.addProduct(prod);
 
         }
         else if(employeeAction=="update")
