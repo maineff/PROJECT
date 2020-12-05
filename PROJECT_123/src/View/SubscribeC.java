@@ -6,8 +6,12 @@
 package View;
 
 import Controller.CustomerDBQuery;
+import Controller.Dbutils;
 import Model.Customer;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -228,21 +232,40 @@ public class SubscribeC extends javax.swing.JFrame {
     }//GEN-LAST:event_skipButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
          CustomerDBQuery nv = new CustomerDBQuery();
          if(passwordTextfield.getText().compareTo(passwordTextfield1.getText())==0)
          {
-             Customer cust = new Customer();
-             cust.setCustomerName(nameTextfield.getText());
-             cust.setCustomerLastname(lastnameTextfield.getText());
-             cust.setCustomerAddress(addressTextfield.getText());
-             cust.setCustomerCity(cityTextfield.getText());
-             cust.setCustomerUsername(usernameTextfield.getText());
-             cust.setCustomerPassword(passwordTextfield.getText());
-             nv.addCustomer(cust);
+             try {
+                 String rq="SELECT COUNT(*) FROM customer WHERE username = '"+usernameTextfield.getText()+"' and password='"+passwordTextfield.getText()+"'";
+                 ResultSet rst= Dbutils.executeQuery(rq);
+                 rst.next();
+                 int count=rst.getInt(1);
+                 System.out.println(count);
+                 
+                 if(count==0)
+                 {
+                     Customer cust = new Customer();
+                     cust.setCustomerName(nameTextfield.getText());
+                     cust.setCustomerLastname(lastnameTextfield.getText());
+                     cust.setCustomerAddress(addressTextfield.getText());
+                     cust.setCustomerCity(cityTextfield.getText());
+                     cust.setCustomerUsername(usernameTextfield.getText());
+                     cust.setCustomerPassword(passwordTextfield.getText());
+                     nv.addCustomer(cust);
+                     setVisible(false);
+                     new HomePage().setVisible(true);
+                 }
+                 else
+                 {
+                     JOptionPane.showMessageDialog(null,"your account already exists");
+                 }
+             }
+             catch (SQLException ex)
+             {
+                 System.out.println(ex.getMessage());
+             }
              
-             setVisible(false);
-             new HomePage().setVisible(true);
          }
          else
          {
