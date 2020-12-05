@@ -694,17 +694,10 @@ public class EmployeePage extends javax.swing.JFrame {
         boolean ok=true;
         if(employeeAction=="add")
         {
-//        Product prod=new Product();
-//        
-//        prod.setProductName(productTextfield.getText());
-//        prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
-//        prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
-//        prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-//        prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-//        
-//        productdb.addProduct(prod);
+
         
         try {
+            
                  String rq="SELECT COUNT(*) FROM product WHERE name = '"+productTextfield.getText()+"'";
                  ResultSet rst= Dbutils.executeQuery(rq);
                  rst.next();
@@ -722,9 +715,7 @@ public class EmployeePage extends javax.swing.JFrame {
                     prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
         
                     productdb.addProduct(prod);
-                    
-                     
-                     
+
                  }
                  else
                  {

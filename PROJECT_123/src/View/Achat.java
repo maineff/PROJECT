@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -253,9 +254,14 @@ public class Achat extends javax.swing.JFrame {
         int quantityInitial=produit.get(here).getProductStock();
         int quantityBuy=Integer.parseInt(quantityTextfield.getText());
 
-        int quantityFinal=quantityInitial-quantityBuy;
-        produit.get(here).setProductStock(quantityFinal);
-        productdb.updateProduct(produit.get(here));
+        if(quantityInitial<quantityBuy)
+            JOptionPane.showMessageDialog(null,"pb de stok");
+        else
+        {
+            int quantityFinal=quantityInitial-quantityBuy;
+            produit.get(here).setProductStock(quantityFinal);
+            productdb.updateProduct(produit.get(here));
+        }
 
         //We actualize the current order
         int quanIni=currentOrder.getQuantity();
