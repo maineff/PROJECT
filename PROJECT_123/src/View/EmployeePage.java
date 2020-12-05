@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -662,8 +664,17 @@ public class EmployeePage extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         
         jLabel1.setVisible(true);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
         
         productTextfield.setVisible(true);
+        priceTextfield.setVisible(false);
+        quantityTextfield.setVisible(false);
+        discountTextfield.setVisible(false);
+        lotTextfield.setVisible(false);
+        
         
         okButton.setVisible(true);
         
@@ -672,18 +683,42 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        boolean ok=true;
         if(employeeAction=="add")
         {
-        Product prod=new Product();
-        
-        prod.setProductName(productTextfield.getText());
-        prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
-        prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
-        prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-        prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-        
-        productdb.addProduct(prod);
 
+        
+        try {
+            
+                 String rq="SELECT COUNT(*) FROM product WHERE name = '"+productTextfield.getText()+"'";
+                 ResultSet rst= Dbutils.executeQuery(rq);
+                 rst.next();
+                 int count=rst.getInt(1);
+                 System.out.println(count);
+                 
+                 if(count==0)
+                 {
+                    Product prod=new Product();
+        
+                    prod.setProductName(productTextfield.getText());
+                    prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
+                    prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
+                    prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+                    prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+        
+                    productdb.addProduct(prod);
+
+                 }
+                 else
+                 {
+                     JOptionPane.showMessageDialog(null,"your product already exists");
+                 }
+             }
+             catch (SQLException ex)
+             {
+                 System.out.println(ex.getMessage());
+             }
+        
         }
         else if(employeeAction=="update")
         {
@@ -726,13 +761,13 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(employeeAction=="delete")
         {
             for(int i=0; i<produit.size();i++)
-       {
-           if(productTextfield.getText().equals(produit.get(i).getProductName()))
-           {
-               productdb.deleteProduct(produit.get(i));
-               System.out.println("supp");
-           }
-       }
+            {
+                if(productTextfield.getText().equals(produit.get(i).getProductName()))
+                 {
+                    productdb.deleteProduct(produit.get(i));
+                    System.out.println("supp");
+                 }
+            }
 
         }
         

@@ -41,6 +41,7 @@ public class CustomerDBQuery {
                 cust.setCustomerLastname(rst.getString("lastname"));
                 cust.setCustomerAddress(rst.getString("address"));
                 cust.setCustomerCity(rst.getString("city"));
+                cust.setCustomerEmail(rst.getString("email"));
                 cust.setCustomerUsername(rst.getString("username"));
                 cust.setCustomerPassword(rst.getString("password"));
                 customers.add(cust);
@@ -65,10 +66,11 @@ public class CustomerDBQuery {
             int id = Dbutils.max("customer","customerId");
             
             String query="INSERT INTO customer"
-                    +"(customerId,name,lastName,address,city,username,password)" 
+                    +"(customerId,name,lastName,address,city,email,username,password)" 
                     +" VALUES "
                     +"("+id+",'"+cust.getCustomerName()+"','"+cust.getCustomerLastname()
                     +"','"+cust.getCustomerAddress()+"','"+cust.getCustomerCity()
+                    +"','"+cust.getCustomerEmail()
                     +"','"+cust.getCustomerUsername()+"','"+cust.getCustomerPassword()+"')";
              
             int rows= Dbutils.executeUpdate(query) ;
@@ -102,6 +104,7 @@ public class CustomerDBQuery {
                     +"', lastname='"+cust.getCustomerLastname()
                     +"', address='"+cust.getCustomerAddress()
                     +"', city='"+cust.getCustomerCity()
+                    +"', email="+cust.getCustomerEmail()
                     +"', username="+cust.getCustomerUsername()
                     +"', password="+cust.getCustomerPassword()
                     +" WHERE customerId = "+cust.getCustomerId();

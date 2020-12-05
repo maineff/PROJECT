@@ -5,6 +5,8 @@
  */
 package project;
 
+import View.HomePage;
+
 /**
  *
  * @author maine
@@ -18,10 +20,7 @@ public class PROJECT {
      * @param args the command line arguments 
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("debut");
-        //salut tout le monde
-        //okk
+        new HomePage().setVisible(true);
     }
     
 }

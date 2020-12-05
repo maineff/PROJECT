@@ -11,6 +11,16 @@ import Model.Customer;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +35,53 @@ public class SubscribeC extends javax.swing.JFrame {
     public SubscribeC() {
         initComponents();
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+    
+    public void sendMail(String receipient) throws MessagingException
+    {
+        System.out.println("preparation de l'email");
+        Properties properties =new Properties();
+        
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        properties.put("mail.smtp.ssl.trust", "*");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.port","587");
+        
+        final String myAccountEmail="projethaouamailinhguillaume@gmail.com";
+        final String password="projetlebest";
+        
+        Session session=Session.getInstance(properties, new Authenticator() {
+
+            @Override
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(myAccountEmail, password);
+            }
+             
+});
+        Message message= prepareMessage(session, myAccountEmail, receipient);
+        
+        Transport.send(message);
+        System.out.println("message envoye");
+                
+    }
+
+    private static Message prepareMessage(Session session, String myAccountEmail, String receipient) {
+      
+        try {
+            Message message=new MimeMessage(session);
+            message.setFrom(new InternetAddress(myAccountEmail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(receipient));
+            message.setSubject("welcome to our application");
+            message.setText("Hey, \nWe are happy to welcome you to our app.\n" +
+            "thank you for signing up");
+            return message;
+        } catch (MessagingException ex) {
+            Logger.getLogger(SubscribeC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
     }
 
     /**
@@ -56,9 +113,10 @@ public class SubscribeC extends javax.swing.JFrame {
         passwordTextfield1 = new javax.swing.JTextField();
         cityLabel = new javax.swing.JLabel();
         usernameTextfield = new javax.swing.JTextField();
+        emailTextfield = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
@@ -114,6 +172,8 @@ public class SubscribeC extends javax.swing.JFrame {
 
         cityLabel.setText("city");
 
+        emailLabel.setText("email");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,7 +189,7 @@ public class SubscribeC extends javax.swing.JFrame {
                         .addGap(333, 333, 333)
                         .addComponent(confirmeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(menuButton))
-                .addGap(0, 301, Short.MAX_VALUE))
+                .addGap(0, 302, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,7 +204,8 @@ public class SubscribeC extends javax.swing.JFrame {
                             .addComponent(cityLabel)
                             .addComponent(usernameLabel)
                             .addComponent(passwordLabel)
-                            .addComponent(passwordLabel1))
+                            .addComponent(passwordLabel1)
+                            .addComponent(emailLabel))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
@@ -153,7 +214,8 @@ public class SubscribeC extends javax.swing.JFrame {
                             .addComponent(passwordTextfield)
                             .addComponent(cityTextfield)
                             .addComponent(usernameTextfield)
-                            .addComponent(passwordTextfield1))))
+                            .addComponent(passwordTextfield1)
+                            .addComponent(emailTextfield))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -180,7 +242,11 @@ public class SubscribeC extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cityLabel))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLabel))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
                     .addComponent(usernameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,9 +260,9 @@ public class SubscribeC extends javax.swing.JFrame {
                     .addComponent(passwordLabel1))
                 .addGap(36, 36, 36)
                 .addComponent(okButton)
-                .addGap(56, 56, 56)
+                .addGap(18, 18, 18)
                 .addComponent(confirmeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(menuButton))
         );
 
@@ -250,11 +316,18 @@ public class SubscribeC extends javax.swing.JFrame {
                      cust.setCustomerLastname(lastnameTextfield.getText());
                      cust.setCustomerAddress(addressTextfield.getText());
                      cust.setCustomerCity(cityTextfield.getText());
+                     cust.setCustomerEmail(emailTextfield.getText());
                      cust.setCustomerUsername(usernameTextfield.getText());
                      cust.setCustomerPassword(passwordTextfield.getText());
                      nv.addCustomer(cust);
                      setVisible(false);
                      new HomePage().setVisible(true);
+                     try {
+                         sendMail(emailTextfield.getText());
+                     } catch (MessagingException ex) {
+                         Logger.getLogger(SubscribeC.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                     
                  }
                  else
                  {
@@ -318,6 +391,8 @@ public class SubscribeC extends javax.swing.JFrame {
     private javax.swing.JLabel cityLabel;
     private javax.swing.JTextField cityTextfield;
     private javax.swing.JLabel confirmeLabel;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JTextField emailTextfield;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JTextField lastnameTextfield;

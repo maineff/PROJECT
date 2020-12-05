@@ -541,6 +541,7 @@ public class HomePage extends javax.swing.JFrame {
                 custConnected.setCustomerLastname(rst.getString("lastname"));
                 custConnected.setCustomerAddress(rst.getString("address"));
                 custConnected.setCustomerCity(rst.getString("city"));
+                custConnected.setCustomerEmail(rst.getString("email"));
                 custConnected.setCustomerUsername(rst.getString("username"));
                 custConnected.setCustomerPassword(rst.getString("password"));
                 
