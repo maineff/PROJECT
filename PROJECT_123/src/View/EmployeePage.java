@@ -189,9 +189,9 @@ public class EmployeePage extends javax.swing.JFrame {
         JFreeChart chart=Statistical.getStatistical(1);
         ChartPanel chartPanel=new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(400, 300));
-        jPanel6.removeAll();
-        jPanel6.add(chartPanel);
-        jPanel6.validate();
+        jPanelStat.removeAll();
+        jPanelStat.add(chartPanel);
+        jPanelStat.validate();
     }
 
     /**
@@ -243,7 +243,7 @@ public class EmployeePage extends javax.swing.JFrame {
         STATPANEL = new javax.swing.JPanel();
         statPriceButton = new javax.swing.JButton();
         statQuantityButton = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        jPanelStat = new javax.swing.JPanel();
         skipButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
         welcome_employeeLabel = new javax.swing.JLabel();
@@ -582,7 +582,7 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         });
 
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        jPanelStat.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout STATPANELLayout = new javax.swing.GroupLayout(STATPANEL);
         STATPANEL.setLayout(STATPANELLayout);
@@ -596,7 +596,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addGap(66, 66, 66))
             .addGroup(STATPANELLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         STATPANELLayout.setVerticalGroup(
@@ -607,7 +607,7 @@ public class EmployeePage extends javax.swing.JFrame {
                     .addComponent(statPriceButton)
                     .addComponent(statQuantityButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelStat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -873,9 +873,9 @@ public class EmployeePage extends javax.swing.JFrame {
         JFreeChart chart=Statistical.getStatistical(i);
         ChartPanel chartPanel=new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(400, 270));
-        jPanel6.removeAll();
-        jPanel6.add(chartPanel);
-        jPanel6.validate();
+        jPanelStat.removeAll();
+        jPanelStat.add(chartPanel);
+        jPanelStat.validate();
         
     }//GEN-LAST:event_statPriceButtonActionPerformed
 
@@ -884,9 +884,9 @@ public class EmployeePage extends javax.swing.JFrame {
         JFreeChart chart=Statistical.getStatistical(i);
         ChartPanel chartPanel=new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(400, 270));
-        jPanel6.removeAll();
-        jPanel6.add(chartPanel);
-        jPanel6.validate();
+        jPanelStat.removeAll();
+        jPanelStat.add(chartPanel);
+        jPanelStat.validate();
     }//GEN-LAST:event_statQuantityButtonActionPerformed
 
     //blinder les textfields
@@ -962,7 +962,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanelStat;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
