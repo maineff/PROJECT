@@ -198,6 +198,7 @@ public class HomePage extends javax.swing.JFrame {
         subscribeButon.setText("You don't have an account? Sign in");
         subscribeButon.setBorder(null);
         subscribeButon.setBorderPainted(false);
+        subscribeButon.setOpaque(true);
         subscribeButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subscribeButonActionPerformed(evt);
@@ -220,31 +221,31 @@ public class HomePage extends javax.swing.JFrame {
         customerLogin.setLayout(customerLoginLayout);
         customerLoginLayout.setHorizontalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(skipButton1))
             .addGroup(customerLoginLayout.createSequentialGroup()
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuButton)
                     .addGroup(customerLoginLayout.createSequentialGroup()
                         .addGap(385, 385, 385)
-                        .addComponent(okcustButton))
-                    .addGroup(customerLoginLayout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(okcustButton)))
+                .addContainerGap(390, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(passwordLabel)
-                        .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                        .addComponent(usernameLabel)
-                        .addComponent(wrongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(passwordLabel)
+                    .addComponent(usernameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(usernameLabel)
+                    .addComponent(wrongLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(323, 323, 323))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(skipButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerLoginLayout.createSequentialGroup()
+                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(290, 290, 290))))
         );
         customerLoginLayout.setVerticalGroup(
             customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +253,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(skipButton1)
                 .addGap(56, 56, 56)
                 .addComponent(imageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(customerLoginLayout.createSequentialGroup()
                         .addGap(403, 403, 403)
@@ -269,7 +270,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(wrongLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(okcustButton)
-                        .addGap(32, 32, 32)
+                        .addGap(26, 26, 26)
                         .addComponent(subscribeButon)))
                 .addGap(27, 27, 27))
         );
@@ -313,6 +314,7 @@ public class HomePage extends javax.swing.JFrame {
         subscribeButton.setText("You don't have an account? Sign in");
         subscribeButton.setBorder(null);
         subscribeButton.setBorderPainted(false);
+        subscribeButton.setOpaque(true);
         subscribeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subscribeButtonActionPerformed(evt);

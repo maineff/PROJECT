@@ -15,9 +15,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -85,13 +87,15 @@ public class EmployeePage extends javax.swing.JFrame {
         
         produit=productdb.getProducts();
         commande=orderdb.getOrder();
-        
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
         //Display of the products
         int j=20;
         for(int i=0;i<produit.size();i++)
         {
+           
             productNameLabels.add(new JLabel(produit.get(i).getProductName()));
-            productPriceLabels.add(new JLabel(Double.toString(produit.get(i).getProductPrice())+"$"));
+            productPriceLabels.add(new JLabel(df.format(produit.get(i).getProductPrice())+"$"));
             productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())+"    /100"));
             productDiscountLabels.add(new JLabel(Integer.toString(produit.get(i).getProductDiscount())));
             productLotLabels.add(new JLabel(Integer.toString(produit.get(i).getProductQuantityDiscount())));

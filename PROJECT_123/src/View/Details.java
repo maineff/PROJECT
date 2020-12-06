@@ -9,8 +9,10 @@ import Controller.Dbutils;
 import Controller.OrderDBQuery;
 import Model.Order;
 import Model.Product;
+import java.math.RoundingMode;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -42,13 +44,14 @@ public class Details extends javax.swing.JFrame {
         ArrayList<Product> produits=getOrderDetails();
         String[] colNames =new String[] {"Name", "Quantity", "Price","Discount"};
         Object[][] data= new Object[produits.size()][4];
-        
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
         
         for(int i=0;i<produits.size();i++)
         {
           data[i][0]= produits.get(i).getProductName();
           data[i][1]= produits.get(i).getProductQuantityDiscount();
-          data[i][2]= produits.get(i).getProductPrice();
+          data[i][2]= df.format(produits.get(i).getProductPrice());
           data[i][3]= produits.get(i).getProductDiscount();
 
         }
