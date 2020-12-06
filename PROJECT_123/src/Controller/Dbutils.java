@@ -62,5 +62,37 @@ public class Dbutils {
          int orderId=rst.getInt(1);
          return orderId+1;
     }
+    
+    public static void createTables(){
+        try{
+            Statement statement = Dbutils.createStatement();
+            statement.execute("CREATE TABLE IF NOT EXISTS `customer` (" +"`customerId` int(11) NOT NULL," +
+                                "`name` varchar(20) NOT NULL," + "`lastname` varchar(20) NOT NULL," + "`address` varchar(50) NOT NULL," +
+                               "`city` varchar(50) NOT NULL," + "`email` varchar(50) NOT NULL," + "`username` varchar(30) NOT NULL," +
+                               "`password` varchar(30) NOT NULL," + "PRIMARY KEY (`customerId`))");
+            
+            statement.execute("CREATE TABLE IF NOT EXISTS `employee` (" +"`employeeId` int(11) NOT NULL," +
+                                "`name` varchar(20) NOT NULL," + "`lastname` varchar(20) NOT NULL," + 
+                                "`username` varchar(30) NOT NULL," + "`password` varchar(30) NOT NULL," + "PRIMARY KEY (`employeeId`))");
+            
+            statement.execute("CREATE TABLE IF NOT EXISTS `order1` (" +"`orderId` int(11) NOT NULL," +
+                                "`quantity` int(11) NOT NULL," + "`discount` double NOT NULL," + 
+                                "`totalPrice` double NOT NULL," + "`date` date NOT NULL," + "`username` varchar(50) NOT NULL," 
+                                + "PRIMARY KEY (`orderId`))");
+            
+            statement.execute("CREATE TABLE IF NOT EXISTS `orderdetails` (" +"`orderdetailsId` int(11) NOT NULL," +
+                                "`orderId` int(11) NOT NULL," + "`productId` int(11) NOT NULL," + 
+                                "`quantity` int(11) NOT NULL," + "`price` double NOT NULL," + "`discount` double NOT NULL," 
+                                + "PRIMARY KEY (`orderdetailsId`))");
+            
+            statement.execute("CREATE TABLE IF NOT EXISTS `product` (" +"`productId` int(11) NOT NULL," +
+                                "`name` varchar(30) NOT NULL," + "`price` double NOT NULL," + 
+                                "`stock` int(11) NOT NULL," + "`discount` int(11) NOT NULL," + "`quantitydiscount` int(11) NOT NULL," 
+                                + "PRIMARY KEY (`productId`))");
+            
+        }catch(Exception e){
+            System.out.println("ERROR SQL in creating the tables " + e.getMessage());
+        }
+    } 
  
 }
