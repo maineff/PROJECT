@@ -64,7 +64,7 @@ public class EmployeePage extends javax.swing.JFrame {
     String employeeAction="";
     Employee currentEmployee;
     JTable detailsTable;
-
+    DecimalFormat df = new DecimalFormat("#.##");
  
     
     public EmployeePage(Employee emp) {
@@ -98,7 +98,7 @@ public class EmployeePage extends javax.swing.JFrame {
         
         produit=productdb.getProducts();
         commande=orderdb.getOrder();
-        DecimalFormat df = new DecimalFormat("#.##");
+
         df.setRoundingMode(RoundingMode.HALF_UP);
         //Display of the products
         int j=20;
@@ -145,7 +145,7 @@ public class EmployeePage extends javax.swing.JFrame {
            orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
            orderDiscountLabel.add(new JLabel(Integer.toString(commande.get(i).getDiscount())));
-           orderPriceLabel.add(new JLabel(Double.toString(commande.get(i).getTotalPrice())));
+           orderPriceLabel.add(new JLabel(df.format(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
            orderUserLabel.add(new JLabel(commande.get(i).getUsername()));
            selectorder.add(new JButton());
@@ -229,8 +229,8 @@ public class EmployeePage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         pbnameLabel = new javax.swing.JLabel();
-        invalaibleLabel = new javax.swing.JLabel();
         updateButtonLabel = new javax.swing.JLabel();
+        invalaibleLabel = new javax.swing.JLabel();
         addButtonLabel = new javax.swing.JLabel();
         deleteButtonLabel = new javax.swing.JLabel();
         okButtonLabel = new javax.swing.JLabel();
@@ -287,7 +287,7 @@ public class EmployeePage extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 875, Short.MAX_VALUE)
+            .addGap(0, 936, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,84 +396,78 @@ public class EmployeePage extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pbnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(241, 241, 241)
                 .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(166, 166, 166))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(updateButtonLabel)
-                        .addGap(90, 90, 90)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
-                        .addGap(12, 12, 12)
-                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(addButtonLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(updateButtonLabel)
+                        .addGap(61, 61, 61)
+                        .addComponent(addButtonLabel)
+                        .addGap(76, 76, 76)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(deleteButtonLabel)
-                        .addGap(34, 34, 34)))
-                .addGap(25, 25, 25)
-                .addComponent(okButtonLabel)
+                        .addComponent(okButtonLabel))
+                    .addComponent(deleteButtonLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateButtonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(deleteButtonLabel))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(updateButtonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(deleteButtonLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 6, Short.MAX_VALUE)
-                                .addComponent(addButtonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(5, 5, 5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(okButtonLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(addButtonLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(productTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(priceTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(discountTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(lotTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(okButtonLabel))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pbnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -491,8 +485,8 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addComponent(discountsLabel)
                 .addGap(102, 102, 102)
                 .addComponent(lotsLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane)
+                .addContainerGap(106, Short.MAX_VALUE))
+            .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -511,7 +505,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -617,7 +611,7 @@ public class EmployeePage extends javax.swing.JFrame {
         );
         ORDERPANELLayout.setVerticalGroup(
             ORDERPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 444, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("ORDER", ORDERPANEL);
@@ -662,7 +656,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 .addGroup(STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(statPriceButton)
                     .addComponent(statQuantityButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
                 .addComponent(jPanelStat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -740,44 +734,6 @@ public class EmployeePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void priceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceTextfieldActionPerformed
-
-    private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lotTextfieldActionPerformed
-
-    private void productTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productTextfieldKeyPressed
-        
-         pbnameLabel.setText("");
-        char car= evt.getKeyChar();
-        if((car<'a' || car>'z' ) && (car<'A' || car>'Z' )
-            && (car!=(char)KeyEvent.VK_BACK_SPACE)&& (car!=(char)KeyEvent.VK_SPACE))
-        {
-            pbnameLabel.setText("please enter a corect name");
-            pbnameLabel.setForeground(Color.red);
-        }  
-        else 
-            pbnameLabel.setText("");
-    }//GEN-LAST:event_productTextfieldKeyPressed
-
-    private void priceTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceTextfieldKeyPressed
-        enterANumber(evt, priceTextfield);
-    }//GEN-LAST:event_priceTextfieldKeyPressed
-
-    private void quantityTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyPressed
-        enterANumber(evt, quantityTextfield);
-    }//GEN-LAST:event_quantityTextfieldKeyPressed
-
-    private void discountTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountTextfieldKeyPressed
-        enterANumber(evt, discountTextfield);
-    }//GEN-LAST:event_discountTextfieldKeyPressed
-
-    private void lotTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lotTextfieldKeyPressed
-        enterANumber(evt, lotTextfield);
-    }//GEN-LAST:event_lotTextfieldKeyPressed
-
     private void statPriceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statPriceButtonActionPerformed
         int i=1;
         JFreeChart chart=Statistical.getStatistical(i);
@@ -810,6 +766,118 @@ public class EmployeePage extends javax.swing.JFrame {
         new HomePage().setVisible(true);
     }//GEN-LAST:event_homeLabel1MouseClicked
 
+    private void okButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonLabelMouseClicked
+        boolean ok=true;
+        if(employeeAction=="add")
+        {
+
+            try {
+
+                String rq="SELECT COUNT(*) FROM product WHERE name = '"+productTextfield.getText()+"'";
+                ResultSet rst= Dbutils.executeQuery(rq);
+                rst.next();
+                int count=rst.getInt(1);
+                System.out.println(count);
+
+                if(count==0)
+                {
+                    Product prod=new Product();
+
+                    prod.setProductName(productTextfield.getText());
+                    prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
+                    prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
+                    prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+                    prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+
+                    productdb.addProduct(prod);
+
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,"your product already exists");
+                }
+            }
+            catch (SQLException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+
+        }
+        else if(employeeAction=="update")
+        {
+            for(int i=0; i<produit.size();i++)
+            {
+                if(productTextfield.getText().equals(produit.get(i).getProductName()))
+                {
+                    //si le textfields est vide garde son ancienne valeur
+                    if (priceTextfield.getText().isEmpty()||priceTextfield.getText().length()==0)
+                    produit.get(i).setProductPrice(produit.get(i).getProductPrice());
+                    else
+                    produit.get(i).setProductPrice(Double.parseDouble(priceTextfield.getText()));
+
+                    if(quantityTextfield.getText().isEmpty()||quantityTextfield.getText().length()==0)
+                    produit.get(i).setProductStock(produit.get(i).getProductStock());
+                    else
+                    produit.get(i).setProductStock(Integer.parseInt(quantityTextfield.getText()));
+
+                    if(discountTextfield.getText().isEmpty()||discountTextfield.getText().length()==0)
+                    produit.get(i).setProductDiscount(produit.get(i).getProductDiscount());
+                    else
+                    produit.get(i).setProductDiscount(Integer.parseInt(discountTextfield.getText()));
+
+                    if(lotTextfield.getText().isEmpty()||lotTextfield.getText().length()==0)
+                    produit.get(i).setProductQuantityDiscount(produit.get(i).getProductQuantityDiscount());
+                    else
+                    produit.get(i).setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
+
+                    productdb.updateProduct(produit.get(i));
+
+                    System.out.println("modif");
+                }
+            }
+        }
+
+        else if(employeeAction=="delete")
+        {
+            for(int i=0; i<produit.size();i++)
+            {
+                if(productTextfield.getText().equals(produit.get(i).getProductName()))
+                {
+                    productdb.deleteProduct(produit.get(i));
+                    System.out.println("supp");
+                }
+            }
+
+        }
+
+        productTextfield.setText(null);
+        priceTextfield.setText(null);
+        quantityTextfield.setText(null);
+        discountTextfield.setText(null);
+        lotTextfield.setText(null);
+
+        setVisible(false);
+        new EmployeePage(currentEmployee).setVisible(true);
+    }//GEN-LAST:event_okButtonLabelMouseClicked
+
+    private void deleteButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonLabelMouseClicked
+        jLabel1.setVisible(true);
+        jLabel2.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+
+        productTextfield.setVisible(true);
+        priceTextfield.setVisible(false);
+        quantityTextfield.setVisible(false);
+        discountTextfield.setVisible(false);
+        lotTextfield.setVisible(false);
+
+        okButtonLabel.setVisible(true);
+
+        employeeAction="delete";
+    }//GEN-LAST:event_deleteButtonLabelMouseClicked
+
     private void addButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonLabelMouseClicked
         jLabel1.setVisible(true);
         jLabel2.setVisible(true);
@@ -822,9 +890,9 @@ public class EmployeePage extends javax.swing.JFrame {
         discountTextfield.setVisible(true);
         lotTextfield.setVisible(true);
         okButtonLabel.setVisible(true);
-        
+
         employeeAction="add";
-        
+
     }//GEN-LAST:event_addButtonLabelMouseClicked
 
     private void updateButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonLabelMouseClicked
@@ -839,133 +907,52 @@ public class EmployeePage extends javax.swing.JFrame {
         discountTextfield.setVisible(true);
         lotTextfield.setVisible(true);
         okButtonLabel.setVisible(true);
-        
+
         employeeAction="update";
-        
+
     }//GEN-LAST:event_updateButtonLabelMouseClicked
 
-    private void deleteButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonLabelMouseClicked
-         jLabel1.setVisible(true);
-        jLabel2.setVisible(false);
-        jLabel3.setVisible(false);
-        jLabel4.setVisible(false);
-        jLabel5.setVisible(false);
-        
-        productTextfield.setVisible(true);
-        priceTextfield.setVisible(false);
-        quantityTextfield.setVisible(false);
-        discountTextfield.setVisible(false);
-        lotTextfield.setVisible(false);
-        
-        
-        okButtonLabel.setVisible(true);
-        
-        employeeAction="delete";
-    }//GEN-LAST:event_deleteButtonLabelMouseClicked
-
-    private void okButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonLabelMouseClicked
-        boolean ok=true;
-        if(employeeAction=="add")
-        {
-
-        
-        try {
-            
-                 String rq="SELECT COUNT(*) FROM product WHERE name = '"+productTextfield.getText()+"'";
-                 ResultSet rst= Dbutils.executeQuery(rq);
-                 rst.next();
-                 int count=rst.getInt(1);
-                 System.out.println(count);
-                 
-                 if(count==0)
-                 {
-                    Product prod=new Product();
-        
-                    prod.setProductName(productTextfield.getText());
-                    prod.setProductPrice(Double.parseDouble(priceTextfield.getText()));
-                    prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
-                    prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-                    prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-        
-                    productdb.addProduct(prod);
-
-                 }
-                 else
-                 {
-                     JOptionPane.showMessageDialog(null,"your product already exists");
-                 }
-             }
-             catch (SQLException ex)
-             {
-                 System.out.println(ex.getMessage());
-             }
-        
-        }
-        else if(employeeAction=="update")
-        {
-             for(int i=0; i<produit.size();i++)
-            {
-                if(productTextfield.getText().equals(produit.get(i).getProductName()))
-                {
-                    //si le textfields est vide garde son ancienne valeur
-                    if (priceTextfield.getText().isEmpty()||priceTextfield.getText().length()==0)  
-                        produit.get(i).setProductPrice(produit.get(i).getProductPrice());
-                    else
-                         produit.get(i).setProductPrice(Double.parseDouble(priceTextfield.getText()));
-                    
-                    
-                    if(quantityTextfield.getText().isEmpty()||quantityTextfield.getText().length()==0)
-                        produit.get(i).setProductStock(produit.get(i).getProductStock());
-                    else
-                        produit.get(i).setProductStock(Integer.parseInt(quantityTextfield.getText()));
-                    
-                    
-                    if(discountTextfield.getText().isEmpty()||discountTextfield.getText().length()==0)
-                        produit.get(i).setProductDiscount(produit.get(i).getProductDiscount());
-                    else
-                        produit.get(i).setProductDiscount(Integer.parseInt(discountTextfield.getText()));
-                    
-                    
-                    if(lotTextfield.getText().isEmpty()||lotTextfield.getText().length()==0)
-                        produit.get(i).setProductQuantityDiscount(produit.get(i).getProductQuantityDiscount());
-                    else
-                        produit.get(i).setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-                    
-                    
-               productdb.updateProduct(produit.get(i));
-               
-               System.out.println("modif");
-                }
-            }
-        }
-        
-        else if(employeeAction=="delete")
-        {
-            for(int i=0; i<produit.size();i++)
-            {
-                if(productTextfield.getText().equals(produit.get(i).getProductName()))
-                 {
-                    productdb.deleteProduct(produit.get(i));
-                    System.out.println("supp");
-                 }
-            }
-
-        }
-        
-        
-        productTextfield.setText(null);
-        priceTextfield.setText(null);
-        quantityTextfield.setText(null);
-        discountTextfield.setText(null);
-        lotTextfield.setText(null);
-        
-        setVisible(false);
-        new EmployeePage(currentEmployee).setVisible(true);
-    }//GEN-LAST:event_okButtonLabelMouseClicked
+    private void discountTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountTextfieldKeyPressed
+        enterANumber(evt, discountTextfield);
+    }//GEN-LAST:event_discountTextfieldKeyPressed
 
     private void discountTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discountTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_discountTextfieldActionPerformed
+
+    private void lotTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lotTextfieldKeyPressed
+        enterANumber(evt, lotTextfield);
+    }//GEN-LAST:event_lotTextfieldKeyPressed
+
+    private void lotTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lotTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lotTextfieldActionPerformed
+
+    private void quantityTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyPressed
+        enterANumber(evt, quantityTextfield);
+    }//GEN-LAST:event_quantityTextfieldKeyPressed
+
+    private void priceTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceTextfieldKeyPressed
+        enterANumber(evt, priceTextfield);
+    }//GEN-LAST:event_priceTextfieldKeyPressed
+
+    private void priceTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceTextfieldActionPerformed
+
+    private void productTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_productTextfieldKeyPressed
+
+        pbnameLabel.setText("");
+        char car= evt.getKeyChar();
+        if((car<'a' || car>'z' ) && (car<'A' || car>'Z' )
+            && (car!=(char)KeyEvent.VK_BACK_SPACE)&& (car!=(char)KeyEvent.VK_SPACE))
+        {
+            pbnameLabel.setText("please enter a corect name");
+            pbnameLabel.setForeground(Color.red);
+        }
+        else
+        pbnameLabel.setText("");
+    }//GEN-LAST:event_productTextfieldKeyPressed
 
     //blinder les textfields
     public void enterANumber(java.awt.event.KeyEvent evt, JTextField txtId)
