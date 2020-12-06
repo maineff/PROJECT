@@ -254,60 +254,62 @@ public class Achat extends javax.swing.JFrame {
         int quantityInitial=produit.get(here).getProductStock();
         int quantityBuy=Integer.parseInt(quantityTextfield.getText());
 
-        if(quantityInitial<quantityBuy)
+        if(quantityInitial<quantityBuy ||quantityBuy<=0)
             JOptionPane.showMessageDialog(null,"pb de stok");
         else
         {
             int quantityFinal=quantityInitial-quantityBuy;
             produit.get(here).setProductStock(quantityFinal);
             productdb.updateProduct(produit.get(here));
+            
+             //We actualize the current order
+            int quanIni=currentOrder.getQuantity();
+            double priceIni=currentOrder.getTotalPrice();
+
+            currentOrder.setQuantity(quanIni+quantityBuy);
+
+            int  n=quantityBuy;
+
+            //si le produit a une reduction ...........
+            if(produit.get(here).getProductQuantityDiscount()>0 && produit.get(here).getProductDiscount()>0)
+            {
+
+                currentOrder.setTotalPrice((n/produit.get(here).getProductQuantityDiscount()
+                        *(produit.get(here).getProductDiscount())
+                        +(n%produit.get(here).getProductQuantityDiscount())
+                        *produit.get(here).getProductPrice())+priceIni);
+            }
+            else
+            {
+               currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
+            }
+
+            //calcul du prix sans reduc
+            double p=produit.get(here).getProductPrice()*quantityBuy;
+            double newp=parentPage.getPsr()+p;
+            parentPage.setPsr(newp);
+            parentPage.addDeleteButton();
+
+
+            //On ajoute le produit au panier
+            parentPage.addToBucket(produit.get(here));
+            parentPage.addQuantity(quantityBuy);
+
+            //On affiche le panier en appelant la méthode updateTable
+            parentPage.updateTable();
+
+            //On met à jour le statut du panier
+            parentPage.updateStatutBucket();
+
+            //On met à jour le prix total
+            parentPage.updateTotalPrice();
+
+            //Back to Product page
+            parentPage.getAchatPage().setVisible(false);
+            parentPage.setVisible(true);
         }
 
-        //We actualize the current order
-        int quanIni=currentOrder.getQuantity();
-        double priceIni=currentOrder.getTotalPrice();
-
-        currentOrder.setQuantity(quanIni+quantityBuy);
-     
-        int  n=quantityBuy;
-        
-        //si le produit a une reduction ...........
-        if(produit.get(here).getProductQuantityDiscount()>0 && produit.get(here).getProductDiscount()>0)
-        {
-
-            currentOrder.setTotalPrice((n/produit.get(here).getProductQuantityDiscount()
-                    *(produit.get(here).getProductDiscount())
-                    +(n%produit.get(here).getProductQuantityDiscount())
-                    *produit.get(here).getProductPrice())+priceIni);
-        }
-        else
-        {
-           currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
-        }
-        
-        //calcul du prix sans reduc
-        double p=produit.get(here).getProductPrice()*quantityBuy;
-        double newp=parentPage.getPsr()+p;
-        parentPage.setPsr(newp);
-        parentPage.addDeleteButton();
        
-        
-        //On ajoute le produit au panier
-        parentPage.addToBucket(produit.get(here));
-        parentPage.addQuantity(quantityBuy);
-
-        //On affiche le panier en appelant la méthode updateTable
-        parentPage.updateTable();
-        
-        //On met à jour le statut du panier
-        parentPage.updateStatutBucket();
-        
-        //On met à jour le prix total
-        parentPage.updateTotalPrice();
-        
-        //Back to Product page
-        parentPage.getAchatPage().setVisible(false);
-        parentPage.setVisible(true);
     }//GEN-LAST:event_bucketButtonActionPerformed
 
     private void quantityTextfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyTyped
