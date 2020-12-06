@@ -11,7 +11,10 @@ import Controller.ProductDBQuery;
 import Model.Employee;
 import Model.Order;
 import Model.Product;
+import Model.Statistical;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -26,6 +29,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 
 /**
@@ -174,8 +183,15 @@ public class EmployeePage extends javax.swing.JFrame {
            });
 
            k+=30;
-        }
+        } 
         
+        //On affiche les stat en fonction du prix par défault
+        JFreeChart chart=Statistical.getStatistical(1);
+        ChartPanel chartPanel=new ChartPanel(chart);
+        chartPanel.setPreferredSize(new Dimension(400, 300));
+        jPanel6.removeAll();
+        jPanel6.add(chartPanel);
+        jPanel6.validate();
     }
 
     /**
@@ -225,6 +241,9 @@ public class EmployeePage extends javax.swing.JFrame {
         ownerLabel = new javax.swing.JLabel();
         totalpriceLabel1 = new javax.swing.JLabel();
         STATPANEL = new javax.swing.JPanel();
+        statPriceButton = new javax.swing.JButton();
+        statQuantityButton = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         skipButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
         welcome_employeeLabel = new javax.swing.JLabel();
@@ -461,7 +480,7 @@ public class EmployeePage extends javax.swing.JFrame {
         );
         PRODUCTSPANELLayout.setVerticalGroup(
             PRODUCTSPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 439, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("PRODUCTS", PRODUCTSPANEL);
@@ -549,15 +568,47 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("ORDER", ORDERPANEL);
 
+        statPriceButton.setText("Statistics according to price");
+        statPriceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statPriceButtonActionPerformed(evt);
+            }
+        });
+
+        statQuantityButton.setText("Statistics according to quantity");
+        statQuantityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statQuantityButtonActionPerformed(evt);
+            }
+        });
+
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout STATPANELLayout = new javax.swing.GroupLayout(STATPANEL);
         STATPANEL.setLayout(STATPANELLayout);
         STATPANELLayout.setHorizontalGroup(
             STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 852, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, STATPANELLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(statPriceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addComponent(statQuantityButton)
+                .addGap(66, 66, 66))
+            .addGroup(STATPANELLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         STATPANELLayout.setVerticalGroup(
             STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGroup(STATPANELLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(STATPANELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statPriceButton)
+                    .addComponent(statQuantityButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("STAT", STATPANEL);
@@ -817,6 +868,27 @@ public class EmployeePage extends javax.swing.JFrame {
         enterANumber(evt, lotTextfield);
     }//GEN-LAST:event_lotTextfieldKeyPressed
 
+    private void statPriceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statPriceButtonActionPerformed
+        int i=1;
+        JFreeChart chart=Statistical.getStatistical(i);
+        ChartPanel chartPanel=new ChartPanel(chart);
+        chartPanel.setPreferredSize(new Dimension(400, 270));
+        jPanel6.removeAll();
+        jPanel6.add(chartPanel);
+        jPanel6.validate();
+        
+    }//GEN-LAST:event_statPriceButtonActionPerformed
+
+    private void statQuantityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statQuantityButtonActionPerformed
+        int i=2;
+        JFreeChart chart=Statistical.getStatistical(i);
+        ChartPanel chartPanel=new ChartPanel(chart);
+        chartPanel.setPreferredSize(new Dimension(400, 270));
+        jPanel6.removeAll();
+        jPanel6.add(chartPanel);
+        jPanel6.validate();
+    }//GEN-LAST:event_statQuantityButtonActionPerformed
+
     //blinder les textfields
     public void enterANumber(java.awt.event.KeyEvent evt, JTextField txtId)
     {
@@ -890,6 +962,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -908,6 +981,8 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel quantityLabel;
     private javax.swing.JTextField quantityTextfield;
     private javax.swing.JButton skipButton;
+    private javax.swing.JButton statPriceButton;
+    private javax.swing.JButton statQuantityButton;
     private javax.swing.JLabel totalpriceLabel1;
     private javax.swing.JButton updateButton;
     private javax.swing.JLabel welcome_employeeLabel;
