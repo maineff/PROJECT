@@ -13,6 +13,7 @@ import Model.Customer;
 import Model.Order;
 import Model.OrderDetails;
 import Model.Product;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.RoundingMode;
@@ -100,7 +101,8 @@ public class ProductPage extends javax.swing.JFrame {
                 jPanel2.add(productButtons.get(i));
                 jPanel2.add(productLabel.get(i));
                 productButtons.get(i).setBounds(30, j, 100, 100);
-                productLabel.get(i).setBounds(200, j+50, 200, 20);
+                productLabel.get(i).setBounds(180, j+50, 200, 20);
+                
                 productButtons.get(i).setVisible(true);
                 productLabel.get(i).setVisible(true);
                
@@ -134,16 +136,23 @@ public class ProductPage extends javax.swing.JFrame {
      
      public void addDeleteButton()
      {
-         deleteButtons.add(new JButton("Delete"));
+         String str=("deleteIcon.png");
+         ImageIcon img;
+         System.out.println(str);
+         img=new ImageIcon(str);
+         
+         deleteButtons.add(new JButton());
+         deleteButtons.get(deleteButtons.size()-1).setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/deleteIcon.png")));
+         
          jPanel1.add(deleteButtons.get(deleteButtons.size()-1));
          if (deleteButtons.size()==1)
          {
-            deleteButtons.get(deleteButtons.size()-1).setBounds(760, 225, 80, 15);
+            deleteButtons.get(deleteButtons.size()-1).setBounds(755, 225, 18, 18);
          }
          else
          {
             int j = deleteButtons.get(deleteButtons.size()-2).getY();
-            deleteButtons.get(deleteButtons.size()-1).setBounds(760, j+17, 80, 15);
+            deleteButtons.get(deleteButtons.size()-1).setBounds(755, j+17, 18, 18);
          }
          deleteButtons.get(deleteButtons.size()-1).setVisible(true);
             
@@ -200,7 +209,7 @@ public class ProductPage extends javax.swing.JFrame {
             jPanel1.repaint();
             deleteButtons.remove(here);
             for(int l=here;l<deleteButtons.size();l++){
-                deleteButtons.get(l).setBounds(750, deleteButtons.get(l).getY()-17, 80, 15);
+                deleteButtons.get(l).setBounds(755, deleteButtons.get(l).getY()-17, 18, 18);
             }
 
             //On affiche le panier en appelant la méthode updateTable
@@ -294,45 +303,27 @@ public class ProductPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        skipButton = new javax.swing.JButton();
         welcome_customerLabel = new javax.swing.JLabel();
-        menuButton = new javax.swing.JButton();
-        BuyButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableBucket = new javax.swing.JTable();
         jLabelBucket = new javax.swing.JLabel();
         jLabelStatutBucket = new javax.swing.JLabel();
         jLabelTotalPrice = new javax.swing.JLabel();
         economieLabel1 = new javax.swing.JLabel();
+        exitLabel2 = new javax.swing.JLabel();
+        homeLabel1 = new javax.swing.JLabel();
+        buyButtonLabel = new javax.swing.JLabel();
+        DecoIconjLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
-        skipButton.setText("SKIP");
-        skipButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                skipButtonActionPerformed(evt);
-            }
-        });
-
-        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-
-        menuButton.setText("Menu");
-        menuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuButtonActionPerformed(evt);
-            }
-        });
-
-        BuyButton.setText("BUY");
-        BuyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuyButtonActionPerformed(evt);
-            }
-        });
+        welcome_customerLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        welcome_customerLabel.setForeground(new java.awt.Color(255, 255, 255));
 
         jTableBucket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -350,6 +341,7 @@ public class ProductPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableBucket.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTableBucket);
         if (jTableBucket.getColumnModel().getColumnCount() > 0) {
             jTableBucket.getColumnModel().getColumn(0).setPreferredWidth(3);
@@ -357,73 +349,114 @@ public class ProductPage extends javax.swing.JFrame {
             jTableBucket.getColumnModel().getColumn(2).setPreferredWidth(1);
         }
 
-        jLabelBucket.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabelBucket.setText("Your bucket :");
+        jLabelBucket.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        jLabelBucket.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBucket.setText("Your bucket");
 
+        jLabelStatutBucket.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabelStatutBucket.setForeground(new java.awt.Color(255, 255, 255));
         jLabelStatutBucket.setText("Empty for the moment");
 
-        jLabelTotalPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelTotalPrice.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        jLabelTotalPrice.setForeground(new java.awt.Color(255, 255, 255));
+
+        economieLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        economieLabel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        exitLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/exiticon.png"))); // NOI18N
+        exitLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitLabel2MouseClicked(evt);
+            }
+        });
+
+        homeLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/homeIcon.png"))); // NOI18N
+        homeLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeLabel1MouseClicked(evt);
+            }
+        });
+
+        buyButtonLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/buyIcon.png"))); // NOI18N
+        buyButtonLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buyButtonLabelMouseClicked(evt);
+            }
+        });
+
+        DecoIconjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/buyDecoIcon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(skipButton))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(224, 224, 224)
-                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuButton)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(755, 755, 755)
-                        .addComponent(BuyButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
-                        .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(exitLabel2)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelBucket)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabelStatutBucket)))
-                        .addGap(42, 42, 42))
+                            .addComponent(jLabelBucket)
+                            .addComponent(jLabelStatutBucket))
+                        .addGap(26, 26, 26)
+                        .addComponent(buyButtonLabel)
+                        .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))))
+                        .addGap(121, 121, 121))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(homeLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DecoIconjLabel)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(skipButton)
-                .addGap(9, 9, 9)
-                .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelBucket)
-                    .addComponent(jLabelStatutBucket))
-                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(exitLabel2)))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelBucket)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStatutBucket))
+                    .addComponent(buyButtonLabel))
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BuyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(menuButton))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DecoIconjLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(homeLabel1)
+                .addContainerGap())
         );
 
+        jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(504, 5000));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -434,7 +467,7 @@ public class ProductPage extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3000, Short.MAX_VALUE)
+            .addGap(0, 5000, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -446,33 +479,34 @@ public class ProductPage extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 358, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 477, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(117, 117, 117)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(38, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(105, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-      dispose();
-      new HomePage().setVisible(true); //Back to Page 1
-    }//GEN-LAST:event_menuButtonActionPerformed
+    private void exitLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabel2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitLabel2MouseClicked
 
-    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        System.exit(0); //Closing of the system
-    }//GEN-LAST:event_skipButtonActionPerformed
+    private void homeLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeLabel1MouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+        new HomePage().setVisible(true);
+    }//GEN-LAST:event_homeLabel1MouseClicked
 
-    private void BuyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuyButtonActionPerformed
-       
+    private void buyButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buyButtonLabelMouseClicked
         currentOrder.setUsername(currentCustomer.getCustomerUsername());
         orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
@@ -522,8 +556,7 @@ public class ProductPage extends javax.swing.JFrame {
             
             od.submitBucket(panier);
         }  
-        
-    }//GEN-LAST:event_BuyButtonActionPerformed
+    }//GEN-LAST:event_buyButtonLabelMouseClicked
 
    
     /**
@@ -569,8 +602,11 @@ public class ProductPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuyButton;
+    private javax.swing.JLabel DecoIconjLabel;
+    private javax.swing.JLabel buyButtonLabel;
     private javax.swing.JLabel economieLabel1;
+    private javax.swing.JLabel exitLabel2;
+    private javax.swing.JLabel homeLabel1;
     private javax.swing.JLabel jLabelBucket;
     private javax.swing.JLabel jLabelStatutBucket;
     private javax.swing.JLabel jLabelTotalPrice;
@@ -579,8 +615,6 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableBucket;
-    private javax.swing.JButton menuButton;
-    private javax.swing.JButton skipButton;
     private javax.swing.JLabel welcome_customerLabel;
     // End of variables declaration//GEN-END:variables
 

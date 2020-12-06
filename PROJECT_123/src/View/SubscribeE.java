@@ -42,66 +42,90 @@ public class SubscribeE extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         passwordLabel1 = new javax.swing.JLabel();
-        skipButton = new javax.swing.JButton();
-        menuButton = new javax.swing.JButton();
-        okButton = new javax.swing.JButton();
         confirmeLabel = new javax.swing.JLabel();
         nameTextfield = new javax.swing.JTextField();
         lastnameTextfield = new javax.swing.JTextField();
         passwordTextfield = new javax.swing.JTextField();
         passwordTextfield1 = new javax.swing.JTextField();
         usernameTextfield = new javax.swing.JTextField();
+        exitLabel2 = new javax.swing.JLabel();
+        homeLabel1 = new javax.swing.JLabel();
+        okempButtonLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 600));
 
+        jPanel1.setBackground(new java.awt.Color(0, 193, 193));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
-        subscribeLabel.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
+        subscribeLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        subscribeLabel.setForeground(new java.awt.Color(255, 255, 255));
         subscribeLabel.setText("Subscribe");
 
+        nameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
         nameLabel.setText("name");
 
+        lastnameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lastnameLabel.setForeground(new java.awt.Color(255, 255, 255));
         lastnameLabel.setText("lastname");
 
+        usernameLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("username");
 
+        passwordLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("password");
 
+        passwordLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        passwordLabel1.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel1.setText(" confirme your password");
-
-        skipButton.setText("SKIP");
-        skipButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                skipButtonActionPerformed(evt);
-            }
-        });
-
-        menuButton.setText("Menu");
-        menuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuButtonActionPerformed(evt);
-            }
-        });
-
-        okButton.setText("ok");
-        okButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okButtonActionPerformed(evt);
-            }
-        });
 
         confirmeLabel.setForeground(new java.awt.Color(255, 51, 51));
 
+        nameTextfield.setBackground(new java.awt.Color(0, 153, 153));
+        nameTextfield.setBorder(null);
         nameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextfieldActionPerformed(evt);
             }
         });
 
+        lastnameTextfield.setBackground(new java.awt.Color(0, 153, 153));
+        lastnameTextfield.setBorder(null);
+
+        passwordTextfield.setBackground(new java.awt.Color(0, 153, 153));
+        passwordTextfield.setBorder(null);
         passwordTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextfieldActionPerformed(evt);
+            }
+        });
+
+        passwordTextfield1.setBackground(new java.awt.Color(0, 153, 153));
+        passwordTextfield1.setBorder(null);
+
+        usernameTextfield.setBackground(new java.awt.Color(0, 153, 153));
+        usernameTextfield.setBorder(null);
+
+        exitLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/exiticon.png"))); // NOI18N
+        exitLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitLabel2MouseClicked(evt);
+            }
+        });
+
+        homeLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/homeIcon.png"))); // NOI18N
+        homeLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeLabel1MouseClicked(evt);
+            }
+        });
+
+        okempButtonLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/okIcon2.png"))); // NOI18N
+        okempButtonLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                okempButtonLabelMouseClicked(evt);
             }
         });
 
@@ -109,23 +133,6 @@ public class SubscribeE extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(333, 333, 333)
-                            .addComponent(confirmeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(381, 381, 381)
-                            .addComponent(okButton))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(subscribeLabel)
-                            .addGap(37, 37, 37)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(menuButton)))
-                .addContainerGap(302, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,15 +151,34 @@ public class SubscribeE extends javax.swing.JFrame {
                             .addComponent(nameTextfield)
                             .addComponent(usernameTextfield))
                         .addGap(256, 256, 256))
-                    .addComponent(skipButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(subscribeLabel)
+                        .addGap(321, 321, 321))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(333, 333, 333)
+                        .addComponent(confirmeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(355, 355, 355)
+                        .addComponent(okempButtonLabel)))
+                .addContainerGap(302, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(25, 25, 25)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(752, 752, 752)
+                            .addComponent(exitLabel2))
+                        .addComponent(homeLabel1))
+                    .addContainerGap(25, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(skipButton)
-                .addGap(62, 62, 62)
+                .addGap(87, 87, 87)
                 .addComponent(subscribeLabel)
-                .addGap(43, 43, 43)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
@@ -172,12 +198,22 @@ public class SubscribeE extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordLabel1))
-                .addGap(26, 26, 26)
-                .addComponent(okButton)
-                .addGap(55, 55, 55)
+                .addGap(31, 31, 31)
+                .addComponent(okempButtonLabel)
+                .addGap(18, 18, 18)
                 .addComponent(confirmeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(menuButton))
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(exitLabel2)
+                            .addGap(520, 520, 520))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(520, 520, 520)
+                            .addComponent(homeLabel1)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,16 +230,26 @@ public class SubscribeE extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void skipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_skipButtonActionPerformed
+    private void nameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextfieldActionPerformed
 
-    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextfieldActionPerformed
+
+    private void exitLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabel2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitLabel2MouseClicked
+
+    private void homeLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeLabel1MouseClicked
+        // TODO add your handling code here:
         setVisible(false);
         new HomePage().setVisible(true);
-    }//GEN-LAST:event_menuButtonActionPerformed
+    }//GEN-LAST:event_homeLabel1MouseClicked
 
-    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+    private void okempButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okempButtonLabelMouseClicked
         // TODO add your handling code here:
         EmployeeDBQuery nv = new EmployeeDBQuery();
         if(passwordTextfield.getText().compareTo(passwordTextfield1.getText())==0)
@@ -243,15 +289,7 @@ public class SubscribeE extends javax.swing.JFrame {
             confirmeLabel.setText("Enter the same password");
             confirmeLabel.setForeground(new Color(255,0,0));
         }
-    }//GEN-LAST:event_okButtonActionPerformed
-
-    private void nameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextfieldActionPerformed
-
-    private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTextfieldActionPerformed
+    }//GEN-LAST:event_okempButtonLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -291,18 +329,18 @@ public class SubscribeE extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel confirmeLabel;
+    private javax.swing.JLabel exitLabel2;
+    private javax.swing.JLabel homeLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lastnameLabel;
     private javax.swing.JTextField lastnameTextfield;
-    private javax.swing.JButton menuButton;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextfield;
-    private javax.swing.JButton okButton;
+    private javax.swing.JLabel okempButtonLabel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel passwordLabel1;
     private javax.swing.JTextField passwordTextfield;
     private javax.swing.JTextField passwordTextfield1;
-    private javax.swing.JButton skipButton;
     private javax.swing.JLabel subscribeLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextfield;

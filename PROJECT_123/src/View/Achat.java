@@ -85,39 +85,33 @@ public class Achat extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        achatLabel = new javax.swing.JLabel();
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
-        exitButton = new javax.swing.JButton();
         quantityLabel = new javax.swing.JLabel();
         bucketButton = new javax.swing.JButton();
         quantity1Label = new javax.swing.JLabel();
         quantityTextfield = new javax.swing.JTextField();
-        backButton = new javax.swing.JButton();
         discountLabel = new javax.swing.JLabel();
         invalaibleLabel = new javax.swing.JLabel();
+        exitLabel2 = new javax.swing.JLabel();
+        backLabel = new javax.swing.JLabel();
+        bucketLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(183, 183, 254));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 600));
 
-        achatLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
-        achatLabel.setText("ACHAT");
-
-        nameLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        nameLabel.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
         nameLabel.setText("product_name");
 
-        priceLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        priceLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        priceLabel.setForeground(new java.awt.Color(255, 255, 255));
         priceLabel.setText("price");
 
-        exitButton.setText("EXIT");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
-
-        quantityLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        quantityLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        quantityLabel.setForeground(new java.awt.Color(255, 255, 255));
         quantityLabel.setText("quantity");
 
         bucketButton.setText("add to bucket");
@@ -127,7 +121,8 @@ public class Achat extends javax.swing.JFrame {
             }
         });
 
-        quantity1Label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        quantity1Label.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        quantity1Label.setForeground(new java.awt.Color(255, 255, 255));
         quantity1Label.setText("QUANTITY");
 
         quantityTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -139,10 +134,27 @@ public class Achat extends javax.swing.JFrame {
             }
         });
 
-        backButton.setText("BACK");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+        discountLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        discountLabel.setForeground(new java.awt.Color(255, 255, 255));
+
+        exitLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/exiticon.png"))); // NOI18N
+        exitLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitLabel2MouseClicked(evt);
+            }
+        });
+
+        backLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/backIcon.png"))); // NOI18N
+        backLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLabelMouseClicked(evt);
+            }
+        });
+
+        bucketLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/bucketIcon.png"))); // NOI18N
+        bucketLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bucketLabelMouseClicked(evt);
             }
         });
 
@@ -150,97 +162,94 @@ public class Achat extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitButton))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(quantityLabel)
-                                .addGap(312, 312, 312)
-                                .addComponent(priceLabel))
+                                .addGap(222, 222, 222)
+                                .addComponent(quantity1Label)
+                                .addGap(50, 50, 50)
+                                .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(nameLabel)
-                                        .addGap(152, 152, 152))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(quantity1Label)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bucketButton))))
+                                .addGap(259, 259, 259)
+                                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))))
+                                .addGap(222, 222, 222)
+                                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(54, 54, 54)
+                        .addComponent(bucketLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(achatLabel)))
-                .addGap(0, 162, Short.MAX_VALUE))
+                        .addGap(77, 77, 77)
+                        .addComponent(bucketButton)))
+                .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(backLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitLabel2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameLabel)
+                            .addComponent(quantityLabel))
+                        .addGap(380, 380, 380))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(priceLabel)
+                .addGap(180, 180, 180))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(exitButton)
-                            .addComponent(backButton))
-                        .addGap(157, 157, 157)
-                        .addComponent(nameLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(quantityLabel)
-                        .addGap(79, 79, 79)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(backLabel)
+                            .addComponent(exitLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(nameLabel)))
+                .addGap(18, 18, 18)
+                .addComponent(quantityLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(priceLabel)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bucketLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)
+                        .addComponent(bucketButton)
+                        .addGap(88, 88, 88))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(quantity1Label)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(achatLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(priceLabel)
-                        .addGap(41, 41, 41)
-                        .addComponent(bucketButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                            .addComponent(quantity1Label))
+                        .addGap(27, 27, 27)
+                        .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-       System.exit(0);//Closing of the system
-    }//GEN-LAST:event_exitButtonActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-
-        this.dispose();
-        parentPage.setVisible(true);//On rend la Productpage visible
-        
-    }//GEN-LAST:event_backButtonActionPerformed
 
     //Méthode permettant d'effacer l'ancienne saisie de l'utilisateur
     public void clearQuantity()
@@ -334,6 +343,79 @@ public class Achat extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_quantityTextfieldKeyPressed
 
+    private void exitLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabel2MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitLabel2MouseClicked
+
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLabelMouseClicked
+        
+        this.dispose();
+        parentPage.setVisible(true);//On rend la Productpage visible
+    }//GEN-LAST:event_backLabelMouseClicked
+
+    private void bucketLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bucketLabelMouseClicked
+       //We manage product stock
+        int quantityInitial=produit.get(here).getProductStock();
+        int quantityBuy=Integer.parseInt(quantityTextfield.getText());
+
+        if(quantityInitial<quantityBuy ||quantityBuy<=0)
+            JOptionPane.showMessageDialog(null,"pb de stok");
+        else
+        {
+            int quantityFinal=quantityInitial-quantityBuy;
+            produit.get(here).setProductStock(quantityFinal);
+            productdb.updateProduct(produit.get(here));
+            
+             //We actualize the current order
+            int quanIni=currentOrder.getQuantity();
+            double priceIni=currentOrder.getTotalPrice();
+
+            currentOrder.setQuantity(quanIni+quantityBuy);
+
+            int  n=quantityBuy;
+
+            //si le produit a une reduction ...........
+            if(produit.get(here).getProductQuantityDiscount()>0 && produit.get(here).getProductDiscount()>0)
+            {
+
+                currentOrder.setTotalPrice((n/produit.get(here).getProductQuantityDiscount()
+                        *(produit.get(here).getProductDiscount())
+                        +(n%produit.get(here).getProductQuantityDiscount())
+                        *produit.get(here).getProductPrice())+priceIni);
+            }
+            else
+            {
+               currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
+            }
+
+            //calcul du prix sans reduc
+            double p=produit.get(here).getProductPrice()*quantityBuy;
+            double newp=parentPage.getPsr()+p;
+            parentPage.setPsr(newp);
+            parentPage.addDeleteButton();
+
+
+            //On ajoute le produit au panier
+            parentPage.addToBucket(produit.get(here));
+            parentPage.addQuantity(quantityBuy);
+
+            //On affiche le panier en appelant la méthode updateTable
+            parentPage.updateTable();
+
+            //On met à jour le statut du panier
+            parentPage.updateStatutBucket();
+
+            //On met à jour le prix total
+            parentPage.updateTotalPrice();
+
+            //Back to Product page
+            parentPage.getAchatPage().setVisible(false);
+            parentPage.setVisible(true);
+        }
+
+    }//GEN-LAST:event_bucketLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -370,11 +452,11 @@ public static void main(String args[]) {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel achatLabel;
-    private javax.swing.JButton backButton;
+    private javax.swing.JLabel backLabel;
     private javax.swing.JButton bucketButton;
+    private javax.swing.JLabel bucketLabel;
     private javax.swing.JLabel discountLabel;
-    private javax.swing.JButton exitButton;
+    private javax.swing.JLabel exitLabel2;
     private javax.swing.JLabel invalaibleLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nameLabel;
