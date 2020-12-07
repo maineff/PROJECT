@@ -163,8 +163,8 @@ public class EmployeePage extends javax.swing.JFrame {
            orderDiscountLabel.get(i).setBounds(210, k, 200, 20);
            orderQuantityLabel.get(i).setBounds(350, k, 200, 20);
            orderPriceLabel.get(i).setBounds(480, k, 200, 20);
-           orderDateLabel.get(i).setBounds(600, k, 200, 20);
-           orderUserLabel.get(i).setBounds(730, k, 200, 20);
+           orderDateLabel.get(i).setBounds(650, k, 200, 20);
+           orderUserLabel.get(i).setBounds(780, k, 200, 20);
            selectorder.get(i).setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/loopIcon.png")));
            
            selectorder.get(i).setVisible(true);

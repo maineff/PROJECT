@@ -70,7 +70,7 @@ public class HomePage extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameTextfield = new javax.swing.JTextField();
-        subscribeButon = new javax.swing.JButton();
+        subscribecustButon = new javax.swing.JButton();
         wrongLabel = new javax.swing.JLabel();
         imageLabel = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -80,7 +80,7 @@ public class HomePage extends javax.swing.JFrame {
         okcustButtonLabel = new javax.swing.JLabel();
         employeeLogin = new javax.swing.JPanel();
         idTextfield1 = new javax.swing.JTextField();
-        subscribeButton = new javax.swing.JButton();
+        subscribeempButton = new javax.swing.JButton();
         wrongLabel1 = new javax.swing.JLabel();
         logoLabel = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
@@ -197,15 +197,15 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        subscribeButon.setBackground(new java.awt.Color(255, 255, 255));
-        subscribeButon.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        subscribeButon.setForeground(new java.awt.Color(204, 204, 255));
-        subscribeButon.setText("You don't have an account? Sign in");
-        subscribeButon.setBorder(null);
-        subscribeButon.setBorderPainted(false);
-        subscribeButon.addActionListener(new java.awt.event.ActionListener() {
+        subscribecustButon.setBackground(new java.awt.Color(255, 255, 255));
+        subscribecustButon.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        subscribecustButon.setForeground(new java.awt.Color(204, 204, 255));
+        subscribecustButon.setText("You don't have an account? Sign in");
+        subscribecustButon.setBorder(null);
+        subscribecustButon.setBorderPainted(false);
+        subscribecustButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subscribeButonActionPerformed(evt);
+                subscribecustButonActionPerformed(evt);
             }
         });
 
@@ -272,7 +272,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(okcustButtonLabel))
                     .addGroup(customerLoginLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(subscribeButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(subscribecustButon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 286, Short.MAX_VALUE))
         );
         customerLoginLayout.setVerticalGroup(
@@ -301,7 +301,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(okcustButtonLabel)
                 .addGap(44, 44, 44)
                 .addGroup(customerLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subscribeButon)
+                    .addComponent(subscribecustButon)
                     .addComponent(homeLabel))
                 .addGap(126, 126, 126))
         );
@@ -317,15 +317,15 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        subscribeButton.setBackground(new java.awt.Color(255, 255, 255));
-        subscribeButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        subscribeButton.setForeground(new java.awt.Color(0, 153, 153));
-        subscribeButton.setText("You don't have an account? Sign in");
-        subscribeButton.setBorder(null);
-        subscribeButton.setBorderPainted(false);
-        subscribeButton.addActionListener(new java.awt.event.ActionListener() {
+        subscribeempButton.setBackground(new java.awt.Color(255, 255, 255));
+        subscribeempButton.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        subscribeempButton.setForeground(new java.awt.Color(0, 153, 153));
+        subscribeempButton.setText("You don't have an account? Sign in");
+        subscribeempButton.setBorder(null);
+        subscribeempButton.setBorderPainted(false);
+        subscribeempButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subscribeButtonActionPerformed(evt);
+                subscribeempButtonActionPerformed(evt);
             }
         });
 
@@ -396,7 +396,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(employeeLoginLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(subscribeempButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(employeeLoginLayout.createSequentialGroup()
                         .addGap(368, 368, 368)
                         .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,10 +432,10 @@ public class HomePage extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(okempButtonLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(subscribeButton)
+                        .addComponent(subscribeempButton)
                         .addGap(17, 17, 17)))
                 .addComponent(homeLabel1)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -446,7 +446,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(customerLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(employeeLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE))
+                .addComponent(employeeLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 870, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,16 +478,16 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idTextfield1ActionPerformed
 
-    private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
+    private void subscribeempButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeempButtonActionPerformed
         setVisible(false);
         new SubscribeE().setVisible(true); 
-    }//GEN-LAST:event_subscribeButtonActionPerformed
+    }//GEN-LAST:event_subscribeempButtonActionPerformed
 
-    private void subscribeButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButonActionPerformed
+    private void subscribecustButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribecustButonActionPerformed
         setVisible(false);
         new SubscribeC().setVisible(true);
 
-    }//GEN-LAST:event_subscribeButonActionPerformed
+    }//GEN-LAST:event_subscribecustButonActionPerformed
 
     private void usernameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextfieldActionPerformed
         // TODO add your handling code here:
@@ -679,8 +679,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel okempButtonLabel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel passwordLabel2;
-    private javax.swing.JButton subscribeButon;
-    private javax.swing.JButton subscribeButton;
+    private javax.swing.JButton subscribecustButon;
+    private javax.swing.JButton subscribeempButton;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel1;
     private javax.swing.JTextField usernameTextfield;
