@@ -90,7 +90,6 @@ public class HomePage extends javax.swing.JFrame {
         usernameLabel1 = new javax.swing.JLabel();
         passwordLabel2 = new javax.swing.JLabel();
         okempButtonLabel = new javax.swing.JLabel();
-        subscribeempButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +203,7 @@ public class HomePage extends javax.swing.JFrame {
         subscribecustButon.setText("You don't have an account? Sign in");
         subscribecustButon.setBorder(null);
         subscribecustButon.setBorderPainted(false);
+        subscribecustButon.setOpaque(true);
         subscribecustButon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subscribecustButonActionPerformed(evt);
@@ -324,6 +324,7 @@ public class HomePage extends javax.swing.JFrame {
         subscribeempButton.setText("You don't have an account? Sign in");
         subscribeempButton.setBorder(null);
         subscribeempButton.setBorderPainted(false);
+        subscribeempButton.setOpaque(true);
         subscribeempButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subscribeempButtonActionPerformed(evt);
@@ -372,18 +373,6 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        subscribeempButton1.setBackground(new java.awt.Color(255, 255, 255));
-        subscribeempButton1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        subscribeempButton1.setForeground(new java.awt.Color(0, 153, 153));
-        subscribeempButton1.setText("You don't have an account? Sign in");
-        subscribeempButton1.setBorder(null);
-        subscribeempButton1.setBorderPainted(false);
-        subscribeempButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subscribeempButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout employeeLoginLayout = new javax.swing.GroupLayout(employeeLogin);
         employeeLogin.setLayout(employeeLoginLayout);
         employeeLoginLayout.setHorizontalGroup(
@@ -399,19 +388,14 @@ public class HomePage extends javax.swing.JFrame {
                         .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LoginIconLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(homeLabel1))
+                        .addGap(144, 144, 144)
                         .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(employeeLoginLayout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernameLabel1)
-                                    .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordLabel2)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(228, 228, 228)
-                                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(employeeLoginLayout.createSequentialGroup()
-                                .addGap(119, 119, 119)
-                                .addComponent(subscribeempButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(usernameLabel1)
+                            .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordLabel2)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(228, 228, 228)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(employeeLoginLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
                         .addComponent(subscribeempButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -451,9 +435,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(okempButtonLabel)
                 .addGap(18, 18, 18)
                 .addComponent(subscribeempButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subscribeempButton1)
-                .addGap(72, 72, 72))
+                .addGap(94, 94, 94))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -464,7 +446,7 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(customerLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(employeeLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 870, Short.MAX_VALUE))
+                .addComponent(employeeLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,10 +618,6 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_okempButtonLabelMouseClicked
 
-    private void subscribeempButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeempButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subscribeempButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -703,7 +681,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel2;
     private javax.swing.JButton subscribecustButon;
     private javax.swing.JButton subscribeempButton;
-    private javax.swing.JButton subscribeempButton1;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel1;
     private javax.swing.JTextField usernameTextfield;
