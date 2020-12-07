@@ -61,7 +61,7 @@ public class OrderDetailsDBQuery {
                 od.setProductId(rst.getInt("productId"));
                 od.setQuantity(rst.getInt("quantity"));
                 od.setPrice(rst.getDouble("price"));
-                od.setDiscount(rst.getInt("discount"));
+                od.setDiscount(rst.getDouble("discount"));
                 orderdetails.add(od);
            }
         }

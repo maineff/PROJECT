@@ -105,7 +105,7 @@ public class Dbutils {
             
             statement.execute("CREATE TABLE IF NOT EXISTS `product` (" +"`productId` int(11) NOT NULL," +
                                 "`name` varchar(30) NOT NULL," + "`price` double NOT NULL," + 
-                                "`stock` int(11) NOT NULL," + "`discount` int(11) NOT NULL," + "`quantitydiscount` int(11) NOT NULL," 
+                                "`stock` int(11) NOT NULL," + "`discount` double NOT NULL," + "`quantitydiscount` int(11) NOT NULL," 
                                 + "PRIMARY KEY (`productId`))");
             
         }catch(Exception e){

@@ -40,7 +40,7 @@ public class ProductDBQuery {
                 prod.setProductName(rst.getString("name"));
                 prod.setProductPrice(rst.getDouble("price"));
                 prod.setProductStock(rst.getInt("stock"));
-                prod.setProductDiscount(rst.getInt("discount"));
+                prod.setProductDiscount(rst.getDouble("discount"));
                 prod.setProductQuantityDiscount(rst.getInt("quantitydiscount"));
                 
                 products.add(prod);

@@ -507,12 +507,11 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_homeLabel1MouseClicked
 
     private void buyButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buyButtonLabelMouseClicked
-        currentOrder.setUsername(currentCustomer.getCustomerUsername());
-        orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
         currentOrder.setCustomerName(currentCustomer);
         currentOrder.setProduct(produit);
+        currentOrder.setUsername(currentCustomer.getCustomerUsername());
         
         //Lorsque la commande est passée on met à jour la liste de commande du customer
         currentCustomer.getCommandes().add(currentOrder);
@@ -521,6 +520,11 @@ public class ProductPage extends javax.swing.JFrame {
          //calculs economies
         save=psr-currentOrder.getTotalPrice();
         economieLabel1.setText("you save £"+save);
+        currentOrder.setDiscount(save);
+        System.out.println(currentOrder.getDiscount());
+        
+        
+        orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
         
         OrderDetails panier;
         OrderDetailsDBQuery od =new OrderDetailsDBQuery();
@@ -543,10 +547,14 @@ public class ProductPage extends javax.swing.JFrame {
                         +(quantity.get(i)%bucket.get(i).getProductQuantityDiscount())
                         *bucket.get(i).getProductPrice();
                 //calcul de la reduction
+                DecimalFormat df = new DecimalFormat("#.##");
+                df.setRoundingMode(RoundingMode.HALF_UP);
                 double d=p-n;
+                System.out.println("LA");
                 
                 panier.setPrice(n);
                 panier.setDiscount(d);
+                System.out.println(panier.getDiscount());
             }
             else
             {

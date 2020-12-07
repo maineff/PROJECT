@@ -108,7 +108,7 @@ public class EmployeePage extends javax.swing.JFrame {
             productNameLabels.add(new JLabel(produit.get(i).getProductName()));
             productPriceLabels.add(new JLabel(df.format(produit.get(i).getProductPrice())+"$"));
             productQuantityLabels.add(new JLabel(Integer.toString(produit.get(i).getProductStock())));
-            productDiscountLabels.add(new JLabel(Integer.toString(produit.get(i).getProductDiscount())));
+            productDiscountLabels.add(new JLabel(Double.toString(produit.get(i).getProductDiscount())));
             productLotLabels.add(new JLabel(Integer.toString(produit.get(i).getProductQuantityDiscount())));
 
             jPanel3.add(productNameLabels.get(i));
@@ -138,12 +138,15 @@ public class EmployeePage extends javax.swing.JFrame {
         {
             System.out.println(ex.getMessage());
         }
+        
         int k=20;
         for(int i=0;i<commande.size();i++)
         {
            final int number=i;
            orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
+            System.out.println("LAAAAAA");
+            System.out.println(commande.get(i).getDiscount());
            orderDiscountLabel.add(new JLabel(Double.toString(commande.get(i).getDiscount())));
            orderPriceLabel.add(new JLabel(df.format(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           

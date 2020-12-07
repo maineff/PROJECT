@@ -80,9 +80,10 @@ public class Details extends javax.swing.JFrame {
                 prod.setProductName(rst.getString("name"));
                 prod.setProductQuantityDiscount(rst.getInt("quantity"));
                 prod.setProductPrice(rst.getDouble("price"));
-                prod.setProductDiscount(rst.getInt("discount"));
+                prod.setProductDiscount(rst.getDouble("discount"));
                 products.add(prod);
             }
+            
             
             return products;
         } 

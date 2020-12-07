@@ -70,7 +70,7 @@ public class OrderDBQuery {
                 od= new Order();
                 od.setOrderId(rst.getInt("orderId"));
                 od.setQuantity(rst.getInt("quantity"));
-                od.setDiscount(rst.getInt("discount"));
+                od.setDiscount(rst.getDouble("discount"));
                 od.setTotalPrice(rst.getDouble("totalPrice"));
                 od.setOrderDate(rst.getString("date"));
                 od.setUsername(rst.getString("username"));
