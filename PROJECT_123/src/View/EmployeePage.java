@@ -144,7 +144,7 @@ public class EmployeePage extends javax.swing.JFrame {
            final int number=i;
            orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
-           orderDiscountLabel.add(new JLabel(Integer.toString(commande.get(i).getDiscount())));
+           orderDiscountLabel.add(new JLabel(Double.toString(commande.get(i).getDiscount())));
            orderPriceLabel.add(new JLabel(df.format(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
            orderUserLabel.add(new JLabel(commande.get(i).getUsername()));

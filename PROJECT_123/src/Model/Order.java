@@ -21,7 +21,7 @@ public class Order {
     private Customer client;
     private ArrayList<Product> produit;
     private int quantity;
-    private int discount;
+    private double discount;
     private double totalPrice;
     private String orderDate;	
     private String username;	
@@ -31,15 +31,14 @@ public class Order {
         
     }
     
-    public Order(int id,Customer person, ArrayList<Product> pdt,int qty, int reduc,double prix)
+    public Order(int id,int qty, double reduc,double prix,String username)
     {
         this.orderId=id;
-        this.client=person;
-        this.produit=pdt;
         this.quantity=qty;
         this.discount=reduc;
         this.totalPrice=prix;
         this.orderDate=new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        this.username=username;
     }
     
        /*-----------------------Setter-----------------------*/
@@ -64,7 +63,7 @@ public class Order {
        this.quantity=quantity;
    }
    
-   public void setDiscount(int discount)
+   public void setDiscount(double discount)
    {
        this.discount=discount;
    }
@@ -104,7 +103,7 @@ public class Order {
        return quantity;
    }
    
-   public int getDiscount()
+   public double getDiscount()
    {
        return discount;
    }

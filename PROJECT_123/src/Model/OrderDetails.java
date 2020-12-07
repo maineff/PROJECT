@@ -19,6 +19,20 @@ public class OrderDetails {
     private double price;
     private double discount;
     
+    //Constructors//
+    public OrderDetails(){
+        
+    }
+    
+    public OrderDetails(int odId, int oId, int pId, int q, double price, double discount){
+        this.orderdetailsId=odId;
+        this.orderId=oId;
+        this.productId=pId;
+        this.quantity=q;
+        this.price=price;
+        this.discount=discount;
+    }
+    
     
     /*-----------------------Setter-----------------------*/
     

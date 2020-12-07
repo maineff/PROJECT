@@ -30,14 +30,13 @@ public class Customer {
           
     }
     
-     public Customer(int id,String prenom,String nom,String living,int num,ArrayList<Order> cmd,
+     public Customer(int id,String prenom,String nom,String living,
             String ville,String email,String username,String password)
     {
         this.customerId=id;
         this.name=prenom;
         this.lastName=nom;
         this.address=living;
-        this.commandes=cmd;
         this.city=ville;
         this.email=email;
         this.username=username;
