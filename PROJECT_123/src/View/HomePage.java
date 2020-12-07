@@ -90,6 +90,7 @@ public class HomePage extends javax.swing.JFrame {
         usernameLabel1 = new javax.swing.JLabel();
         passwordLabel2 = new javax.swing.JLabel();
         okempButtonLabel = new javax.swing.JLabel();
+        subscribeempButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -371,6 +372,18 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        subscribeempButton1.setBackground(new java.awt.Color(255, 255, 255));
+        subscribeempButton1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        subscribeempButton1.setForeground(new java.awt.Color(0, 153, 153));
+        subscribeempButton1.setText("You don't have an account? Sign in");
+        subscribeempButton1.setBorder(null);
+        subscribeempButton1.setBorderPainted(false);
+        subscribeempButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subscribeempButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout employeeLoginLayout = new javax.swing.GroupLayout(employeeLogin);
         employeeLogin.setLayout(employeeLoginLayout);
         employeeLoginLayout.setHorizontalGroup(
@@ -386,14 +399,19 @@ public class HomePage extends javax.swing.JFrame {
                         .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LoginIconLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(homeLabel1))
-                        .addGap(144, 144, 144)
                         .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameLabel1)
-                            .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordLabel2)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(228, 228, 228)
-                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(employeeLoginLayout.createSequentialGroup()
+                                .addGap(144, 144, 144)
+                                .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usernameLabel1)
+                                    .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordLabel2)
+                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(228, 228, 228)
+                                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(employeeLoginLayout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(subscribeempButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(employeeLoginLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
                         .addComponent(subscribeempButton, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,33 +427,33 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(employeeLoginLayout.createSequentialGroup()
                 .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(employeeLoginLayout.createSequentialGroup()
-                        .addGroup(employeeLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(employeeLoginLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(LoginIconLabel1))
-                            .addGroup(employeeLoginLayout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(exitLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(334, 334, 334))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeLoginLayout.createSequentialGroup()
-                        .addComponent(usernameLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(passwordLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(okempButtonLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(subscribeempButton)
-                        .addGap(17, 17, 17)))
+                        .addGap(59, 59, 59)
+                        .addComponent(LoginIconLabel1))
+                    .addGroup(employeeLoginLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(exitLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(334, 334, 334)
                 .addComponent(homeLabel1)
                 .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, employeeLoginLayout.createSequentialGroup()
+                .addComponent(usernameLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(idTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(passwordLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(wrongLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(okempButtonLabel)
+                .addGap(18, 18, 18)
+                .addComponent(subscribeempButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(subscribeempButton1)
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -618,6 +636,10 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_okempButtonLabelMouseClicked
 
+    private void subscribeempButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeempButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subscribeempButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -681,6 +703,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel2;
     private javax.swing.JButton subscribecustButon;
     private javax.swing.JButton subscribeempButton;
+    private javax.swing.JButton subscribeempButton1;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usernameLabel1;
     private javax.swing.JTextField usernameTextfield;
