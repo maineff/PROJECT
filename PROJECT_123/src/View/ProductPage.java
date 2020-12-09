@@ -507,6 +507,8 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_homeLabel1MouseClicked
 
     private void buyButtonLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buyButtonLabelMouseClicked
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
         
         //Lorsque la commande est passée on remplit les champs manquants de l'order
         currentOrder.setCustomerName(currentCustomer);
@@ -519,8 +521,9 @@ public class ProductPage extends javax.swing.JFrame {
         
          //calculs economies
         save=psr-currentOrder.getTotalPrice();
-        economieLabel1.setText("you save £"+save);
         currentOrder.setDiscount(save);
+        economieLabel1.setText("you save £"+df.format(save));
+        
         System.out.println(currentOrder.getDiscount());
         
         
@@ -547,8 +550,6 @@ public class ProductPage extends javax.swing.JFrame {
                         +(quantity.get(i)%bucket.get(i).getProductQuantityDiscount())
                         *bucket.get(i).getProductPrice();
                 //calcul de la reduction
-                DecimalFormat df = new DecimalFormat("#.##");
-                df.setRoundingMode(RoundingMode.HALF_UP);
                 double d=p-n;
                 System.out.println("LA");
                 

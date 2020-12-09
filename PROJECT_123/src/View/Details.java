@@ -26,8 +26,8 @@ import javax.swing.table.DefaultTableModel;
 public class Details extends javax.swing.JFrame {
 
     private final OrderDBQuery orderdb=new OrderDBQuery();
-    private  ArrayList<Order> commande = new  ArrayList<>(); 
-    private EmployeePage parentpage;
+    private final  ArrayList<Order> commande = new  ArrayList<>(); 
+    private final EmployeePage parentpage;
     private int currentOrderId;
     
     public Details(EmployeePage p) {

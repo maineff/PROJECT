@@ -12,7 +12,6 @@ import Model.Employee;
 import Model.Order;
 import Model.Product;
 import Model.Statistical;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -29,12 +28,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.DefaultCategoryDataset;
+
 
 
 /**
@@ -147,7 +143,7 @@ public class EmployeePage extends javax.swing.JFrame {
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
             System.out.println("LAAAAAA");
             System.out.println(commande.get(i).getDiscount());
-           orderDiscountLabel.add(new JLabel(Double.toString(commande.get(i).getDiscount())));
+           orderDiscountLabel.add(new JLabel(df.format(commande.get(i).getDiscount())));
            orderPriceLabel.add(new JLabel(df.format(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
            orderUserLabel.add(new JLabel(commande.get(i).getUsername()));
