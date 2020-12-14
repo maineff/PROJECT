@@ -19,7 +19,7 @@ public class OrderDetails {
     private double price;
     private double discount;
     
-    //Constructors//
+    //Constructors
     public OrderDetails(){
         
     }

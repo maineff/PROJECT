@@ -141,8 +141,6 @@ public class EmployeePage extends javax.swing.JFrame {
            final int number=i;
            orderIdLabel1.add(new JLabel(Integer.toString(commande.get(i).getOrderId())));
            orderQuantityLabel.add(new JLabel(Integer.toString(commande.get(i).getQuantity())));
-            System.out.println("LAAAAAA");
-            System.out.println(commande.get(i).getDiscount());
            orderDiscountLabel.add(new JLabel(df.format(commande.get(i).getDiscount())));
            orderPriceLabel.add(new JLabel(df.format(commande.get(i).getTotalPrice())));
            orderDateLabel.add(new JLabel(commande.get(i).getOrderDate()));           
@@ -770,7 +768,8 @@ public class EmployeePage extends javax.swing.JFrame {
         if(employeeAction=="add")
         {
 
-            try {
+            try 
+            {
 
                 String rq="SELECT COUNT(*) FROM product WHERE name = '"+productTextfield.getText()+"'";
                 ResultSet rst= Dbutils.executeQuery(rq);
@@ -787,7 +786,6 @@ public class EmployeePage extends javax.swing.JFrame {
                     prod.setProductStock(Integer.parseInt(quantityTextfield.getText()));
                     prod.setProductDiscount(Integer.parseInt(discountTextfield.getText()));
                     prod.setProductQuantityDiscount(Integer.parseInt(lotTextfield.getText()));
-
                     productdb.addProduct(prod);
 
                 }
@@ -946,7 +944,7 @@ public class EmployeePage extends javax.swing.JFrame {
         if((car<'a' || car>'z' ) && (car<'A' || car>'Z' )
             && (car!=(char)KeyEvent.VK_BACK_SPACE)&& (car!=(char)KeyEvent.VK_SPACE))
         {
-            pbnameLabel.setText("please enter a corect name");
+            pbnameLabel.setText("please enter a correct name");
             pbnameLabel.setForeground(Color.red);
         }
         else
@@ -970,40 +968,7 @@ public class EmployeePage extends javax.swing.JFrame {
              invalaibleLabel.setForeground(Color.red);
         }
     }
-    /**
-     * @param args the command line arguments
-     */
-   /* public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-    /*    try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-       /* java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EmployeePage(currentEmployee).setVisible(true);
-            }
-        });
-    }*/
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ORDERPANEL;

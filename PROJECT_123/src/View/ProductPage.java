@@ -13,7 +13,6 @@ import Model.Customer;
 import Model.Order;
 import Model.OrderDetails;
 import Model.Product;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.RoundingMode;
@@ -53,8 +52,8 @@ public class ProductPage extends javax.swing.JFrame {
         
         this.currentOrder=co;//Attribut de l'order actuelle
          
-         try {
-            
+         try 
+         {
             initComponents();
             //We establish the connexion
             Connection conn= Dbutils.getDbConnection();
@@ -68,9 +67,9 @@ public class ProductPage extends javax.swing.JFrame {
             
             //Display of the products
             displayProducts();
-            
-          
-        }catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             System.out.println(ex.getMessage());
         }
           
@@ -80,65 +79,54 @@ public class ProductPage extends javax.swing.JFrame {
     public void displayProducts()
     {
         int j=30;
-            for(int i=0;i<produit.size();i++)
-            {
-                String str=(produit.get(i).getProductName().replace(" ", "")+".jpg");
-                ImageIcon img;
-                System.out.println(str);
-                try{
-                    img=new ImageIcon(str);
-                    
-                }catch(Exception e)
-                {
-                    img=new ImageIcon("notfound.jpg"); 
-                    System.out.println("salut");
-                }
-                final int number=i;
-                productLabel.add(new JLabel(produit.get(i).getProductName()));
-                productButtons.add(new JButton());
-                productButtons.get(i).setIcon(img);
-                
-                jPanel2.add(productButtons.get(i));
-                jPanel2.add(productLabel.get(i));
-                productButtons.get(i).setBounds(30, j, 100, 100);
-                productLabel.get(i).setBounds(180, j+50, 200, 20);
-                
-                productButtons.get(i).setVisible(true);
-                productLabel.get(i).setVisible(true);
-               
-                productButtons.get(i).addActionListener(new ActionListener() {
+        for(int i=0;i<produit.size();i++)
+        {
+            String str=(produit.get(i).getProductName().replace(" ", "")+".jpg");
+            ImageIcon img;
+            img=new ImageIcon(str);
 
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                         
-                        dispose();
-                        achatPage.clearQuantity();
-                        achatPage.setAchat(number, currentOrder);
-                        achatPage.setVisible(true);//We display the purchase window if we click on a JButton
-                        System.out.println(bucket.size());
-                    }
-                });
-                j+=150;
-            }
+
+            final int number=i;
+            productLabel.add(new JLabel(produit.get(i).getProductName()));
+            productButtons.add(new JButton());
+            productButtons.get(i).setIcon(img);
+
+            jPanel2.add(productButtons.get(i));
+            jPanel2.add(productLabel.get(i));
+            productButtons.get(i).setBounds(30, j, 100, 100);
+            productLabel.get(i).setBounds(180, j+50, 200, 20);
+
+            productButtons.get(i).setVisible(true);
+            productLabel.get(i).setVisible(true);
+            
+            productButtons.get(i).addActionListener(new ActionListener() {
+             @Override
+                public void actionPerformed(ActionEvent ae)
+                {
+                    dispose();
+                    achatPage.clearQuantity();
+                    achatPage.setAchat(number, currentOrder);
+                    achatPage.setVisible(true);//We display the purchase window if we click on a JButton  
+                }
+            });
+            j+=150;
+        }
     }
 
      public void addToBucket(Product p)
      {
           bucket.add(p);
-          System.out.println(bucket.size());
      }
      
      public void addQuantity (int i)
      {
          quantity.add(i);
-         System.out.println(quantity.size());
      }
      
      public void addDeleteButton()
      {
          String str=("deleteIcon.png");
          ImageIcon img;
-         System.out.println(str);
          img=new ImageIcon(str);
          
          deleteButtons.add(new JButton());
@@ -169,8 +157,7 @@ public class ProductPage extends javax.swing.JFrame {
                     here=i;
                 }
             }
-            System.out.println(bucket.get(here).getProductName());
-
+           
             //We manage product stock
             int quantityInitial=bucket.get(here).getProductStock();
             int quantityBuy=quantity.get(here);
@@ -232,12 +219,11 @@ public class ProductPage extends javax.swing.JFrame {
         
         String[][] rowData = new String[bucket.size()][3];
         String[] colNames = {"Item", "Quantity", "Price"};
-         double tp =0;
+         double tp=0;
         for (int i=0; i<bucket.size();i++)
         {
             int n = quantity.get(i);
             double p = bucket.get(i).getProductPrice();
-            // psr+=p*n;
              
             if(bucket.get(i).getProductQuantityDiscount()>0 && bucket.get(i).getProductDiscount()>0)
             {
@@ -255,17 +241,16 @@ public class ProductPage extends javax.swing.JFrame {
             
             
             rowData[i][0]=bucket.get(i).getProductName();
-            rowData[i][1]=quant;            //Conversion du int en String
+            rowData[i][1]=quant;//Conversion du int en String
             rowData[i][2]=price;
         }
         
-            // System.out.println("prix sans reduc="+psr);
-		
-        DefaultTableModel dtm = new DefaultTableModel(rowData, colNames);
+	DefaultTableModel dtm = new DefaultTableModel(rowData, colNames);
 	jTableBucket.setModel(dtm);
     }
      
-     public void updateTotalPrice(){
+     public void updateTotalPrice()
+     {
          if (bucket.isEmpty())
          {
              jLabelTotalPrice.setText("");
@@ -279,17 +264,19 @@ public class ProductPage extends javax.swing.JFrame {
      }
      
      //Méthode mettant à jour le label affichant le statut du panier
-     public void updateStatutBucket(){
+     public void updateStatutBucket()
+     {
          if (bucket.isEmpty()){
              jLabelStatutBucket.setText("Empty for the moment");
          }
-         else if (bucket.size()==1){
+         else if (bucket.size()==1)
+         {
              jLabelStatutBucket.setText(bucket.size()+" item for the moment");
          }
-         else{
+         else
+         {
              jLabelStatutBucket.setText(bucket.size()+" items for the moment");
          }
-         
      }
      
      
@@ -524,10 +511,8 @@ public class ProductPage extends javax.swing.JFrame {
         currentOrder.setDiscount(save);
         economieLabel1.setText("you save £"+df.format(save));
         
-        System.out.println(currentOrder.getDiscount());
-        
-        
-        orderdb.submitOrder(currentOrder); //If we click on the "BUY" JButton, the current order registers in the database
+        //If we click on the "BUY" JButton, the current order registers in the database
+        orderdb.submitOrder(currentOrder); 
         
         OrderDetails panier;
         OrderDetailsDBQuery od =new OrderDetailsDBQuery();
@@ -551,11 +536,9 @@ public class ProductPage extends javax.swing.JFrame {
                         *bucket.get(i).getProductPrice();
                 //calcul de la reduction
                 double d=p-n;
-                System.out.println("LA");
                 
                 panier.setPrice(n);
                 panier.setDiscount(d);
-                System.out.println(panier.getDiscount());
             }
             else
             {
@@ -568,48 +551,6 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_buyButtonLabelMouseClicked
 
    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                Order currentOrder = new Order();
-                Customer currentCustomer = new Customer();
-                
-                new ProductPage(currentCustomer, currentOrder).setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DecoIconjLabel;
     private javax.swing.JLabel buyButtonLabel;
