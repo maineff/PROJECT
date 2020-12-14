@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -51,7 +52,7 @@ public class ProductPage extends javax.swing.JFrame {
     public ProductPage(Customer cust, Order co) {
         
         this.currentOrder=co;//Attribut de l'order actuelle
-         
+       
          try 
          {
             initComponents();
@@ -64,7 +65,7 @@ public class ProductPage extends javax.swing.JFrame {
             produit=productdb.getProducts();
             achatPage= new Achat(this);
             jPanel1.add(jScrollPane1);
-            
+            finalLabel.setVisible(false);
             //Display of the products
             displayProducts();
         }
@@ -301,6 +302,7 @@ public class ProductPage extends javax.swing.JFrame {
         homeLabel1 = new javax.swing.JLabel();
         buyButtonLabel = new javax.swing.JLabel();
         DecoIconjLabel = new javax.swing.JLabel();
+        finalLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
 
@@ -328,7 +330,6 @@ public class ProductPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableBucket.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(jTableBucket);
         if (jTableBucket.getColumnModel().getColumnCount() > 0) {
             jTableBucket.getColumnModel().getColumn(0).setPreferredWidth(3);
@@ -373,6 +374,13 @@ public class ProductPage extends javax.swing.JFrame {
 
         DecoIconjLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/buyDecoIcon.png"))); // NOI18N
 
+        finalLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/button_7.png"))); // NOI18N
+        finalLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                finalLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -380,7 +388,7 @@ public class ProductPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(welcome_customerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(exitLabel2)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -403,8 +411,9 @@ public class ProductPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(finalLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DecoIconjLabel)
                 .addGap(22, 22, 22))
@@ -435,7 +444,9 @@ public class ProductPage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(economieLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(DecoIconjLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(finalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(homeLabel1)
                 .addContainerGap())
         );
@@ -471,12 +482,12 @@ public class ProductPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(117, 117, 117)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(105, Short.MAX_VALUE)))
+                    .addContainerGap(109, Short.MAX_VALUE)))
         );
 
         pack();
@@ -510,10 +521,12 @@ public class ProductPage extends javax.swing.JFrame {
         save=psr-currentOrder.getTotalPrice();
         currentOrder.setDiscount(save);
         economieLabel1.setText("you save $"+df.format(save));
-        
         //If we click on the "BUY" JButton, the current order registers in the database
         orderdb.submitOrder(currentOrder); 
-        
+        if(currentOrder.getTotalPrice()>0)
+        {
+            finalLabel.setVisible(true);
+        }
         OrderDetails panier;
         OrderDetailsDBQuery od =new OrderDetailsDBQuery();
         
@@ -550,12 +563,19 @@ public class ProductPage extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_buyButtonLabelMouseClicked
 
+    private void finalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalLabelMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new Final().setVisible(true);
+    }//GEN-LAST:event_finalLabelMouseClicked
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DecoIconjLabel;
     private javax.swing.JLabel buyButtonLabel;
     private javax.swing.JLabel economieLabel1;
     private javax.swing.JLabel exitLabel2;
+    private javax.swing.JLabel finalLabel;
     private javax.swing.JLabel homeLabel1;
     private javax.swing.JLabel jLabelBucket;
     private javax.swing.JLabel jLabelStatutBucket;
