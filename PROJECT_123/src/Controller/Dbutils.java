@@ -16,9 +16,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 /**
  *
@@ -28,8 +27,8 @@ public class Dbutils {
     
     //Class used to access utils methods relating to connection and database queries
     
-    //public final static String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
-    public final static String DB_URL ="jdbc:mysql://localhost:3306/projet"; 
+    public final static String DB_URL ="jdbc:mysql://localhost:8889/projet"; 
+    //public final static String DB_URL ="jdbc:mysql://localhost:3306/projet"; 
     private ArrayList<Product> products = new ArrayList<Product>();
     private ArrayList<Customer> customers = new ArrayList<Customer>();
     private ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -45,8 +44,8 @@ public class Dbutils {
     public static Connection getDbConnection()throws SQLException
     {
        String user="root";
-       //String password="root"; 
-       String password=""; 
+       String password="root"; 
+       //String password=""; 
        return DriverManager.getConnection(DB_URL,user, password);
     }
      
