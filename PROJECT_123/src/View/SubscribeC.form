@@ -57,7 +57,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="homeLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -287,9 +286,6 @@
                 </LineBorder>
               </Border>
             </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameTextfieldActionPerformed"/>
@@ -313,9 +309,6 @@
                 </LineBorder>
               </Border>
             </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="addressTextfield">
@@ -335,9 +328,6 @@
                   <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
-            </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
             </Property>
           </Properties>
         </Component>
@@ -359,9 +349,6 @@
                 </LineBorder>
               </Border>
             </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="passwordTextfield">
@@ -381,9 +368,6 @@
                   <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
-            </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
             </Property>
           </Properties>
           <Events>
@@ -407,9 +391,6 @@
                   <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
-            </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
             </Property>
           </Properties>
         </Component>
@@ -442,9 +423,6 @@
                 </LineBorder>
               </Border>
             </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="emailTextfield">
@@ -464,9 +442,6 @@
                   <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
-            </Property>
-            <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="default"/>
             </Property>
           </Properties>
         </Component>

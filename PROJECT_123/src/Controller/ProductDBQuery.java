@@ -96,12 +96,6 @@ public class ProductDBQuery {
     {
         try
         {
-          /* String query="UPDATE product SET name='"+prod.getProductName()
-                    +"', price='"+prod.getProductPrice()
-                    +"', stock="+prod.getProductStock()*/
-            
-                   System.out.println("le produit est modif");
-           
             String query="UPDATE product SET name='"+prod.getProductName()
                     +"', price="+prod.getProductPrice()
                     +", stock="+prod.getProductStock()
