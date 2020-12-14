@@ -236,7 +236,7 @@ public class ProductPage extends javax.swing.JFrame {
             }
             DecimalFormat df = new DecimalFormat("#.##");
             df.setRoundingMode(RoundingMode.HALF_UP);
-            String price = String.valueOf(df.format(tp)) + " $";
+            String price = String.valueOf(df.format(tp)) + "$";
             String quant = "x"+String.valueOf(n);
             
             
@@ -509,7 +509,7 @@ public class ProductPage extends javax.swing.JFrame {
          //calculs economies
         save=psr-currentOrder.getTotalPrice();
         currentOrder.setDiscount(save);
-        economieLabel1.setText("you save £"+df.format(save));
+        economieLabel1.setText("you save $"+df.format(save));
         
         //If we click on the "BUY" JButton, the current order registers in the database
         orderdb.submitOrder(currentOrder); 
