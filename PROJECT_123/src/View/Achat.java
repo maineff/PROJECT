@@ -88,7 +88,6 @@ public class Achat extends javax.swing.JFrame {
         nameLabel = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         quantityLabel = new javax.swing.JLabel();
-        bucketButton = new javax.swing.JButton();
         quantity1Label = new javax.swing.JLabel();
         quantityTextfield = new javax.swing.JTextField();
         discountLabel = new javax.swing.JLabel();
@@ -113,13 +112,6 @@ public class Achat extends javax.swing.JFrame {
         quantityLabel.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
         quantityLabel.setForeground(new java.awt.Color(255, 255, 255));
         quantityLabel.setText("quantity");
-
-        bucketButton.setText("add to bucket");
-        bucketButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bucketButtonActionPerformed(evt);
-            }
-        });
 
         quantity1Label.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         quantity1Label.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,23 +157,18 @@ public class Achat extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addComponent(quantity1Label)
-                                .addGap(50, 50, 50)
-                                .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(259, 259, 259)
-                                .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(222, 222, 222)
-                                .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(54, 54, 54)
-                        .addComponent(bucketLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(222, 222, 222)
+                        .addComponent(quantity1Label)
+                        .addGap(50, 50, 50)
+                        .addComponent(quantityTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(bucketButton)))
+                        .addGap(259, 259, 259)
+                        .addComponent(invalaibleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(54, 54, 54)
+                .addComponent(bucketLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -221,9 +208,7 @@ public class Achat extends javax.swing.JFrame {
                         .addComponent(priceLabel)
                         .addGap(18, 18, 18)
                         .addComponent(bucketLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(bucketButton)
-                        .addGap(88, 88, 88))
+                        .addGap(134, 134, 134))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(discountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,70 +241,6 @@ public class Achat extends javax.swing.JFrame {
         quantityTextfield.setText("");   
     }
     
-    private void bucketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bucketButtonActionPerformed
-        
-        //We manage product stock
-        int quantityInitial=produit.get(here).getProductStock();
-        int quantityBuy=Integer.parseInt(quantityTextfield.getText());
-
-        if(quantityInitial<quantityBuy ||quantityBuy<=0)
-            JOptionPane.showMessageDialog(null,"pb de stok");
-        else
-        {
-            int quantityFinal=quantityInitial-quantityBuy;
-            produit.get(here).setProductStock(quantityFinal);
-            productdb.updateProduct(produit.get(here));
-            
-             //We actualize the current order
-            int quanIni=currentOrder.getQuantity();
-            double priceIni=currentOrder.getTotalPrice();
-
-            currentOrder.setQuantity(quanIni+quantityBuy);
-
-            int  n=quantityBuy;
-
-            //si le produit a une reduction ...........
-            if(produit.get(here).getProductQuantityDiscount()>0 && produit.get(here).getProductDiscount()>0)
-            {
-
-                currentOrder.setTotalPrice((n/produit.get(here).getProductQuantityDiscount()
-                        *(produit.get(here).getProductDiscount())
-                        +(n%produit.get(here).getProductQuantityDiscount())
-                        *produit.get(here).getProductPrice())+priceIni);
-            }
-            else
-            {
-               currentOrder.setTotalPrice(priceIni+produit.get(here).getProductPrice()*quantityBuy);
-            }
-
-            //calcul du prix sans reduc
-            double p=produit.get(here).getProductPrice()*quantityBuy;
-            double newp=parentPage.getPsr()+p;
-            parentPage.setPsr(newp);
-            parentPage.addDeleteButton();
-
-
-            //On ajoute le produit au panier
-            parentPage.addToBucket(produit.get(here));
-            parentPage.addQuantity(quantityBuy);
-
-            //On affiche le panier en appelant la méthode updateTable
-            parentPage.updateTable();
-
-            //On met à jour le statut du panier
-            parentPage.updateStatutBucket();
-
-            //On met à jour le prix total
-            parentPage.updateTotalPrice();
-
-            //Back to Product page
-            parentPage.getAchatPage().setVisible(false);
-            parentPage.setVisible(true);
-        }
-
-       
-    }//GEN-LAST:event_bucketButtonActionPerformed
-
     private void quantityTextfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyTyped
         
         
@@ -418,7 +339,6 @@ public class Achat extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backLabel;
-    private javax.swing.JButton bucketButton;
     private javax.swing.JLabel bucketLabel;
     private javax.swing.JLabel discountLabel;
     private javax.swing.JLabel exitLabel2;
