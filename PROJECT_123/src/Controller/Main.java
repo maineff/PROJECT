@@ -3,28 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project;
+package Controller;
 
-import Controller.Dbutils;
 import View.HomePage;
 
 /**
  *
  * @author maine
  */
-
-
-
-public class PROJECT {
-
-    /**
-     * @param args the command line arguments 
-     */
+public class Main {
+    
     public static void main(String[] args) {
         //LIGNE DE CODE POUR CREER ET INITIALISER LES TABLES DE NOTRE BASE DE DONNEES (POUR LE CORRECTEUR)
         //Dbutils I = new Dbutils();
         //I.initDB();
         new HomePage().setVisible(true);
     }
-    
 }
