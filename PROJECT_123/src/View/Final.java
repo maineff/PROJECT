@@ -45,16 +45,12 @@ public class Final extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Impact", 1, 48)); // NOI18N
         jLabel1.setText("THANK YOU FOR YOUR ORDER");
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel2.setText("Your order will be sent to you soon");
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel3.setText("Wow! There are thousands of you taking advantage of our great Black Week offers and you are right. ");
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel4.setText("We are busy as ever in our warehouses to prepare and send all your orders as quickly as possible. ");
 
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel5.setText("Day and night, we are mobilized to deliver to you without delay.");
 
         colisIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/iconcolis.png"))); // NOI18N
@@ -80,15 +76,15 @@ public class Final extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 81, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(100, 100, 100))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(42, 42, 42)
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(exitLabel)
                 .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -105,7 +101,7 @@ public class Final extends javax.swing.JFrame {
                         .addComponent(homeLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(295, 295, 295)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -163,40 +159,6 @@ public class Final extends javax.swing.JFrame {
         new HomePage().setVisible(true);
     }//GEN-LAST:event_homeLabel1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Final.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Final.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Final.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Final.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Final().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel camion;

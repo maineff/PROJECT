@@ -66,6 +66,7 @@ public class ProductPage extends javax.swing.JFrame {
             achatPage= new Achat(this);
             jPanel1.add(jScrollPane1);
             finalLabel.setVisible(false);
+            economieLabel1.setVisible(false);
             //Display of the products
             displayProducts();
         }

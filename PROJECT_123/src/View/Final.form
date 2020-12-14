@@ -44,7 +44,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel3" max="32767" attributes="0"/>
                       <Component id="jLabel4" max="32767" attributes="0"/>
@@ -74,7 +74,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="278" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="253" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -131,33 +131,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Trebuchet MS" size="16" style="1"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Your order will be sent to you soon"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Trebuchet MS" size="16" style="1"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Wow! There are thousands of you taking advantage of our great Black Week offers and you are right. "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Trebuchet MS" size="16" style="1"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="We are busy as ever in our warehouses to prepare and send all your orders as quickly as possible. "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Trebuchet MS" size="16" style="1"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Day and night, we are mobilized to deliver to you without delay."/>
           </Properties>
         </Component>
