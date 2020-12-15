@@ -249,13 +249,14 @@ public class Achat extends javax.swing.JFrame {
     private void quantityTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextfieldKeyPressed
       invalaibleLabel.setText("");
         char car= evt.getKeyChar();
+        //si c'est bien un nombre entrer
         if((car<'0' || car>'9' ) && quantityTextfield.getText().contains(".")
             && (car!=(char)KeyEvent.VK_BACK_SPACE))
         {
             invalaibleLabel.setText("");
             
         }
-            
+          //blindage si ce n'est pas un nombre
          else if((car<'0' ||car>'9')&&(car!='.')&&(car!=(char)KeyEvent.VK_BACK_SPACE))
     {
         invalaibleLabel.setText("please enter a number");
@@ -278,7 +279,7 @@ public class Achat extends javax.swing.JFrame {
        //We manage product stock
         int quantityInitial=produit.get(here).getProductStock();
         int quantityBuy=Integer.parseInt(quantityTextfield.getText());
-
+        //dans le cas ou il y a un pb de stock
         if(quantityInitial<quantityBuy ||quantityBuy<=0)
             JOptionPane.showMessageDialog(null,"pb de stok");
         else
