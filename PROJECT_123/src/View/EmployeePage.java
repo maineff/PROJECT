@@ -39,6 +39,7 @@ import org.jfree.chart.JFreeChart;
  */
 public class EmployeePage extends javax.swing.JFrame {
 
+    //affichage du stock 
     private final ProductDBQuery productdb=new ProductDBQuery();
     private  ArrayList<Product> produit = new  ArrayList<Product>(); 
     private ArrayList<JLabel> productNameLabels=new ArrayList<>();
@@ -47,6 +48,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private ArrayList<JLabel> productDiscountLabels=new ArrayList<>();
     private ArrayList<JLabel> productLotLabels=new ArrayList<>();
     
+    //affichage du detail des commandes
     private final OrderDBQuery orderdb=new OrderDBQuery();
     private  ArrayList<Order> commande = new  ArrayList<Order>();
     private ArrayList<JLabel> orderIdLabel1=new ArrayList<>();
@@ -98,6 +100,7 @@ public class EmployeePage extends javax.swing.JFrame {
         df.setRoundingMode(RoundingMode.HALF_UP);
         //Display of the products
         int j=20;
+        //affichage du stock
         for(int i=0;i<produit.size();i++)
         {
            
@@ -136,6 +139,7 @@ public class EmployeePage extends javax.swing.JFrame {
         }
         
         int k=20;
+        //affichage du details des comandes
         for(int i=0;i<commande.size();i++)
         {
            final int number=i;
