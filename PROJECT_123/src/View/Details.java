@@ -40,13 +40,16 @@ public class Details extends javax.swing.JFrame {
      public void setOrderId(int id) {
          
         currentOrderId=id;
-
+        //recuperations des order détails
         ArrayList<Product> produits=getOrderDetails();
+        //colonne Jtable
         String[] colNames =new String[] {"Name", "Quantity", "Price","Discount"};
         Object[][] data= new Object[produits.size()][4];
+        //permet d'arrondir lesnombres decimaux
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.HALF_UP);
         
+        //remplissage du tableau d'objet
         for(int i=0;i<produits.size();i++)
         {
           data[i][0]= produits.get(i).getProductName();
@@ -55,7 +58,7 @@ public class Details extends javax.swing.JFrame {
           data[i][3]= produits.get(i).getProductDiscount();
 
         }
-      
+        //JTable
          DefaultTableModel dtm = new DefaultTableModel(data,colNames);
 	 jTable1.setModel(dtm);
     
@@ -65,17 +68,21 @@ public class Details extends javax.swing.JFrame {
     {
         try
         {
+            //arraylist de produit
             ArrayList<Product> products= new  ArrayList<>();
             Product prod;
          
             //On établit la connection
+            //requete qui recupère des infomations dans deux tables différentes
             String rq="select a.name, b.quantity, b.price, b.discount from product a, orderdetails b ";
                    rq+=" where a.productId=b.productId";
                    rq+=" and b.orderId="+currentOrderId;
             ResultSet rst = Dbutils.executeQuery(rq);
             
+            //recherche tan qu'il y a un next
             while(rst.next())
             {
+                //on creer un produit avec le données 
                 prod=new Product();
                 prod.setProductName(rst.getString("name"));
                 prod.setProductQuantityDiscount(rst.getInt("quantity"));
