@@ -36,7 +36,7 @@ public class SubscribeC extends javax.swing.JFrame {
         initComponents();
         //setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-    
+    //envoyer un mail au nouvel utilisateur
     public void sendMail(String receipient) throws MessagingException
     {
         System.out.println("preparation de l'email");
@@ -67,6 +67,7 @@ public class SubscribeC extends javax.swing.JFrame {
                 
     }
 
+    //preparation de l'envoi de l'email
     private static Message prepareMessage(Session session, String myAccountEmail, String receipient) {
       
         try {
