@@ -77,17 +77,18 @@ public class ProductPage extends javax.swing.JFrame {
           
     }
     
-    
+    //on affiche les produits
     public void displayProducts()
     {
         int j=30;
         for(int i=0;i<produit.size();i++)
         {
+            //nom de l'image
             String str=(produit.get(i).getProductName().replace(" ", "")+".jpg");
             ImageIcon img;
             img=new ImageIcon(str);
 
-
+            //on afiiche autant de boutons que de produits
             final int number=i;
             productLabel.add(new JLabel(produit.get(i).getProductName()));
             productButtons.add(new JButton());
@@ -115,16 +116,19 @@ public class ProductPage extends javax.swing.JFrame {
         }
     }
 
+    //on ajoute au panier
      public void addToBucket(Product p)
      {
           bucket.add(p);
      }
      
+     //on ajoute les quantites saisies dans un arraylist d'entier
      public void addQuantity (int i)
      {
          quantity.add(i);
      }
      
+     //ajout des boutons supprimer
      public void addDeleteButton()
      {
          String str=("deleteIcon.png");
@@ -251,6 +255,7 @@ public class ProductPage extends javax.swing.JFrame {
 	jTableBucket.setModel(dtm);
     }
      
+     //maj du prix total
      public void updateTotalPrice()
      {
          if (bucket.isEmpty())
