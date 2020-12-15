@@ -15,8 +15,8 @@ public class Main {
     
     public static void main(String[] args) {
         //LIGNE DE CODE POUR CREER ET INITIALISER LES TABLES DE NOTRE BASE DE DONNEES (POUR LE CORRECTEUR)
-        //Dbutils I = new Dbutils();
-        //I.initDB();
+//        Dbutils I = new Dbutils();
+//        I.initDB();
         new HomePage().setVisible(true);
     }
 }
